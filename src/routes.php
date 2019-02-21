@@ -17,3 +17,7 @@ $app->get('/register', function (Request $request, Response $response, array $ar
     return $this->renderer->render($response, 'register.phtml', $args);
 });
 
+$app->get('/login', function (Request $request, Response $response, array $args) {
+    return $this->renderer->render($response, 'login.phtml', $args);
+});
+
