@@ -2,4 +2,6 @@
 
 **Installation**
 
-run ```composer install```
+install ```composer install```
+
+run ```php -S localhost:3000 -t public public/index.php```
