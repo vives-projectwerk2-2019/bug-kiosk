@@ -12,3 +12,8 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     // Render index view
     return $this->renderer->render($response, 'index.phtml', $args);
 });
+
+$app->get('/register', function (Request $request, Response $response, array $args) {
+    return $this->renderer->render($response, 'register.phtml', $args);
+});
+
