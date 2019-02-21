@@ -3,13 +3,9 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Models\User;
-// Routes
 
 $app->get('/', function (Request $request, Response $response, array $args) {
-    // Sample log message
     $this->logger->info("GET '/' route");
-
-    // Render index view
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
