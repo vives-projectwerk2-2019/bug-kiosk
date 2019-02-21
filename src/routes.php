@@ -2,7 +2,7 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-
+use App\Models\User;
 // Routes
 
 $app->get('/', function (Request $request, Response $response, array $args) {
@@ -20,4 +20,3 @@ $app->get('/register', function (Request $request, Response $response, array $ar
 $app->get('/login', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'login.phtml', $args);
 });
-
