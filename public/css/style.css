@@ -14,8 +14,20 @@ h1 {
 	font-family: 'Courier New', sans-serif;
 	font-size: 100px;
 	font-weight: 200;
-	margin-bottom: 3%;
+	margin-bottom: 2%;
 }
+.index{
+	margin-top: 15%;
+}
+
+.login {
+	margin-top: 10%;
+}
+
+.register {
+	margin-top: 6%;
+}
+
 .btn-large {
 	background-color: #00cc99;
 }
