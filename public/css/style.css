@@ -14,8 +14,17 @@ h1 {
 	font-family: 'Courier New', sans-serif;
 	font-size: 100px;
 	font-weight: 200;
-	margin-bottom: 5%;
+	margin-bottom: 3%;
 }
 .btn-large {
 	background-color: #00cc99;
 }
+
+.btn:hover {
+	background-color: #00b386;
+}
+
+.btn-large:hover {
+	background-color: #00b386;
+}
+
