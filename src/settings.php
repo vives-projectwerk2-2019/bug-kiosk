@@ -17,10 +17,10 @@ return [
         ],
         'db' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
+            'host' => 'db',
             'database' => 'bug',
-            'username' => 'root',
-            'password' => 'password',
+            'username' => 'api',
+            'password' => 'api',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
