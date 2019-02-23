@@ -39,9 +39,9 @@ class User extends Model
     public function checkIfValidPassword($password, $passwordConfirmation)
     {
         if ($password == $passwordConfirmation) {
-            return password_hash($password, PASSWORD_BCRYPT);
+            return true;
         }
-        echo "Passwords don't match!";
-        return "Passwords don't match!";
+        echo "Password's did not match!";
+        return false;
     }
 }

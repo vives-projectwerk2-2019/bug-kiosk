@@ -21,8 +21,8 @@ $app->post('/login', function (Request $request, Response $response, array $args
         return $this->renderer->render($response, 'register.phtml', $args);
     }
 
-    if(!$request->getParam('password') == null && !$request->getParam('confirmpassword') == null) {
-        $user->password = $user->checkIfValidPassword($request->getParam('password'), $request->getParam('confirmpassword'));
+    if($user->checkIfValidPassword($request->getParam('password'), $request->getParam('confirmpassword'))) {
+        $user->password = password_hash($password, PASSWORD_BCRYPT);
     }else{
         return $this->renderer->render($response, 'register.phtml', $args);}
   
