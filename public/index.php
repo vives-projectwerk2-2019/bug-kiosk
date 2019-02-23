@@ -11,8 +11,6 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
-session_start();
-
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);
@@ -25,6 +23,12 @@ require __DIR__ . '/../src/middleware.php';
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
+
+$app->add(new \Slim\Middleware\Session([ //need to check this
+    'name' => 'bug_session',
+    'autorefresh' => true,
+    'lifetime' => '1 hour'
+  ]));
 
 // Run app
 $app->run();
