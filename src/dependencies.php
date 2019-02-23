@@ -19,15 +19,18 @@ $container['logger'] = function ($c) {
 };
 
 $capsule = new \Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($container['settings']['db']);
-
+$capsule->addConnection($container['settings']["db"]);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 $container['db'] = function ($container) {
     return $capsule;
 };
-
+//Register provider
 $container['flash'] = function () {
     return new \Slim\Flash\Messages();
+};
+
+$container['session'] = function () {
+    return new \SlimSession\Helper;
 };
