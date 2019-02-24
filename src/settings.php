@@ -18,10 +18,10 @@ return [
         // Slim Settings
         'db' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
+            'host' => getenv('DB_HOST') ?: 'localhost',
             'database' => 'bug',
-            'username' => 'root',
-            'password' => '',
+            'username' => getenv('DB_USER') ?: 'root',
+            'password' => getenv('DB_PASS') ?: '',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
