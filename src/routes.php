@@ -83,5 +83,5 @@ $app->get('/profile', function (Request $request, Response $response, array $arg
 
 $app->get('/logout', function (Request $request, Response $response, array $args) {
     $this->session::destroy();
-    return $response->withRedirect('/login', $status = null);
+    return $response->withRedirect('/', $status = null);
 });
