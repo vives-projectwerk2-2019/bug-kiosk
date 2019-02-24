@@ -28,6 +28,7 @@ $app->post('/register', function (Request $request, Response $response, array $a
   
     $user->lastname = $request->getParam('last_name');
     $user->firstname = $request->getParam('first_name');
+    $user->shortName = $request->getParam('short_name');
 
     $user->save();
 
