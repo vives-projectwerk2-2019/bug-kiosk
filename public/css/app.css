@@ -10656,7 +10656,6 @@ a.text-dark:focus {
 }
 
 body {
-  margin: 50px 0 0 0;
   padding: 0;
   width: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -10671,7 +10670,7 @@ h1 {
   font-family: "Courier New", sans-serif;
   font-size: 100px;
   font-weight: 200;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 .index {
@@ -10717,5 +10716,29 @@ a:hover {
 
 a:hover {
   text-decoration: none;
+}
+
+.topnav {
+  background-color: #00cc99;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #00b386;
+  color: white;
+}
+
+.topnav a.active {
+  background-color: #00b386;
+  color: white;
 }
 
