@@ -54,23 +54,20 @@ class LoginController extends Controller
     {
         $userSocial = Socialite::driver($provider)->user();
 
-        $findUser = User::where('email', $userSocial->getEmail)->first();
+        $user = User::where('provider_id', $userSocial->getId())->first();
 
-        if ($findUser) {
-            Auth::login($findUser);
+        if (!$user) {
 
-            return view('home');
-
-        } else {
-
-            $user = new User;
-            $user->name = $userSocial->getName;
-            $user->email = $userSocial->getEmail;
-            $user->password = bcrypt('randomValue');
-            Auth::login($user);
-
-            return view('home');
-
+            $user = User::create([
+                'email' => $userSocial->getEmail(),
+                'name' => $userSocial->getName(),
+                'provider_id' => $userSocial->getId(),
+            ]);
         }
+
+        Auth::login($user, true);
+
+        return view('home');
+
     }
 }
