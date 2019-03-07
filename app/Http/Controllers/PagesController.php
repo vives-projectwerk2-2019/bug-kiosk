@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class PagesController extends Controller
 {
     public function index()
@@ -11,9 +9,19 @@ class PagesController extends Controller
         return view('pages.index');
     }
 
-    public function home()
+    public function profile()
     {
-        return view('pages.home');
+        return view('pages.profile');
+    }
+
+    public function stats()
+    {
+        return view('pages.stats');
+    }
+
+    public function logger()
+    {
+        return view('pages.logger');
     }
 
 }
