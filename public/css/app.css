@@ -10690,10 +10690,6 @@ h1 {
   background-color: #00cc99;
 }
 
-.btn:hover {
-  background-color: #00b386;
-}
-
 .btn-large:hover {
   background-color: #00b386;
 }
@@ -10713,13 +10709,34 @@ h1 {
 
 a:hover {
   color: white;
-}
-
-a:hover {
   text-decoration: none;
+  background-color: #00b386;
 }
 
 .navbar {
   background-color: #00cc99;
+}
+
+.btn-link {
+  background-color: #00cc99;
+  color: white;
+}
+
+.btn-link:hover {
+  background-color: #00b386;
+  text-decoration: none;
+  color: white;
+}
+
+#forgotLink:hover {
+  background-color: #227dc7;
+  border-color: #227dc7;
+  text-decoration: none;
+  color: white;
+}
+
+#forgotLink {
+  background-color: #3490dc;
+  border-color: #3490dc;
 }
 

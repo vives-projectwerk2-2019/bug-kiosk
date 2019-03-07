@@ -52,16 +52,24 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <a  href="/" class="btn btn-primary">Back</a>
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <div class="col-md-8 offset-md-3">
+                                    <p>Or continue with:</p>
+                                    <a class="btn btn-link" href="/login/facebook">Facebook</a>
+                                    <a class="btn btn-link" href="/login/github">Github</a>
+                                    <a class="btn btn-link" href="/login/google">Google</a>
+                                    <a class="btn btn-link" href="/login/Twitter">Twitter</a>
+                                    <br>
+                                    <br>
+                                    @if (Route::has('password.request'))
+                                    <a id="forgotLink" class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
+                                    <br>
+                                    <br>
+                                <a  href="/" class="btn btn-primary">Back</a>
+                                    <button type="submit" class="btn btn-primary">
+                                            {{ __('Login') }}
+                                        </button>
                                 @endif
                             </div>
                         </div>
