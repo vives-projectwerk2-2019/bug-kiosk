@@ -20,11 +20,6 @@ class PagesController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index()
-    {
-        return view('pages.index');
-    }
-
     public function profile()
     {
         return view('pages.profile');

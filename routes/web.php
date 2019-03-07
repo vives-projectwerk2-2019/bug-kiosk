@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'IndexController@index');
 
 Route::get('/profile', 'PagesController@profile');
 
