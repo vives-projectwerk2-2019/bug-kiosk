@@ -57,7 +57,6 @@
                                     <a class="btn btn-link" href="/login/facebook">Facebook</a>
                                     <a class="btn btn-link" href="/login/github">Github</a>
                                     <a class="btn btn-link" href="/login/google">Google</a>
-                                    <a class="btn btn-link" href="/login/Twitter">Twitter</a>
                                     <br>
                                     <br>
                                     @if (Route::has('password.request'))
