@@ -11,4 +11,4 @@ RUN composer install
 RUN npm install
 
 EXPOSE 8000
-CMD [ "php", "artisan", "serve", "--host=0.0.0.0" ]
+CMD [ "./wait-for-mariadb.sh", "db", "composer", "start" ]
