@@ -19,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('BugConsole', require('./components/BugConsole.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,7 +33,12 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import App from './views/App';
-import Welcome from './views/Welcome';
+import VueMqtt from 'vue-mqtt';
+//import dotenv from 'dotenv';
+require('dotenv').config();
+
+Vue.use(VueMqtt, 'mqtt://'+ process.env.MIX_VUE_APP_BROKER_HOST ,{clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
+
 
 const router = new VueRouter({
 	mode: 'history',
@@ -41,7 +46,7 @@ const router = new VueRouter({
 		{
 			path: '/logger',
 			name: 'logger',
-			component: Welcome
+			component: App
 		}
 	]
 });
