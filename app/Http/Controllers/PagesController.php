@@ -35,4 +35,14 @@ class PagesController extends Controller
         return view('pages.logger');
     }
 
+    public function dongles()
+    {
+        return view('pages.dongles');
+    }
+
+    public function my_dongles()
+    {
+        return view('pages.my_dongles');
+    }
+
 }

@@ -17,6 +17,9 @@
                         <a class="nav-link" href="/stats">Stats</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/dongles">Dongles</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/logger">Logger</a>
                     </li>
             </ul>
@@ -41,6 +44,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="profile">Profile</a>
+                                <a class="dropdown-item" href="my_dongles">My dongles</a>
  
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
