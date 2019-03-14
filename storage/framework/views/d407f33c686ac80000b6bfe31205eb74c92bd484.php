@@ -57,6 +57,7 @@
                                     <a class="btn btn-link" href="/login/facebook">Facebook</a>
                                     <a class="btn btn-link" href="/login/github">Github</a>
                                     <a class="btn btn-link" href="/login/google">Google</a>
+                                    <a class="btn btn-link" href="/login/twitter">Twitter</a>
                                     <br>
                                     <br>
                                     <?php if(Route::has('password.request')): ?>
