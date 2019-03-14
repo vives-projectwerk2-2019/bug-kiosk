@@ -1,4 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
+git/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -52764,7 +52764,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + "192.168.5.234:9001", {
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).MIX_VUE_APP_BROKER_HOST, {
   clientId: 'WebClient-' + parseInt(Math.random() * 100000)
 });
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -53017,8 +53017,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Vives\2018-2019\sem2\Projectwerk\Programmeren\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Vives\2018-2019\sem2\Projectwerk\Programmeren\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
