@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-/vendor/
-/logs/*
-!/logs/README.md
-node_modules
-=======
 /node_modules
 /public/hot
 /public/storage
@@ -15,4 +9,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
->>>>>>> bug-kiosk-dev
+/storage/framework/*
+/storage/logs/*
