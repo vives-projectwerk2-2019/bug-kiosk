@@ -9,6 +9,7 @@ WORKDIR /app
 COPY . .
 RUN composer install
 RUN npm install
+RUN npm run dev
 
 EXPOSE 8000
-CMD [ "./wait-for-mariadb.sh", "db", "composer", "start" ]
+CMD [ "./start.sh" ]
