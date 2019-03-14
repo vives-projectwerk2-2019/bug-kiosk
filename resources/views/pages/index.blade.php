@@ -14,5 +14,6 @@
     <a  href="/login/facebook" class="waves-effect waves-light btn-large">Facebook</a>
     <a  href="/login/github" class="waves-effect waves-light btn-large">Github</a>
     <a  href="/login/google" class="waves-effect waves-light btn-large">Google</a>
+    <a  href="/login/twitter" class="waves-effect waves-light btn-large">Twitter</a>
 </div>
 @endsection
