@@ -6,32 +6,40 @@
 <div>
     <h1 id="under-navbar">All Dongles</h1>
     <div class="row">
-        <div id="dongle">Dongle 1
+        <div class="dongle-white"></div>
+        <div class="dongle col s1">Dongle 1
                 <p>Name</p>
                 <p>Info</p>
         </div>
-        <div id="dongle">Dongle 2
+        <div class="dongle-white"></div>
+        <div class="dongle col s1">Dongle 2
                 <p>Name</p>
                 <p>Info</p>
         </div>
-        <div id="dongle">Dongle 3
+        <div class="dongle-white"></div>
+        <div class="dongle col s1">Dongle 3
                 <p>Name</p>
                 <p>Info</p>
         </div>
+        <div class="dongle-white"></div>
     </div>
     <div class="row">
-        <div id="dongle">Dongle 4
+        <div class="dongle-white"></div>
+        <div class="dongle col s1">Dongle 4
                 <p>Name</p>
                 <p>Info</p>
         </div>
-        <div id="dongle">Dongle 5
+        <div class="dongle-white"></div>
+        <div class="dongle col s1">Dongle 5
                 <p>Name</p>
                 <p>Info</p>
         </div>
-        <div id="dongle">Dongle 6
+        <div class="dongle-white"></div>
+        <div class="dongle col s1">Dongle 6
                 <p>Name</p>
                 <p>Info</p>
         </div>
+        <div class="dongle-white"></div>
     </div>
 </div>
 @endsection
