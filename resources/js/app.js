@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -28,6 +27,27 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+import App from './views/App';
+import Welcome from './views/Welcome';
+
+const router = new VueRouter({
+	mode: 'history',
+	routes: [
+		{
+			path: '/logger',
+			name: 'logger',
+			component: Welcome
+		}
+	]
+});
+
 const app = new Vue({
-    el: '#app'
+	el: '#app',
+	components: { App },
+	router
 });

@@ -6,8 +6,6 @@ Route::get('/profile', 'PagesController@profile');
 
 Route::get('/stats', 'PagesController@stats');
 
-Route::get('/logger', 'PagesController@logger');
-
 Route::get('/my_dongles', 'PagesController@my_dongles');
 
 Route::get('/dongles', 'PagesController@dongles');
@@ -23,3 +21,6 @@ Auth::routes();
 //Social login route
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+//vue route for logger
+Route::get('/logger', 'SinglePageController@index');
