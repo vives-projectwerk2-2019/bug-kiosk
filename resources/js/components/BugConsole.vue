@@ -12,7 +12,14 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody v-html="newrow">
+          <tbody>
+            <tr v-for="log in logs" v-bind:key="log.time">
+              <td>{{ log.time }}</td>
+              <td>{{ log.dev_id }}</td>
+              <td>{{ log.movement }}</td>
+              <td>{{ log.action }}</td>
+
+            </tr>
           </tbody>
         </table>
       </div>
@@ -27,19 +34,25 @@ export default {
     msg: String
   },
   mounted() {
-      console.log('Component mounted.')
+      console.log('Bug-Console mounted.')
   },
   data () {
     return {
-      newrow:' '
+      newrow:' ',
+      logs: []
     }
   },
   mqtt: {
     'TTN' (data) {
       var parsed = JSON.parse(data);
-      this.newrow = '<tr>'+'<td>' + getTime() + '</td>' +'<td>' + parsed.dev_id + '</td>'
-                    + '<td>' + parsed.movement + '</td>'
-                    + '<td>' + parsed.action + '</td>' +'</tr>' + this.newrow
+      console.log(data);
+      this.logs.unshift({
+          time: getTime(),
+          dev_id: parsed.dev_id,
+          movement:parsed.movement,
+          action:parsed.action
+        });
+
     }
   }
 }

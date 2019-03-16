@@ -3,9 +3,8 @@
 @include('inc.navbar')
 
 @section('content')
-<div id="app">
+<div>
     <app></app>
 </div>
-<script src="{{ mix('js/bootstrap.js') }}"></script>
-<script src="{{ mix('js/app.js') }}"></script>
+
 @endsection
