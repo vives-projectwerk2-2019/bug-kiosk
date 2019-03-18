@@ -2,6 +2,9 @@
   <div class="console">
     <h1>{{ msg }}</h1>
     <div class="container">
+        <select name="status" id="tags" class="form-control" v-model="pending_or_completed">
+          <option v-bind:key="device_option.option" v-for="device_option in device_options">{{ device_option }}</option>
+        </select>
       <div class="card">
         <table>
           <thead>
@@ -18,7 +21,6 @@
               <td>{{ log.dev_id }}</td>
               <td>{{ log.movement }}</td>
               <td>{{ log.action }}</td>
-
             </tr>
           </tbody>
         </table>
@@ -39,21 +41,29 @@ export default {
   data () {
     return {
       newrow:' ',
-      logs: []
+      logs: [],
+      device_options:[]
     }
   },
   mqtt: {
     'TTN' (data) {
       var parsed = JSON.parse(data);
       console.log(data);
-      this.logs.unshift({
-          time: getTime(),
-          dev_id: parsed.dev_id,
-          movement:parsed.movement,
-          action:parsed.action
-        });
+      
+      if(this.device_options.indexOf(parsed.dev_id) === -1){
+        this.device_options.push(parsed.dev_id);
+        console.log(this.device_options);
+      }
 
+      this.logs.unshift({
+        time: getTime(),
+        dev_id: parsed.dev_id,
+        movement:parsed.movement,
+        action:parsed.action
+      });
     }
+  },
+  methods: {
   }
 }
 

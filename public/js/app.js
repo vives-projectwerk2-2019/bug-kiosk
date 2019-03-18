@@ -1792,6 +1792,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'BugConsole',
   props: {
@@ -1803,13 +1805,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       newrow: ' ',
-      logs: []
+      logs: [],
+      device_options: []
     };
   },
   mqtt: {
     'TTN': function TTN(data) {
       var parsed = JSON.parse(data);
       console.log(data);
+
+      if (this.device_options.indexOf(parsed.dev_id) === -1) {
+        this.device_options.push(parsed.dev_id);
+        console.log(this.device_options);
+      }
+
       this.logs.unshift({
         time: getTime(),
         dev_id: parsed.dev_id,
@@ -1817,7 +1826,8 @@ __webpack_require__.r(__webpack_exports__);
         action: parsed.action
       });
     }
-  }
+  },
+  methods: {}
 });
 
 function getTime() {
@@ -37914,6 +37924,43 @@ var render = function() {
     _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.pending_or_completed,
+              expression: "pending_or_completed"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { name: "status", id: "tags" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.pending_or_completed = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        _vm._l(_vm.device_options, function(device_option) {
+          return _c("option", { key: device_option.option }, [
+            _vm._v(_vm._s(device_option))
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "card" }, [
         _c("table", [
           _vm._m(0),
