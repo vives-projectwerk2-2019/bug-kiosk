@@ -5,59 +5,42 @@
 @section('content')
 <div>
     <h1 id="under-navbar">All Dongles</h1>
-    <div class="row">
+    <div class="row ">
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 1
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 1">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 1
         </div>
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 2
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 2">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 2
         </div>
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 3
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 3">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 3
         </div>
         <div class="dongle-white"></div>
     </div>
     <br>
     <div class="row">
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 4
-                <p >Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 4">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 4
+
         </div>
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 5
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 5">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 5
         </div>
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 6
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 6">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 6
         </div>
         <div class="dongle-white"></div>
     </div>
     <br>
     <div class="row">
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 7
-                <p >Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 7">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 7
         </div>
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 8
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 8">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 8
         </div>
         <div class="dongle-white"></div>
-        <div class="dongle col s1">Dongle 9
-                <p>Name</p>
-                <a class="btn tooltipped" data-position="bottom" data-tooltip="Info dongle 9">Info</a>
+        <div class="dongle col s1 tooltipped" data-position="top" data-tooltip="Test test test test test">Dongle 9
         </div>
         <div class="dongle-white"></div>
     </div>
