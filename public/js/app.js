@@ -1794,6 +1794,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'BugConsole',
   props: {
@@ -1827,7 +1828,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  methods: {}
+  methods: {
+    clear: function clear(event) {
+      this.logs = [];
+      this.device_options = [];
+    }
+  }
 });
 
 function getTime() {
@@ -6328,7 +6334,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.console {\r\n    margin-top: 100px;\n}\ntbody {\r\n    display:block;\r\n    height:640px;\r\n    overflow:auto;\n}\nthead, tbody tr {\r\n    display:table;\r\n    width:100%;\r\n    table-layout:fixed;\n}\nthead {\r\n    width: calc( 100% - 1em )\n}\ntable {\r\n    width:100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.console {\r\n    margin-top: 100px;\n}\nbutton {\r\n  float: left;\n}\ntbody {\r\n    display:block;\r\n    height:640px;\r\n    overflow:auto;\n}\nthead, tbody tr {\r\n    display:table;\r\n    width:100%;\r\n    table-layout:fixed;\n}\nthead {\r\n    width: calc( 100% - 1em )\n}\ntable {\r\n    width:100%;\n}\r\n", ""]);
 
 // exports
 
@@ -37924,6 +37930,8 @@ var render = function() {
     _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
+      _c("button", { on: { click: _vm.clear } }, [_vm._v("Clear")]),
+      _vm._v(" "),
       _c(
         "select",
         {

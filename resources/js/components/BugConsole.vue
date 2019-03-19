@@ -2,6 +2,7 @@
   <div class="console">
     <h1>{{ msg }}</h1>
     <div class="container">
+        <button v-on:click="clear">Clear</button>
         <select name="status" id="tags" class="form-control" v-model="pending_or_completed">
           <option v-bind:key="device_option.option" v-for="device_option in device_options">{{ device_option }}</option>
         </select>
@@ -64,6 +65,10 @@ export default {
     }
   },
   methods: {
+    clear: function (event) {
+      this.logs = [];
+      this.device_options = [];
+    }
   }
 }
 
@@ -82,6 +87,10 @@ function getTime() {
 
 .console {
     margin-top: 100px;
+}
+
+button {
+  float: left;
 }
 
 tbody {
