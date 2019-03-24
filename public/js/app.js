@@ -1795,6 +1795,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'BugConsole',
   props: {
@@ -1807,17 +1808,17 @@ __webpack_require__.r(__webpack_exports__);
     return {
       newrow: ' ',
       logs: [],
-      device_options: []
+      device_options: ["All"],
+      filterID: null,
+      filtered: []
     };
   },
   mqtt: {
     'TTN': function TTN(data) {
       var parsed = JSON.parse(data);
-      console.log(data);
 
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
         this.device_options.push(parsed.dev_id);
-        console.log(this.device_options);
       }
 
       this.logs.unshift({
@@ -1832,6 +1833,24 @@ __webpack_require__.r(__webpack_exports__);
     clear: function clear(event) {
       this.logs = [];
       this.device_options = [];
+      this.filtered = [];
+    },
+    setID: function setID(e) {
+      var value = e.target.value;
+      this.filterID = value;
+      console.log(this.filterID);
+
+      if (this.filterID === "All") {
+        this.setAll();
+      } else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
+    },
+    setAll: function setAll() {
+      this.filtered = this.logs;
+    },
+    filterByID: function filterByID(obj) {
+      return this.filterID === obj.dev_id;
     }
   }
 });
@@ -37935,29 +37954,11 @@ var render = function() {
       _c(
         "select",
         {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.pending_or_completed,
-              expression: "pending_or_completed"
-            }
-          ],
           staticClass: "form-control",
           attrs: { name: "status", id: "tags" },
           on: {
             change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.pending_or_completed = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
+              return _vm.setID($event)
             }
           }
         },
@@ -37975,7 +37976,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.logs, function(log) {
+            _vm._l(_vm.filtered, function(log) {
               return _c("tr", { key: log.time }, [
                 _c("td", [_vm._v(_vm._s(log.time))]),
                 _vm._v(" "),

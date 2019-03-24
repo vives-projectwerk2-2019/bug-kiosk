@@ -3,7 +3,8 @@
     <h1>{{ msg }}</h1>
     <div class="container">
         <button v-on:click="clear">Clear</button>
-        <select name="status" id="tags" class="form-control" v-model="pending_or_completed">
+        <select name="status" id="tags" class="form-control" v-on:change="setID($event)">
+          <!-- <option>All</option> -->
           <option v-bind:key="device_option.option" v-for="device_option in device_options">{{ device_option }}</option>
         </select>
       <div class="card">
@@ -17,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="log in logs" v-bind:key="log.time">
+            <tr v-for="log in filtered" v-bind:key="log.time">
               <td>{{ log.time }}</td>
               <td>{{ log.dev_id }}</td>
               <td>{{ log.movement }}</td>
@@ -43,17 +44,17 @@ export default {
     return {
       newrow:' ',
       logs: [],
-      device_options:[]
+      device_options:["All"],
+      filterID:null,
+      filtered:[]
     }
   },
   mqtt: {
     'TTN' (data) {
       var parsed = JSON.parse(data);
-      console.log(data);
       
       if(this.device_options.indexOf(parsed.dev_id) === -1){
         this.device_options.push(parsed.dev_id);
-        console.log(this.device_options);
       }
 
       this.logs.unshift({
@@ -68,8 +69,26 @@ export default {
     clear: function (event) {
       this.logs = [];
       this.device_options = [];
+      this.filtered = [];
+    },
+    setID(e) {
+      let value = e.target.value;
+      this.filterID = value;
+      console.log(this.filterID);
+      if(this.filterID === "All"){
+        this.setAll();
+      }else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
+
+    },
+    setAll(){
+      this.filtered = this.logs
+    },
+    filterByID(obj) {
+      return this.filterID === obj.dev_id;
     }
-  }
+  },
 }
 
 function getTime() {
