@@ -45,7 +45,7 @@ export default {
       newrow:' ',
       logs: [],
       device_options:["All"],
-      filterID:null,
+      filterID: "All",
       filtered:[]
     }
   },
@@ -63,12 +63,17 @@ export default {
         movement:parsed.movement,
         action:parsed.action
       });
+      if(this.filterID === "All"){
+        this.setAll();
+      }else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
     }
   },
   methods: {
     clear: function (event) {
       this.logs = [];
-      this.device_options = [];
+      this.device_options= ["All"]
       this.filtered = [];
     },
     setID(e) {

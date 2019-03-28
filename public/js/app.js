@@ -1809,7 +1809,7 @@ __webpack_require__.r(__webpack_exports__);
       newrow: ' ',
       logs: [],
       device_options: ["All"],
-      filterID: null,
+      filterID: "All",
       filtered: []
     };
   },
@@ -1827,12 +1827,18 @@ __webpack_require__.r(__webpack_exports__);
         movement: parsed.movement,
         action: parsed.action
       });
+
+      if (this.filterID === "All") {
+        this.setAll();
+      } else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
     }
   },
   methods: {
     clear: function clear(event) {
       this.logs = [];
-      this.device_options = [];
+      this.device_options = ["All"];
       this.filtered = [];
     },
     setID: function setID(e) {
