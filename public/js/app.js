@@ -52831,7 +52831,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
+<<<<<<< HEAD
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + "127.0.0.1:9001");
+=======
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + "127.0.0.1:9001", {
+  clientId: 'WebClient-' + parseInt(Math.random() * 100000)
+});
+>>>>>>> master
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{

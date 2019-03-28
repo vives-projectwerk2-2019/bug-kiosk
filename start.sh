@@ -16,6 +16,6 @@ function wait_for_mariadb() {
 
 wait_for_mariadb
 >&2 echo "Migrating to db"
-php artisan migrate
+php artisan migrate --force
 >&2 echo "Serving laravel"
 php artisan serve --host=0.0.0.0
