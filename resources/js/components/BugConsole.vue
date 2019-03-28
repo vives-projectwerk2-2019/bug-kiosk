@@ -2,6 +2,11 @@
   <div class="console">
     <h1>{{ msg }}</h1>
     <div class="container">
+        <button v-on:click="clear">Clear</button>
+        <select name="status" id="tags" class="form-control" v-on:change="setID($event)">
+          <!-- <option>All</option> -->
+          <option v-bind:key="device_option.option" v-for="device_option in device_options">{{ device_option }}</option>
+        </select>
       <div class="card">
         <table>
           <thead>
@@ -12,7 +17,13 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody v-html="newrow">
+          <tbody>
+            <tr v-for="log in filtered" v-bind:key="log.time">
+              <td>{{ log.time }}</td>
+              <td>{{ log.dev_id }}</td>
+              <td>{{ log.movement }}</td>
+              <td>{{ log.action }}</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -27,21 +38,62 @@ export default {
     msg: String
   },
   mounted() {
-      console.log('Component mounted.')
+      console.log('Bug-Console mounted.')
   },
   data () {
     return {
-      newrow:' '
+      newrow:' ',
+      logs: [],
+      device_options:["All"],
+      filterID: "All",
+      filtered:[]
     }
   },
   mqtt: {
     'TTN' (data) {
       var parsed = JSON.parse(data);
-      this.newrow = '<tr>'+'<td>' + getTime() + '</td>' +'<td>' + parsed.dev_id + '</td>'
-                    + '<td>' + parsed.movement + '</td>'
-                    + '<td>' + parsed.action + '</td>' +'</tr>' + this.newrow
+      
+      if(this.device_options.indexOf(parsed.dev_id) === -1){
+        this.device_options.push(parsed.dev_id);
+      }
+
+      this.logs.unshift({
+        time: getTime(),
+        dev_id: parsed.dev_id,
+        movement:parsed.movement,
+        action:parsed.action
+      });
+      if(this.filterID === "All"){
+        this.setAll();
+      }else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
     }
-  }
+  },
+  methods: {
+    clear: function (event) {
+      this.logs = [];
+      this.device_options= ["All"]
+      this.filtered = [];
+    },
+    setID(e) {
+      let value = e.target.value;
+      this.filterID = value;
+      console.log(this.filterID);
+      if(this.filterID === "All"){
+        this.setAll();
+      }else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
+
+    },
+    setAll(){
+      this.filtered = this.logs
+    },
+    filterByID(obj) {
+      return this.filterID === obj.dev_id;
+    }
+  },
 }
 
 function getTime() {
@@ -59,6 +111,10 @@ function getTime() {
 
 .console {
     margin-top: 100px;
+}
+
+button {
+  float: left;
 }
 
 tbody {

@@ -1785,23 +1785,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'BugConsole',
   props: {
     msg: String
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log('Bug-Console mounted.');
   },
   data: function data() {
     return {
-      newrow: ' '
+      newrow: ' ',
+      logs: [],
+      device_options: ["All"],
+      filterID: "All",
+      filtered: []
     };
   },
   mqtt: {
     'TTN': function TTN(data) {
       var parsed = JSON.parse(data);
-      this.newrow = '<tr>' + '<td>' + getTime() + '</td>' + '<td>' + parsed.dev_id + '</td>' + '<td>' + parsed.movement + '</td>' + '<td>' + parsed.action + '</td>' + '</tr>' + this.newrow;
+
+      if (this.device_options.indexOf(parsed.dev_id) === -1) {
+        this.device_options.push(parsed.dev_id);
+      }
+
+      this.logs.unshift({
+        time: getTime(),
+        dev_id: parsed.dev_id,
+        movement: parsed.movement,
+        action: parsed.action
+      });
+
+      if (this.filterID === "All") {
+        this.setAll();
+      } else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
+    }
+  },
+  methods: {
+    clear: function clear(event) {
+      this.logs = [];
+      this.device_options = ["All"];
+      this.filtered = [];
+    },
+    setID: function setID(e) {
+      var value = e.target.value;
+      this.filterID = value;
+      console.log(this.filterID);
+
+      if (this.filterID === "All") {
+        this.setAll();
+      } else {
+        this.filtered = this.logs.filter(this.filterByID);
+      }
+    },
+    setAll: function setAll() {
+      this.filtered = this.logs;
+    },
+    filterByID: function filterByID(obj) {
+      return this.filterID === obj.dev_id;
     }
   }
 });
@@ -6304,7 +6359,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.console {\r\n    margin-top: 100px;\n}\ntbody {\r\n    display:block;\r\n    height:640px;\r\n    overflow:auto;\n}\nthead, tbody tr {\r\n    display:table;\r\n    width:100%;\r\n    table-layout:fixed;\n}\nthead {\r\n    width: calc( 100% - 1em )\n}\ntable {\r\n    width:100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.console {\r\n    margin-top: 100px;\n}\nbutton {\r\n  float: left;\n}\ntbody {\r\n    display:block;\r\n    height:640px;\r\n    overflow:auto;\n}\nthead, tbody tr {\r\n    display:table;\r\n    width:100%;\r\n    table-layout:fixed;\n}\nthead {\r\n    width: calc( 100% - 1em )\n}\ntable {\r\n    width:100%;\n}\r\n", ""]);
 
 // exports
 
@@ -37900,11 +37955,46 @@ var render = function() {
     _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
+      _c("button", { on: { click: _vm.clear } }, [_vm._v("Clear")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "form-control",
+          attrs: { name: "status", id: "tags" },
+          on: {
+            change: function($event) {
+              return _vm.setID($event)
+            }
+          }
+        },
+        _vm._l(_vm.device_options, function(device_option) {
+          return _c("option", { key: device_option.option }, [
+            _vm._v(_vm._s(device_option))
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "card" }, [
         _c("table", [
           _vm._m(0),
           _vm._v(" "),
-          _c("tbody", { domProps: { innerHTML: _vm._s(_vm.newrow) } })
+          _c(
+            "tbody",
+            _vm._l(_vm.filtered, function(log) {
+              return _c("tr", { key: log.time }, [
+                _c("td", [_vm._v(_vm._s(log.time))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(log.dev_id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(log.movement))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(log.action))])
+              ])
+            }),
+            0
+          )
         ])
       ])
     ])
@@ -52731,42 +52821,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 /* harmony import */ var vue_mqtt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-mqtt */ "./node_modules/vue-mqtt/dist/build.js");
 /* harmony import */ var vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_mqtt__WEBPACK_IMPORTED_MODULE_3__);
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('BugConsole', __webpack_require__(/*! ./components/BugConsole.vue */ "./resources/js/components/BugConsole.vue").default);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
- //import dotenv from 'dotenv';
+
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
+<<<<<<< HEAD
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + "127.0.0.1:9001");
+=======
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + "127.0.0.1:9001", {
   clientId: 'WebClient-' + parseInt(Math.random() * 100000)
 });
+>>>>>>> master
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
@@ -53017,8 +53088,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
