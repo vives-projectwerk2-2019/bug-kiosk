@@ -3,7 +3,7 @@
 @include('inc.navbar')
 
 @section('content')
-<div>
+<div id="app">
     <app></app>
 </div>
 

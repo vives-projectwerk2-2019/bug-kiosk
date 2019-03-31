@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import App from './views/App';
+import Dongles from './views/Dongles';
 import VueMqtt from 'vue-mqtt';
 require('dotenv').config();
 
@@ -18,8 +19,19 @@ const router = new VueRouter({
 			path: '/logger',
 			name: 'logger',
 			component: App
+		},
+		{
+			path: '/my_dongles',
+			name: 'my_dongles',
+			component: Dongles
 		}
 	]
+});
+
+const dongles = new Vue({
+	el: '#dongles',
+	components: { Dongles },
+	router
 });
 
 const app = new Vue({
@@ -27,6 +39,8 @@ const app = new Vue({
 	components: { App },
 	router
 });
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
 	var elems = document.querySelectorAll('.tooltipped');

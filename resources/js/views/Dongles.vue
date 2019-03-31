@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
-    <BugConsole msg = "BUG-console"/>
+  <div id="dongles">
+    <Dongles/>
   </div>
 </template>
 
 <script>
-import BugConsole from '../components/BugConsole.vue'
+import Dongles from '../components/Dongles.vue'
 
 export default {
-  name: 'app',
+  name: 'dongles',
   components: {
-    BugConsole
+    Dongles
   },
   mounted () {
     this.$mqtt.subscribe('TTN');
