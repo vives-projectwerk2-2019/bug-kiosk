@@ -1,5 +1,5 @@
 <?php /* C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\views/inc/navbar.blade.php */ ?>
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color:#00cc99">
     <div class="container">
         <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
             <?php echo e(config('app.name', 'Laravel')); ?>
