@@ -1909,16 +1909,13 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Dongles mounted.');
   },
   data: function data() {
-    return {};
-  },
-  mqtt: {
-    'TTN': function TTN(data) {
-      var parsed = JSON.parse(data);
-    }
+    return {
+      id: 1
+    };
   },
   methods: {
     sendID: function sendID() {
-      this.$mqtt.publish('hardware', 'test');
+      this.$mqtt.publish('hardware', '{\"id\":' + this.id + '}');
     }
   }
 });

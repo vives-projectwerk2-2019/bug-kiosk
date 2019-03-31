@@ -11,7 +11,7 @@
             <div class="dongle-white"></div>
         </div>
         <div class="container">
-          <button v-on:click="sendID" class="waves-effect waves-light btn-large" id="button">SendID</button>
+          <button class="waves-effect waves-light btn-large" id="button" v-on:click="sendID">SendID</button>
         </div>
     </div>
 </template>
@@ -28,17 +28,12 @@ export default {
   },
   data () {
     return {
-    }
-  },
-  mqtt: {
-    'TTN' (data) {
-      var parsed = JSON.parse(data);
-      
+      id: 1
     }
   },
   methods: {
       sendID(){
-        this.$mqtt.publish('hardware','test');
+        this.$mqtt.publish('hardware','{\"id\":' + this.id + '}');
       }
   }
 }
