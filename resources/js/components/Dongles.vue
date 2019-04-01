@@ -21,19 +21,21 @@
 export default {
   name: 'Dongles',
   props: {
-    msg: String
+    msg: String,
+    uid: Number,
   },
   mounted() {
       console.log('Dongles mounted.')
   },
   data () {
     return {
-      id: 1
+      //UserID: this.id
     }
   },
   methods: {
       sendID(){
-        this.$mqtt.publish('hardware','{\"id\":' + this.id + '}');
+        console.log(this.uid);
+        this.$mqtt.publish('hardware','{\"id\":' + this.uid + '}');
       }
   }
 }

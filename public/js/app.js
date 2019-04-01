@@ -1903,19 +1903,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
-    msg: String
+    msg: String,
+    uid: Number
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
   },
   data: function data() {
-    return {
-      id: 1
+    return {//UserID: this.id
     };
   },
   methods: {
     sendID: function sendID() {
-      this.$mqtt.publish('hardware', '{\"id\":' + this.id + '}');
+      console.log(this.uid);
+      this.$mqtt.publish('hardware', '{\"id\":' + this.uid + '}');
     }
   }
 });
@@ -1970,6 +1971,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dongles',
+  props: ['uid'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -38237,7 +38239,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "dongles" } }, [_c("Dongles")], 1)
+  return _c(
+    "div",
+    { attrs: { id: "dongles" } },
+    [_c("Dongles", { attrs: { uid: _vm.uid } })],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53012,7 +53019,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
-/* harmony import */ var _views_Dongles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Dongles */ "./resources/js/views/Dongles.vue");
+/* harmony import */ var _views_Dongles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Dongles */ "./resources/js/views/Dongles.vue");
 /* harmony import */ var vue_mqtt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-mqtt */ "./node_modules/vue-mqtt/dist/build.js");
 /* harmony import */ var vue_mqtt__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_mqtt__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -53036,13 +53043,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/my_dongles',
     name: 'my_dongles',
-    component: _views_Dongles__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _views_Dongles__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 });
 var dongles = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#dongles',
   components: {
-    Dongles: _views_Dongles__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Dongles: _views_Dongles__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   router: router
 });
@@ -53209,15 +53216,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/Dongles.vue ***!
   \*********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Dongles_vue_vue_type_template_id_71a2ce7b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dongles.vue?vue&type=template&id=71a2ce7b& */ "./resources/js/components/Dongles.vue?vue&type=template&id=71a2ce7b&");
 /* harmony import */ var _Dongles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dongles.vue?vue&type=script&lang=js& */ "./resources/js/components/Dongles.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Dongles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Dongles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -53247,7 +53253,7 @@ component.options.__file = "resources/js/components/Dongles.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Dongles.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

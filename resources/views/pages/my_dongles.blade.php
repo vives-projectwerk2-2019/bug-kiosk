@@ -4,7 +4,7 @@
 
 @section('content')
 <div id="dongles">
-    <dongles></dongles>
+    <dongles uid={{Auth::user()->id}}></dongles>
 </div>
 <br>
 @endsection
