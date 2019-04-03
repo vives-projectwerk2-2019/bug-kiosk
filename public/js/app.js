@@ -1795,7 +1795,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'BugConsole',
   props: {
@@ -1900,6 +1899,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
@@ -1910,8 +1913,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Dongles mounted.');
   },
   data: function data() {
-    return {//UserID: this.id
-    };
+    return {};
   },
   methods: {
     sendID: function sendID() {
@@ -38035,7 +38037,15 @@ var render = function() {
     _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
-      _c("button", { on: { click: _vm.clear } }, [_vm._v("Clear")]),
+      _c(
+        "button",
+        {
+          staticClass: "waves-effect waves-light btn-large",
+          attrs: { id: "button" },
+          on: { click: _vm.clear }
+        },
+        [_vm._v("Clear")]
+      ),
       _vm._v(" "),
       _c(
         "select",
@@ -38124,16 +38134,22 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "button",
-        {
-          staticClass: "waves-effect waves-light btn-large",
-          attrs: { id: "button" },
-          on: { click: _vm.sendID }
-        },
-        [_vm._v("SendID")]
-      )
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "waves-effect waves-light btn-large col s2 offset-s5 center-align",
+            attrs: { id: "button" },
+            on: { click: _vm.sendID }
+          },
+          [
+            _vm._v("Send ID\n          "),
+            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -38142,7 +38158,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row " }, [
+    return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "dongle-white" }),
       _vm._v(" "),
       _c(
