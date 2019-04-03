@@ -29,7 +29,7 @@ export default {
   methods: {
       sendID(){
         console.log(this.uid);
-        this.$mqtt.publish('hardware','{\"id\":' + this.uid + '}');
+        this.$mqtt.publish('program-dongle','{\"id\":' + this.uid + '}');
       }
   }
 }
