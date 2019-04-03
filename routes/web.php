@@ -14,6 +14,8 @@ Route::get('/stats', 'PagesController@stats');
 
 Route::get('/register_device', 'PagesController@registerDevice');
 
+Route::get('/program_dongle', 'PagesController@programDongle');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

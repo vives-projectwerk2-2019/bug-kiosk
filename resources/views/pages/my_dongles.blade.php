@@ -3,9 +3,6 @@
 @include('inc.navbar')
 
 @section('content')
-<div id="dongles">
-    <dongles uid={{Auth::user()->id}}></dongles>
-</div>
 <div>
 <h1 id="under-navbar">All Dongles</h1>
     <div class="row ">

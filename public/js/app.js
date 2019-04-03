@@ -1894,15 +1894,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
@@ -6629,13 +6620,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-<<<<<<< HEAD
       if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
         Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
-=======
-      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"})[key] = parsed[key]
->>>>>>> kiosk-dev
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38135,9 +38121,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "dongles" }, [
-    _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("My dongles")]),
-    _vm._v(" "),
-    _vm._m(0),
+    _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "container" }, [
@@ -38146,7 +38130,7 @@ var render = function() {
           {
             staticClass:
               "waves-effect waves-light btn-large col s2 offset-s5 center-align",
-            attrs: { id: "button" },
+            attrs: { id: "profile-button" },
             on: { click: _vm.sendID }
           },
           [
@@ -38158,58 +38142,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "dongle-white" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "dongle col s1 tooltipped",
-          attrs: {
-            "data-position": "top",
-            "data-tooltip": "Test test test test test"
-          }
-        },
-        [_vm._v("Dongle 1")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "dongle-white" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "dongle col s1 tooltipped",
-          attrs: {
-            "data-position": "top",
-            "data-tooltip": "Test test test test test"
-          }
-        },
-        [_vm._v("Dongle 2")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "dongle-white" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "dongle col s1 tooltipped",
-          attrs: {
-            "data-position": "top",
-            "data-tooltip": "Test test test test test"
-          }
-        },
-        [_vm._v("Dongle 3")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "dongle-white" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53054,13 +52987,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
-<<<<<<< HEAD
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_4___default.a, 'mqtt://' + "127.0.0.1:9001");
-=======
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_3___default.a, 'mqtt://' + Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).MIX_VUE_APP_BROKER_HOST, {
-  clientId: 'WebClient-' + parseInt(Math.random() * 100000)
-});
->>>>>>> kiosk-dev
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
@@ -53464,5 +53391,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
+
+/***/ })
+
+/******/ });

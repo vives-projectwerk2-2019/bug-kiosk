@@ -50,4 +50,9 @@ class PagesController extends Controller
         return view('pages.register_device');
     }
 
+    public function programDongle()
+    {
+        return view('pages.program_dongle');
+    }
+
 }

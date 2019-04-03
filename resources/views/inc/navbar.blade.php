@@ -45,7 +45,8 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="profile">Profile</a>
                                 <a class="dropdown-item" href="register_device">My device</a>
-                                <a class="dropdown-item" href="my_dongles">My dongles</a>                         
+                                <a class="dropdown-item" href="my_dongles">My dongles</a>
+                                <a class="dropdown-item" href="program_dongle">Program dongle</a>                         
  
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
