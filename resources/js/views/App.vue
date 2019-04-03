@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <!-- <img alt="BUG logo" src="./assets/logo.png" height="25%" width="25%"> -->
-    <BugConsole msg="BUG-console"/>
+    <BugConsole msg = "BUG-console"/>
   </div>
 </template>
 
@@ -14,7 +13,7 @@ export default {
     BugConsole
   },
   mounted () {
-    this.$mqtt.subscribe('TTN')
+    this.$mqtt.subscribe('TTN');
   }
 }
 </script>

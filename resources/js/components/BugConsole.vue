@@ -2,9 +2,8 @@
   <div class="console">
     <h1>{{ msg }}</h1>
     <div class="container">
-        <button v-on:click="clear">Clear</button>
+        <button class="waves-effect waves-light btn-large" id="button" v-on:click="clear">Clear</button>
         <select name="status" id="tags" class="form-control" v-on:change="setID($event)">
-          <!-- <option>All</option> -->
           <option v-bind:key="device_option.option" v-for="device_option in device_options">{{ device_option }}</option>
         </select>
       <div class="card">
