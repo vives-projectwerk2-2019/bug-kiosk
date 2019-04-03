@@ -45,4 +45,9 @@ class PagesController extends Controller
         return view('pages.my_dongles');
     }
 
+    public function registerDevice()
+    {
+        return view('pages.register_device');
+    }
+
 }
