@@ -1862,7 +1862,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function getTime() {
   var time = new Date(Date.now());
-  var hours = time.getUTCHours() + 1;
+  var hours = time.getUTCHours() + 2;
   var minutes = time.getUTCMinutes();
   var seconds = time.getUTCSeconds();
   var milliseconds = time.getUTCMilliseconds();

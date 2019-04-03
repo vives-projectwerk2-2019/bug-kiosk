@@ -97,7 +97,7 @@ export default {
 
 function getTime() {
   let time = new Date((Date.now()));
-  let hours = time.getUTCHours()+1;
+  let hours = time.getUTCHours()+2;
   let minutes = time.getUTCMinutes();
   let seconds = time.getUTCSeconds();
   let milliseconds = time.getUTCMilliseconds();
