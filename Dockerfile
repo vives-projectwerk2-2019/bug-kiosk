@@ -11,7 +11,7 @@ RUN composer install --optimize-autoloader --no-dev
 RUN php artisan config:cache
 RUN php artisan route:cache
 RUN npm install
-RUN npm run dev
+RUN npm run production
 
 EXPOSE 8000
 CMD [ "./start.sh" ]
