@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->string('provider_id')->nullable();
             $table->string('api_token', 60)->unique();
-            $table->integer('device_id')->nullable();
+            $table->string('device_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
