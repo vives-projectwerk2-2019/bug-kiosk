@@ -1898,7 +1898,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Dongles',
   props: {
     msg: String,
-    uid: Number
+    uid: String
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
@@ -1909,7 +1909,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendID: function sendID() {
       console.log(this.uid);
-      this.$mqtt.publish('program-dongle', '{\"id\":' + this.uid + '}');
+      this.$mqtt.publish('program-dongle', '{\"id\":\"' + this.uid + '\"}');
     }
   }
 });
