@@ -1813,7 +1813,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mqtt: {
-    'TTN': function TTN(data) {
+    'logger': function logger(data) {
       var parsed = JSON.parse(data);
 
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
@@ -1967,9 +1967,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['uid'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  mounted: function mounted() {
-    this.$mqtt.subscribe('TTN');
   }
 });
 
