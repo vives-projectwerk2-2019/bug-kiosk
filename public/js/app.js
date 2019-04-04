@@ -1939,7 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
     BugConsole: _components_BugConsole_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    this.$mqtt.subscribe('TTN');
+    this.$mqtt.subscribe('logger');
   }
 });
 
