@@ -12,13 +12,19 @@ class ApiController extends Controller
         return $request->user();
     }
 
-    public function getUserByDeviceId(Request $request, $device_id, $user_dongle_id)
+    public function getUserByDeviceId(Request $request, $device_id, $user_dongle_id = null)
     {
-        $user = User::where('user_dongle_id', $user_dongle_id)->first();
 
-        $user->device_id = $device_id;
-        $user->save();
+        if ($user_dongle_id == null) {
+            $user = User::where('device_id', $device_id)->first();
+            return $user;
+        } else {
+            $user = User::where('user_dongle_id', $user_dongle_id)->first();
 
-        return $user;
+            $user->device_id = $device_id;
+            $user->save();
+
+            return $user;
+        }
     }
 }

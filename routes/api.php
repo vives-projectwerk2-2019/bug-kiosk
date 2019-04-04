@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
  */
 Route::middleware('auth:api')->get('/user', 'ApiController@getUser');
 
-Route::get('/session/{device_id}/{user_dongle_id}', 'ApiController@getUserByDeviceId');
+Route::get('/session/{device_id}/{user_dongle_id?}', 'ApiController@getUserByDeviceId');
