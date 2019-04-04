@@ -4,7 +4,7 @@
 
 @section('content')
 <div>
-<h1 id="under-navbar">All Dongles</h1>
+<h1 id="under-navbar">My Dongles</h1>
     <div class="row ">
         <div class="dongle-white"></div>
         <div class="col s1 tooltipped" data-position="top" data-tooltip="<a>Name: Life</a><br><br><a>Discription: Adds extra life</a>">
