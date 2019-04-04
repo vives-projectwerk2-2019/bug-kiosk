@@ -15,6 +15,9 @@ function wait_for_mariadb() {
 }
 
 wait_for_mariadb
+>&2 echo "Optimizing cache"
+php artisan config:cache
+php artisan route:cache
 >&2 echo "Migrating to db"
 php artisan migrate --force
 >&2 echo "Serving laravel"
