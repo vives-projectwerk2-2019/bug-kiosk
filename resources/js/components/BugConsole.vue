@@ -49,7 +49,7 @@ export default {
     }
   },
   mqtt: {
-    'TTN' (data) {
+    'logger' (data) {
       var parsed = JSON.parse(data);
       
       if(this.device_options.indexOf(parsed.dev_id) === -1){

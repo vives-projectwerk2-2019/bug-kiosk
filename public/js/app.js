@@ -1813,7 +1813,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mqtt: {
-    'TTN': function TTN(data) {
+    'logger': function logger(data) {
       var parsed = JSON.parse(data);
 
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
@@ -1898,7 +1898,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Dongles',
   props: {
     msg: String,
-    uid: Number
+    uid: String
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
@@ -1909,7 +1909,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendID: function sendID() {
       console.log(this.uid);
-      this.$mqtt.publish('program-dongle', '{\"id\":' + this.uid + '}');
+      this.$mqtt.publish('program-dongle', '{\"id\":\"' + this.uid + '\"}');
     }
   }
 });
@@ -1939,7 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
     BugConsole: _components_BugConsole_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    this.$mqtt.subscribe('TTN');
+    this.$mqtt.subscribe('logger');
   }
 });
 
@@ -1967,9 +1967,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['uid'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  mounted: function mounted() {
-    this.$mqtt.subscribe('TTN');
   }
 });
 

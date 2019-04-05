@@ -17,7 +17,7 @@ export default {
   name: 'Dongles',
   props: {
     msg: String,
-    uid: Number,
+    uid: String,
   },
   mounted() {
       console.log('Dongles mounted.')
@@ -29,7 +29,7 @@ export default {
   methods: {
       sendID(){
         console.log(this.uid);
-        this.$mqtt.publish('program-dongle','{\"id\":' + this.uid + '}');
+        this.$mqtt.publish('program-dongle','{\"id\":\"' + this.uid + '\"}');
       }
   }
 }
