@@ -8,15 +8,15 @@
     <div class="row ">
         <div class="dongle-white"></div>
         <div class="col s1">
-           <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Adamantium</a><br><br><a>Description: </a>" src="{{ asset('logo/adamantium.png') }}" alt="Adamantium icon" class="dongle-icon">
+           <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Adamantium<br><br>Tank armor: +6<br>Tank movement: -1" src="{{ asset('logo/adamantium.png') }}" alt="Adamantium icon">
         </div>
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Amphibious</a><br><br><a>Description:  </a>" src="{{ asset('logo/amphibious.png') }}" alt="Amphibious icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Amphibious<br><br>Tank can enter water" src="{{ asset('logo/amphibious.png') }}" alt="Amphibious icon">
          </div>
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: EmpBomb</a><br><br><a>Description:  </a>" src="{{ asset('logo/empBomb.png') }}" alt="EmpBomb icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="EmpBomb<br><br>Weapon: EMP-Bomb" src="{{ asset('logo/empBomb.png') }}" alt="EmpBomb icon">
          </div>
         <div class="dongle-white"></div>
     </div>
@@ -24,15 +24,15 @@
     <div class="row">
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Flammenwerpfer</a><br><br><a>Description:  </a>" src="{{ asset('logo/flammenwerpfer.png') }}" alt="Flammenwerpfer icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Flammenwerpfer<br><br>Weapon: Flammenwerpfer" src="{{ asset('logo/flammenwerpfer.png') }}" alt="Flammenwerpfer icon">
          </div>
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: GravyShield</a><br><br><a>Description:  </a>" src="{{ asset('logo/gravyShield.png') }}" alt="GravyShield icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="GravyShield<br><br>Tank armor: +1" src="{{ asset('logo/gravyShield.png') }}" alt="GravyShield icon">
          </div>
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Harrier</a><br><br><a>Description:  </a>" src="{{ asset('logo/harrier.png') }}" alt="Harrier icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Harrier<br><br>Tank movement: +6" src="{{ asset('logo/harrier.png') }}" alt="Harrier icon">
          </div>
         <div class="dongle-white"></div>
     </div>
@@ -40,15 +40,15 @@
     <div class="row ">
         <div class="dongle-white"></div>
         <div class="col s1">
-           <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Laser</a><br><br><a>Description:  </a>" src="{{ asset('logo/laser.png') }}" alt="Laser icon" class="dongle-icon">
+           <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Laser<br><br>Weapon: Lasergun" src="{{ asset('logo/laser.png') }}" alt="Laser icon">
         </div>
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Mines</a><br><br><a>Description:  </a>" src="{{ asset('logo/mines.png') }}" alt="Mines icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Mines<br><br>Weapon: Mines" src="{{ asset('logo/mines.png') }}" alt="Mines icon">
          </div>
         <div class="dongle-white"></div>
         <div class="col s1">
-            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Nanobots</a><br><br><a>Description:  </a>" src="{{ asset('logo/nanobots.png') }}" alt="Nanobots icon" class="dongle-icon">
+            <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Nanobots<br><br>Tank health: +2" src="{{ asset('logo/nanobots.png') }}" alt="Nanobots icon">
          </div>
         <div class="dongle-white"></div>
     </div>
@@ -56,15 +56,15 @@
     <div class="row ">
             <div class="dongle-white"></div>
             <div class="col s1">
-               <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Plasmagun</a><br><br><a>Description:  </a>" src="{{ asset('logo/plasmagun.png') }}" alt="Plasmagun icon" class="dongle-icon">
+               <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Plasmagun<br><br>Weapon: Plasmagun" src="{{ asset('logo/plasmagun.png') }}" alt="Plasmagun icon" >
             </div>
             <div class="dongle-white"></div>
             <div class="col s1">
-                <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: Ram</a><br><br><a>Description:  </a>" src="{{ asset('logo/ram.png') }}" alt="Ram icon" class="dongle-icon">
+                <img class="tooltipped dongle-icon" data-position="top" data-tooltip="Ram<br><br>Weapon: Ram" src="{{ asset('logo/ram.png') }}" alt="Ram icon">
              </div>
             <div class="dongle-white"></div>
             <div class="col s1">
-                <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: RocketEngine</a><br><br><a>Description:  </a>" src="{{ asset('logo/rocketEngine.png') }}" alt="RocketEngine icon" class="dongle-icon">
+                <img class="tooltipped dongle-icon" data-position="top" data-tooltip="RocketEngine<br><br>Tank movement: +3" src="{{ asset('logo/rocketEngine.png') }}" alt="RocketEngine icon">
              </div>
             <div class="dongle-white"></div>
         </div>
@@ -72,7 +72,7 @@
     <div class="row ">
             <div class="dongle-white"></div>
             <div class="col s1">
-               <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: StructuralStrengthening</a><br><br><a>Description:  </a>" src="{{ asset('logo/structuralStrengthening.png') }}" alt="StructuralStrengthening icon" class="dongle-icon">
+               <img class="tooltipped dongle-icon" data-position="top" data-tooltip="StructuralStrengthening<br><br>Tank health: +5" src="{{ asset('logo/structuralStrengthening.png') }}" alt="StructuralStrengthening icon">
             </div>
             <div class="dongle-white"></div>
             <div class="col s1">
