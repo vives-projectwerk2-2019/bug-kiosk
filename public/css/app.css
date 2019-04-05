@@ -10668,10 +10668,11 @@ h1 {
   color: #00cc99;
   letter-spacing: -3px;
   font-family: "Courier New", sans-serif;
-  font-size: 600%;
+  font-size: 500%;
   font-weight: 200;
   margin-bottom: 5%;
   margin-top: -5%;
+  margin-left: 5%;
 }
 
 .index {
@@ -10779,7 +10780,11 @@ a:hover {
 }
 
 .dongle-icon {
-  width: 150%;
-  length: 150%;
+  width: 165%;
+  length: 165%;
+}
+
+#single-icon {
+  height: 165%;
 }
 

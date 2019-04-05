@@ -6620,8 +6620,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -52987,7 +52987,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_4___default.a, 'mqtt://' + "127.0.0.1:9001");
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_4___default.a, 'mqtt://' + Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).MIX_VUE_APP_BROKER_HOST);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
@@ -53391,8 +53391,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Vives\2018-2019\sem2\Projectwerk\Programmeren\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Vives\2018-2019\sem2\Projectwerk\Programmeren\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
