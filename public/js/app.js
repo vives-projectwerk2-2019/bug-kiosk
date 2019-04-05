@@ -1795,20 +1795,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "BugConsole",
+  name: 'BugConsole',
   props: {
     msg: String
   },
   mounted: function mounted() {
-    console.log("Bug-Console mounted.");
+    console.log('Bug-Console mounted.');
   },
   data: function data() {
     return {
-      newrow: " ",
+      newrow: ' ',
       logs: [],
       device_options: ["All"],
       filterID: "All",
@@ -1816,7 +1813,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mqtt: {
-    logger: function logger(data) {
+    'logger': function logger(data) {
       var parsed = JSON.parse(data);
 
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
@@ -6432,7 +6429,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.console {\r\n  margin-top: 100px;\n}\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.console {\r\n    margin-top: 100px;\n}\nbutton {\r\n  float: left;\n}\ntbody {\r\n    display:block;\r\n    height:640px;\r\n    overflow:auto;\n}\nthead, tbody tr {\r\n    display:table;\r\n    width:100%;\r\n    table-layout:fixed;\n}\nthead {\r\n    width: calc( 100% - 1em )\n}\ntable {\r\n    width:100%;\n}\r\n", ""]);
 
 // exports
 
@@ -6620,8 +6617,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -52987,7 +52984,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_4___default.a, 'mqtt://' + "127.0.0.1:9001");
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_4___default.a, 'mqtt://' + Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).MIX_VUE_APP_BROKER_HOST);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
@@ -53391,8 +53388,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Vives\2018-2019\sem2\Projectwerk\Programmeren\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Vives\2018-2019\sem2\Projectwerk\Programmeren\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
