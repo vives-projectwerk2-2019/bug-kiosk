@@ -72,7 +72,7 @@
     <div class="row ">
             <div class="dongle-white"></div>
             <div class="col s1">
-               <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: StructuralStrengthening</a><br><br><a>Description:  </a>" src="{{ asset('logo/structuralStrengthening.png') }}" alt="StructuralStrengthening icon" class="dongle-icon" width="165%" height="165%">
+               <img class="tooltipped dongle-icon" data-position="top" data-tooltip="<a>Name: StructuralStrengthening</a><br><br><a>Description:  </a>" src="{{ asset('logo/structuralStrengthening.png') }}" alt="StructuralStrengthening icon" class="dongle-icon">
             </div>
             <div class="dongle-white"></div>
             <div class="col s1">
