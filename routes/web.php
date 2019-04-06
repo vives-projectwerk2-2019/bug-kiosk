@@ -12,6 +12,9 @@ Route::get('/dongles', 'PagesController@dongles');
 
 Route::get('/stats', 'PagesController@stats');
 
+Route::get('/edit_profile', 'PagesController@editProfile');
+Route::post('/edit_profile', 'PagesController@updateAvatar');
+
 Route::get('/register_device', 'PagesController@registerDevice');
 
 Route::get('/program_dongle', 'PagesController@programDongle');

@@ -10672,7 +10672,6 @@ h1 {
   font-weight: 200;
   margin-bottom: 5%;
   margin-top: -5%;
-  margin-left: 5%;
 }
 
 .index {
@@ -10786,5 +10785,22 @@ a:hover {
 
 #single-icon {
   height: 165%;
+}
+
+#profile_picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#file_input {
+  margin-top: 1%;
+}
+
+#small_avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  left: 10px;
 }
 

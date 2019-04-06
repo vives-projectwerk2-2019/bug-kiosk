@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
 class PagesController extends Controller
 {
     /**
@@ -55,4 +59,21 @@ class PagesController extends Controller
         return view('pages.program_dongle');
     }
 
+    public function editProfile()
+    {
+        return view('pages.edit_profile');
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . "." . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(150, 150)->save(\public_path('/images/' . $filename));
+            $user = Auth::user();
+            $user->avatar = "images/" . $filename;
+            $user->save();
+        }
+        return view('pages.edit_profile');
+    }
 }

@@ -62,6 +62,7 @@ class LoginController extends Controller
                 'email' => $userSocial->getEmail(),
                 'name' => $userSocial->getName(),
                 'provider_id' => $userSocial->getId(),
+                'avatar' => $userSocial->getAvatar(),
             ]);
         }
 
