@@ -8,6 +8,7 @@ RUN apk add --update nodejs npm
 WORKDIR /app
 COPY . .
 RUN composer install --optimize-autoloader --no-dev
+RUN php artisan config:clear
 
 RUN npm install
 RUN npm run production
