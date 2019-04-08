@@ -69,9 +69,9 @@ class PagesController extends Controller
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . "." . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(150, 150)->save(\public_path('/images/' . $filename));
+            Image::make($avatar)->resize(150, 150)->save(\public_path('/images/avatars/' . $filename));
             $user = Auth::user();
-            $user->avatar = "images/" . $filename;
+            $user->avatar = "images/avatars/" . $filename;
             $user->save();
         }
         return view('pages.edit_profile');
