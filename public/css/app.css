@@ -10804,3 +10804,8 @@ a:hover {
   left: 10px;
 }
 
+#avatar_input_field {
+  width: 50%;
+  margin-left: 25%;
+}
+
