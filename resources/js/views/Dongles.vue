@@ -12,6 +12,9 @@ export default {
   props: ['uid'],
   components: {
     Dongles
+  },
+  mounted () {
+    this.$mqtt.subscribe('ping/#');
   }
 }
 </script>

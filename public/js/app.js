@@ -1897,6 +1897,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
@@ -1907,12 +1929,74 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Dongles mounted.');
   },
   data: function data() {
-    return {};
+    return {
+      pi1: false,
+      pi2: false,
+      pi3: false,
+      pi1Image: 'wait.png',
+      pi2Image: 'wait.png',
+      pi3Image: 'wait.png',
+      timer1: null,
+      timer2: null,
+      timer3: null
+    };
+  },
+  mqtt: {
+    'ping/pi1': function pingPi1(data) {
+      var _this = this;
+
+      this.pi1Image = 'checked.png';
+
+      if (this.timer1) {
+        clearTimeout(this.timer1); //cancel the previous timer.
+
+        this.timer1 = null;
+      }
+
+      this.timer1 = setTimeout(function () {
+        _this.pi1Image = 'error.png';
+      }, 30 * 1000);
+    },
+    'ping/pi2': function pingPi2(data) {
+      var _this2 = this;
+
+      this.pi2Image = 'checked.png';
+
+      if (this.timer2) {
+        clearTimeout(this.timer2); //cancel the previous timer.
+
+        this.timer2 = null;
+      }
+
+      this.timer2 = setTimeout(function () {
+        _this2.pi2Image = 'error.png';
+      }, 30 * 1000);
+    },
+    'ping/pi3': function pingPi3(data) {
+      var _this3 = this;
+
+      this.pi3Image = 'checked.png';
+
+      if (this.timer3) {
+        clearTimeout(this.timer3); //cancel the previous timer.
+
+        this.timer3 = null;
+      }
+
+      this.timer3 = setTimeout(function () {
+        _this3.pi3Image = 'error.png';
+      }, 30 * 1000);
+    }
   },
   methods: {
-    sendID: function sendID() {
-      console.log(this.uid);
-      this.$mqtt.publish('program-dongle', '{\"id\":\"' + this.uid + '\"}');
+    sendIDPi1: function sendIDPi1() {
+      this.$mqtt.publish('program-dongle/pi1', '{\"id\":\"' + this.uid + '\"}');
+    },
+    sendIDPi2: function sendIDPi2() {
+      this.$mqtt.publish('program-dongle/pi2', '{\"id\":\"' + this.uid + '\"}');
+    },
+    sendIDPi3: function sendIDPi3() {
+      this.$mqtt.publish('program-dongle/pi3', '{\"id\":\"' + this.uid + '\"}');
     }
   }
 });
@@ -1970,6 +2054,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ['uid'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    this.$mqtt.subscribe('ping/#');
   }
 });
 
@@ -6620,8 +6707,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38123,26 +38210,92 @@ var render = function() {
   return _c("div", { staticClass: "dongles" }, [
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row " }, [
+      _c("div", { staticClass: "dongle-white" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col s1" }, [
+        _c("img", {
+          staticClass: "dongle-icon",
+          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.pi1Image }
+        }),
+        _vm._v(" "),
         _c(
           "button",
           {
             staticClass:
-              "waves-effect waves-light btn-large col s2 offset-s5 center-align",
+              "waves-effect waves-light btn-large col s12 offset-s4 center-align",
             attrs: { id: "profile-button" },
-            on: { click: _vm.sendID }
+            on: { click: _vm.sendIDPi1 }
           },
           [
             _vm._v("Send ID\n          "),
             _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
           ]
         )
-      ])
-    ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "dongle-white" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col s1" }, [
+        _c("img", {
+          staticClass: "dongle-icon",
+          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.pi2Image }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "waves-effect waves-light btn-large col s12 offset-s4 center-align",
+            attrs: { id: "profile-button" },
+            on: { click: _vm.sendIDPi2 }
+          },
+          [
+            _vm._v("Send ID\n          "),
+            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "dongle-white" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col s1" }, [
+        _c("img", {
+          staticClass: "dongle-icon",
+          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.pi3Image }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "waves-effect waves-light btn-large col s12 offset-s4 center-align",
+            attrs: { id: "profile-button" },
+            on: { click: _vm.sendIDPi3 }
+          },
+          [
+            _vm._v("Send ID\n          "),
+            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "dongle-white" })
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -53391,8 +53544,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
