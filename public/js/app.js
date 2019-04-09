@@ -1928,9 +1928,9 @@ __webpack_require__.r(__webpack_exports__);
       pi1: false,
       pi2: false,
       pi3: false,
-      pi1Image: 'add-user-grey.png',
-      pi2Image: 'add-user-grey.png',
-      pi3Image: 'add-user-grey.png',
+      pi1Image: 'devbit.png',
+      pi2Image: 'devbit.png',
+      pi3Image: 'devbit.png',
       pi1Class: "station-disabled",
       pi2Class: "station-disabled",
       pi3Class: "station-disabled",
@@ -1940,67 +1940,97 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mqtt: {
-    'ping/pi1': function pingPi1(data) {
+    'kiosk/pi1/ping': function kioskPi1Ping(data) {
       var _this = this;
 
       this.pi1Image = 'add-user.png';
       this.pi1Class = null;
-
-      if (this.timer1) {
-        clearTimeout(this.timer1); //cancel the previous timer.
-
-        this.timer1 = null;
-      }
-
+      this.clearTimer1();
       this.timer1 = setTimeout(function () {
-        _this.pi1Image = 'add-user-grey.png';
+        _this.pi1Image = 'sad.png';
         _this.pi1Class = "station-disabled";
       }, 30 * 1000);
     },
-    'ping/pi2': function pingPi2(data) {
+    'kiosk/pi2/ping': function kioskPi2Ping(data) {
       var _this2 = this;
 
       this.pi2Image = 'add-user.png';
       this.pi2Class = null;
-
-      if (this.timer2) {
-        clearTimeout(this.timer2); //cancel the previous timer.
-
-        this.timer2 = null;
-      }
-
+      this.clearTimer2();
       this.timer2 = setTimeout(function () {
-        _this2.pi2Image = 'add-user-grey.png';
+        _this2.pi2Image = 'sad.png';
         _this2.pi2Class = "station-disabled";
       }, 30 * 1000);
     },
-    'ping/pi3': function pingPi3(data) {
+    'kiosk/pi3/ping': function kioskPi3Ping(data) {
       var _this3 = this;
 
       this.pi3Image = 'add-user.png';
       this.pi3Class = null;
-
-      if (this.timer3) {
-        clearTimeout(this.timer3); //cancel the previous timer.
-
-        this.timer3 = null;
-      }
-
+      this.clearTimer3();
       this.timer3 = setTimeout(function () {
-        _this3.pi3Image = 'add-user-grey.png';
+        _this3.pi3Image = 'sad.png';
         _this3.pi3Class = "station-disabled";
       }, 30 * 1000);
+    },
+    'kiosk/pi1/ack': function kioskPi1Ack(data) {
+      this.clearTimer1();
+      this.pi1Image = 'add-contact.png';
+      this.pi1Class = "station-disabled";
+    },
+    'kiosk/pi2/ack': function kioskPi2Ack(data) {
+      this.clearTimer2();
+      this.pi2Image = 'add-contact.png';
+      this.pi2Class = "station-disabled";
+    },
+    'kiosk/pi3/ack': function kioskPi3Ack(data) {
+      this.clearTimer3();
+      this.pi3Image = 'add-contact.png';
+      this.pi3Class = "station-disabled";
+    },
+    'kiosk/pi1/busy': function kioskPi1Busy(data) {
+      this.clearTimer1();
+      this.pi1Image = 'waiting.png';
+      this.pi1Class = "station-disabled";
+    },
+    'kiosk/pi2/busy': function kioskPi2Busy(data) {
+      this.clearTimer2();
+      this.pi2Image = 'waiting.png';
+      this.pi2Class = "station-disabled";
+    },
+    'kiosk/pi3/busy': function kioskPi3Busy(data) {
+      this.clearTimer3();
+      this.pi3Image = 'waiting.png';
+      this.pi3Class = "station-disabled";
     }
   },
   methods: {
     sendIDPi1: function sendIDPi1() {
-      this.$mqtt.publish('program-dongle/pi1', '{\"id\":\"' + this.uid + '\"}');
+      this.$mqtt.publish('kiosk/pi1/program-dongle', '{\"id\":\"' + this.uid + '\"}');
     },
     sendIDPi2: function sendIDPi2() {
-      this.$mqtt.publish('program-dongle/pi2', '{\"id\":\"' + this.uid + '\"}');
+      this.$mqtt.publish('kiosk/pi2/program-dongle', '{\"id\":\"' + this.uid + '\"}');
     },
     sendIDPi3: function sendIDPi3() {
-      this.$mqtt.publish('program-dongle/pi3', '{\"id\":\"' + this.uid + '\"}');
+      this.$mqtt.publish('kiosk/pi3/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+    },
+    clearTimer1: function clearTimer1() {
+      if (this.timer1) {
+        clearTimeout(this.timer1);
+        this.timer1 = null;
+      }
+    },
+    clearTimer2: function clearTimer2() {
+      if (this.timer2) {
+        clearTimeout(this.timer2);
+        this.timer2 = null;
+      }
+    },
+    clearTimer3: function clearTimer3() {
+      if (this.timer3) {
+        clearTimeout(this.timer3);
+        this.timer3 = null;
+      }
     }
   }
 });
@@ -2060,7 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    this.$mqtt.subscribe('ping/#');
+    this.$mqtt.subscribe('kiosk/#');
   }
 });
 
@@ -38231,8 +38261,7 @@ var render = function() {
                 staticClass: "station-icon",
                 attrs: {
                   "data-position": "top",
-                  src: "images/kiosk/" + _vm.pi1Image,
-                  href: ""
+                  src: "images/kiosk/" + _vm.pi1Image
                 }
               })
             ]
@@ -38256,8 +38285,7 @@ var render = function() {
                 staticClass: "station-icon",
                 attrs: {
                   "data-position": "top",
-                  src: "images/kiosk/" + _vm.pi2Image,
-                  href: ""
+                  src: "images/kiosk/" + _vm.pi2Image
                 }
               })
             ]
@@ -38281,8 +38309,7 @@ var render = function() {
                 staticClass: "station-icon",
                 attrs: {
                   "data-position": "top",
-                  src: "images/kiosk/" + _vm.pi3Image,
-                  href: ""
+                  src: "images/kiosk/" + _vm.pi3Image
                 }
               })
             ]

@@ -6,21 +6,21 @@
           <div class="col s1">
             <h2 class="center-align">Station 1</h2>
             <a v-bind:class="pi1Class" v-on:click="sendIDPi1" href="" onclick="return false;">
-              <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi1Image" href >
+              <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi1Image">
             </a>
           </div>
           <div class="dongle-white"></div>
           <div class="col s1">
             <h2 class="center-align">Station 2</h2>
             <a v-bind:class="pi2Class" v-on:click="sendIDPi2" href="" onclick="return false;">
-              <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi2Image" href >
+              <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi2Image">
             </a>
           </div>
           <div class="dongle-white"></div>
           <div class="col s1">
             <h2 class="center-align">Station 3</h2>
             <a v-bind:class="pi3Class" v-on:click="sendIDPi3" href="" onclick="return false;">
-              <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi3Image" href >
+              <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi3Image">
             </a>
           </div>
         </div>
@@ -44,9 +44,9 @@ export default {
       pi1:false,
       pi2:false,
       pi3:false,
-      pi1Image:'add-user-grey.png',
-      pi2Image:'add-user-grey.png',
-      pi3Image:'add-user-grey.png',
+      pi1Image:'devbit.png',
+      pi2Image:'devbit.png',
+      pi3Image:'devbit.png',
       pi1Class: "station-disabled",
       pi2Class: "station-disabled",
       pi3Class: "station-disabled",
@@ -56,53 +56,92 @@ export default {
     }
   },
   mqtt: {
-    'ping/pi1' (data) {
+    'kiosk/pi1/ping' (data) {
       this.pi1Image = 'add-user.png';
-      this.pi1Class= null;
-      if (this.timer1) {
-          clearTimeout(this.timer1); //cancel the previous timer.
-          this.timer1 = null;
-      }
+      this.pi1Class = null;
+      this.clearTimer1();
       this.timer1 = setTimeout(() => {
-        this.pi1Image = 'add-user-grey.png';
-        this.pi1Class= "station-disabled";
+        this.pi1Image = 'sad.png';
+        this.pi1Class = "station-disabled";
       }, 30 * 1000);
     },
-    'ping/pi2' (data) {
+    'kiosk/pi2/ping' (data) {
       this.pi2Image = 'add-user.png';
-      this.pi2Class= null;
-      if (this.timer2) {
-        clearTimeout(this.timer2); //cancel the previous timer.
-        this.timer2 = null;
-      }
+      this.pi2Class = null;
+      this.clearTimer2();
       this.timer2 = setTimeout(() => {
-        this.pi2Image = 'add-user-grey.png';
+        this.pi2Image = 'sad.png';
         this.pi2Class= "station-disabled";
       }, 30 * 1000);
     },
-    'ping/pi3' (data) {
+    'kiosk/pi3/ping' (data) {
       this.pi3Image = 'add-user.png';
-      this.pi3Class= null;
-      if (this.timer3) {
-          clearTimeout(this.timer3); //cancel the previous timer.
-          this.timer3 = null;
-      }
+      this.pi3Class = null;
+      this.clearTimer3();
       this.timer3 = setTimeout(() => {
-        this.pi3Image = 'add-user-grey.png';
+        this.pi3Image = 'sad.png';
         this.pi3Class= "station-disabled";
       }, 30 * 1000);
     },
+    'kiosk/pi1/ack' (data) {
+      this.clearTimer1();
+      this.pi1Image = 'add-contact.png';
+      this.pi1Class= "station-disabled";
+    },
+    'kiosk/pi2/ack' (data) {
+      this.clearTimer2();
+      this.pi2Image = 'add-contact.png';
+      this.pi2Class= "station-disabled";
+    },
+    'kiosk/pi3/ack' (data) {
+      this.clearTimer3();
+      this.pi3Image = 'add-contact.png';
+      this.pi3Class= "station-disabled";
+    },
+    'kiosk/pi1/busy' (data) {
+      this.clearTimer1();
+      this.pi1Image = 'waiting.png'
+      this.pi1Class= "station-disabled";
+    },
+    'kiosk/pi2/busy' (data) {
+      this.clearTimer2();
+      this.pi2Image = 'waiting.png';
+      this.pi2Class= "station-disabled";
+    },
+    'kiosk/pi3/busy' (data) {
+      this.clearTimer3();
+      this.pi3Image = 'waiting.png';
+      this.pi3Class= "station-disabled";
+    }
   },
   methods: {
       sendIDPi1(){
-        this.$mqtt.publish('program-dongle/pi1','{\"id\":\"' + this.uid + '\"}');
+        this.$mqtt.publish('kiosk/pi1/program-dongle','{\"id\":\"' + this.uid + '\"}');
       },
       sendIDPi2(){
-        this.$mqtt.publish('program-dongle/pi2','{\"id\":\"' + this.uid + '\"}');
+        this.$mqtt.publish('kiosk/pi2/program-dongle','{\"id\":\"' + this.uid + '\"}');
       },
       sendIDPi3(){
-        this.$mqtt.publish('program-dongle/pi3','{\"id\":\"' + this.uid + '\"}');
+        this.$mqtt.publish('kiosk/pi3/program-dongle','{\"id\":\"' + this.uid + '\"}');
       },
+      clearTimer1(){
+        if (this.timer1) {
+        clearTimeout(this.timer1);
+        this.timer1 = null;
+        }
+      },
+      clearTimer2(){
+        if (this.timer2) {
+        clearTimeout(this.timer2);
+        this.timer2 = null;
+        }
+      },
+      clearTimer3(){
+        if (this.timer3) {
+        clearTimeout(this.timer3);
+        this.timer3 = null;
+        }
+      }
     }
   }
 

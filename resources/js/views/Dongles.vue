@@ -14,7 +14,7 @@ export default {
     Dongles
   },
   mounted () {
-    this.$mqtt.subscribe('ping/#');
+    this.$mqtt.subscribe('kiosk/#');
   }
 }
 </script>
