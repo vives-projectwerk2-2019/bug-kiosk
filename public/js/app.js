@@ -1914,9 +1914,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
@@ -1931,9 +1928,12 @@ __webpack_require__.r(__webpack_exports__);
       pi1: false,
       pi2: false,
       pi3: false,
-      pi1Image: 'wait.png',
-      pi2Image: 'wait.png',
-      pi3Image: 'wait.png',
+      pi1Image: 'add-user-grey.png',
+      pi2Image: 'add-user-grey.png',
+      pi3Image: 'add-user-grey.png',
+      pi1Class: "station-disabled",
+      pi2Class: "station-disabled",
+      pi3Class: "station-disabled",
       timer1: null,
       timer2: null,
       timer3: null
@@ -1943,7 +1943,8 @@ __webpack_require__.r(__webpack_exports__);
     'ping/pi1': function pingPi1(data) {
       var _this = this;
 
-      this.pi1Image = 'checked.png';
+      this.pi1Image = 'add-user.png';
+      this.pi1Class = null;
 
       if (this.timer1) {
         clearTimeout(this.timer1); //cancel the previous timer.
@@ -1952,13 +1953,15 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.timer1 = setTimeout(function () {
-        _this.pi1Image = 'error.png';
+        _this.pi1Image = 'add-user-grey.png';
+        _this.pi1Class = "station-disabled";
       }, 30 * 1000);
     },
     'ping/pi2': function pingPi2(data) {
       var _this2 = this;
 
-      this.pi2Image = 'checked.png';
+      this.pi2Image = 'add-user.png';
+      this.pi2Class = null;
 
       if (this.timer2) {
         clearTimeout(this.timer2); //cancel the previous timer.
@@ -1967,13 +1970,15 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.timer2 = setTimeout(function () {
-        _this2.pi2Image = 'error.png';
+        _this2.pi2Image = 'add-user-grey.png';
+        _this2.pi2Class = "station-disabled";
       }, 30 * 1000);
     },
     'ping/pi3': function pingPi3(data) {
       var _this3 = this;
 
-      this.pi3Image = 'checked.png';
+      this.pi3Image = 'add-user.png';
+      this.pi3Class = null;
 
       if (this.timer3) {
         clearTimeout(this.timer3); //cancel the previous timer.
@@ -1982,7 +1987,8 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.timer3 = setTimeout(function () {
-        _this3.pi3Image = 'error.png';
+        _this3.pi3Image = 'add-user-grey.png';
+        _this3.pi3Class = "station-disabled";
       }, 30 * 1000);
     }
   },
@@ -38213,25 +38219,22 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
           _vm._v(" "),
-          _c("img", {
-            staticClass: "station-icon",
-            attrs: {
-              "data-position": "top",
-              src: "images/kiosk/" + _vm.pi1Image
-            }
-          }),
-          _vm._v(" "),
           _c(
-            "button",
+            "a",
             {
-              staticClass:
-                "waves-effect waves-light btn-large col s12 center-align",
-              attrs: { id: "profile-button" },
+              class: _vm.pi1Class,
+              attrs: { href: "", onclick: "return false;" },
               on: { click: _vm.sendIDPi1 }
             },
             [
-              _vm._v("Send ID\n          "),
-              _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+              _c("img", {
+                staticClass: "station-icon",
+                attrs: {
+                  "data-position": "top",
+                  src: "images/kiosk/" + _vm.pi1Image,
+                  href: ""
+                }
+              })
             ]
           )
         ]),
@@ -38241,25 +38244,22 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
           _vm._v(" "),
-          _c("img", {
-            staticClass: "station-icon",
-            attrs: {
-              "data-position": "top",
-              src: "images/kiosk/" + _vm.pi2Image
-            }
-          }),
-          _vm._v(" "),
           _c(
-            "button",
+            "a",
             {
-              staticClass:
-                "waves-effect waves-light btn-large col s12 center-align",
-              attrs: { id: "profile-button" },
+              class: _vm.pi2Class,
+              attrs: { href: "", onclick: "return false;" },
               on: { click: _vm.sendIDPi2 }
             },
             [
-              _vm._v("Send ID\n          "),
-              _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+              _c("img", {
+                staticClass: "station-icon",
+                attrs: {
+                  "data-position": "top",
+                  src: "images/kiosk/" + _vm.pi2Image,
+                  href: ""
+                }
+              })
             ]
           )
         ]),
@@ -38269,25 +38269,22 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
           _vm._v(" "),
-          _c("img", {
-            staticClass: "station-icon",
-            attrs: {
-              "data-position": "top",
-              src: "images/kiosk/" + _vm.pi3Image
-            }
-          }),
-          _vm._v(" "),
           _c(
-            "button",
+            "a",
             {
-              staticClass:
-                "waves-effect waves-light btn-large col s12 center-align",
-              attrs: { id: "profile-button" },
+              class: _vm.pi3Class,
+              attrs: { href: "", onclick: "return false;" },
               on: { click: _vm.sendIDPi3 }
             },
             [
-              _vm._v("Send ID\n          "),
-              _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+              _c("img", {
+                staticClass: "station-icon",
+                attrs: {
+                  "data-position": "top",
+                  src: "images/kiosk/" + _vm.pi3Image,
+                  href: ""
+                }
+              })
             ]
           )
         ])

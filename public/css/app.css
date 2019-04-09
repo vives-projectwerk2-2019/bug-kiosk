@@ -10788,6 +10788,11 @@ a:hover {
   length: 100%;
 }
 
+.station-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 #single-icon {
   height: 165%;
 }

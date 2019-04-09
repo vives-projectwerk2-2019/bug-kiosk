@@ -66,6 +66,7 @@ a:hover {
   color: white;
 }
 
+
 #forgotLink:hover {
   background-color: #227dc7;
   border-color: #227dc7;
@@ -129,6 +130,16 @@ a:hover {
   width: 100%;
   length: 100%;
 }
+
+.station-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+// .station-enabled {
+//   pointer-events: auto;
+//   cursor: default;
+// }
 
 #single-icon {
   height: 165%;
