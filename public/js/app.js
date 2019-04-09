@@ -1917,8 +1917,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
@@ -38210,92 +38208,94 @@ var render = function() {
   return _c("div", { staticClass: "dongles" }, [
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
-    _c("div", { staticClass: "row " }, [
-      _c("div", { staticClass: "dongle-white" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col s1" }, [
-        _c("img", {
-          staticClass: "dongle-icon",
-          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.pi1Image }
-        }),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row " }, [
+        _c("div", { staticClass: "col s1" }, [
+          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "station-icon",
+            attrs: {
+              "data-position": "top",
+              src: "images/kiosk/" + _vm.pi1Image
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "waves-effect waves-light btn-large col s12 center-align",
+              attrs: { id: "profile-button" },
+              on: { click: _vm.sendIDPi1 }
+            },
+            [
+              _vm._v("Send ID\n          "),
+              _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "waves-effect waves-light btn-large col s12 offset-s4 center-align",
-            attrs: { id: "profile-button" },
-            on: { click: _vm.sendIDPi1 }
-          },
-          [
-            _vm._v("Send ID\n          "),
-            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "dongle-white" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col s1" }, [
-        _c("img", {
-          staticClass: "dongle-icon",
-          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.pi2Image }
-        }),
+        _c("div", { staticClass: "dongle-white" }),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "waves-effect waves-light btn-large col s12 offset-s4 center-align",
-            attrs: { id: "profile-button" },
-            on: { click: _vm.sendIDPi2 }
-          },
-          [
-            _vm._v("Send ID\n          "),
-            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "dongle-white" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col s1" }, [
-        _c("img", {
-          staticClass: "dongle-icon",
-          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.pi3Image }
-        }),
+        _c("div", { staticClass: "col s1" }, [
+          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "station-icon",
+            attrs: {
+              "data-position": "top",
+              src: "images/kiosk/" + _vm.pi2Image
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "waves-effect waves-light btn-large col s12 center-align",
+              attrs: { id: "profile-button" },
+              on: { click: _vm.sendIDPi2 }
+            },
+            [
+              _vm._v("Send ID\n          "),
+              _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "waves-effect waves-light btn-large col s12 offset-s4 center-align",
-            attrs: { id: "profile-button" },
-            on: { click: _vm.sendIDPi3 }
-          },
-          [
-            _vm._v("Send ID\n          "),
-            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "dongle-white" })
-    ]),
-    _vm._v(" "),
-    _vm._m(0)
+        _c("div", { staticClass: "dongle-white" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col s1" }, [
+          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "station-icon",
+            attrs: {
+              "data-position": "top",
+              src: "images/kiosk/" + _vm.pi3Image
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "waves-effect waves-light btn-large col s12 center-align",
+              attrs: { id: "profile-button" },
+              on: { click: _vm.sendIDPi3 }
+            },
+            [
+              _vm._v("Send ID\n          "),
+              _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+            ]
+          )
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "container" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

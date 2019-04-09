@@ -10783,6 +10783,11 @@ a:hover {
   length: 165%;
 }
 
+.station-icon {
+  width: 100%;
+  length: 100%;
+}
+
 #single-icon {
   height: 165%;
 }

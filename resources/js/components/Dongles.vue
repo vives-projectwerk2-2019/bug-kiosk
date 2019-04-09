@@ -1,35 +1,33 @@
 <template>
     <div class="dongles">
-        <h1 id="under-navbar">Program dongle</h1>
-          <div class="row ">
-          <div class="dongle-white"></div>
+      <h1 id="under-navbar">Program dongle</h1>
+      <div class="container">
+        <div class="row ">
           <div class="col s1">
-            <img class="dongle-icon" data-position="top" v-bind:src="'images/kiosk/' + pi1Image" >
-            <button class="waves-effect waves-light btn-large col s12 offset-s4 center-align" id="profile-button" v-on:click="sendIDPi1">Send ID
+            <h2 class="center-align">Station 1</h2>
+            <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + pi1Image" >
+            <button class="waves-effect waves-light btn-large col s12 center-align" id="profile-button" v-on:click="sendIDPi1">Send ID
               <i class="material-icons right">send</i>
             </button>
           </div>
           <div class="dongle-white"></div>
           <div class="col s1">
-            <img class="dongle-icon" data-position="top" v-bind:src="'images/kiosk/'+ pi2Image" >
-            <button class="waves-effect waves-light btn-large col s12 offset-s4 center-align" id="profile-button" v-on:click="sendIDPi2">Send ID
+            <h2 class="center-align">Station 2</h2>
+            <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/'+ pi2Image" >
+            <button class="waves-effect waves-light btn-large col s12 center-align" id="profile-button" v-on:click="sendIDPi2">Send ID
               <i class="material-icons right">send</i>
             </button>
           </div>
           <div class="dongle-white"></div>
           <div class="col s1">
-            <img class="dongle-icon" data-position="top" v-bind:src="'images/kiosk/'+ pi3Image" >
-            <button class="waves-effect waves-light btn-large col s12 offset-s4 center-align" id="profile-button" v-on:click="sendIDPi3">Send ID
+            <h2 class="center-align">Station 3</h2>
+            <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/'+ pi3Image" >
+            <button class="waves-effect waves-light btn-large col s12 center-align" id="profile-button" v-on:click="sendIDPi3">Send ID
               <i class="material-icons right">send</i>
             </button>
-          </div>
-          <div class="dongle-white"></div>
-        </div>
-        <div class="row">
-          <div class="container">
-            
           </div>
         </div>
+      </div>
     </div>
 </template>
 
