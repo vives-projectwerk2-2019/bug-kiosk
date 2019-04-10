@@ -40,7 +40,11 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <img src="{{ Auth::user()->avatar }}" id="small_avatar">
+                        @if (Auth::User()->roles->pluck('name')->contains('admin'))
+                            Admin: {{ Auth::user()->name }} <span class="caret"></span>
+                        @else 
                             {{ Auth::user()->name }} <span class="caret"></span>
+                        @endif
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
