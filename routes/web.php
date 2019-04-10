@@ -31,3 +31,7 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 
 //vue route for logger
 Route::get('/logger', 'SinglePageController@index');
+
+Route::get('/permission_denied', 'PagesController@permissionDenied');
+
+Route::get('/admin_index', 'AdminController@adminIndex');

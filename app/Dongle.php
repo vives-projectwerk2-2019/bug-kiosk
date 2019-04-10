@@ -17,7 +17,7 @@ class Dongle extends Model
         'name', 'description', 'logo', 'dongle_hash',
     ];
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany('App\User', 'user_dongle_intersection');
     }

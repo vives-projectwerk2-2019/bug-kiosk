@@ -40,4 +40,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Dongle', 'user_dongle_intersection');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role', 'user_role_intersection');
+    }
 }

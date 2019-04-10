@@ -76,4 +76,9 @@ class PagesController extends Controller
         }
         return view('pages.edit_profile');
     }
+
+    public function permissionDenied()
+    {
+        return view('pages.permission_denied');
+    }
 }
