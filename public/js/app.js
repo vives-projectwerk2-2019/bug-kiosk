@@ -1932,16 +1932,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import AdminDongles from 'AdminDongles.vue'
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
-    msg: String,
     uid: String,
     admin: String
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
+    this.dongleNames = this.getDongleNames();
   },
   data: function data() {
     return {
@@ -1956,7 +1961,14 @@ __webpack_require__.r(__webpack_exports__);
       pi3Class: "station-disabled",
       timer1: null,
       timer2: null,
-      timer3: null
+      timer3: null,
+      programHashPi1: this.uid,
+      programNamePi1: null,
+      programHashPi2: this.uid,
+      programNamePi2: null,
+      programHashPi3: this.uid,
+      programNamePi3: null,
+      dongleNames: []
     };
   },
   mqtt: {
@@ -2032,13 +2044,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendIDPi1: function sendIDPi1() {
-      this.$mqtt.publish('kiosk/pi1/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+      this.$mqtt.publish('kiosk/pi1/program-dongle', '{\"id\":\"' + this.programHashPi1 + '\"}');
     },
     sendIDPi2: function sendIDPi2() {
-      this.$mqtt.publish('kiosk/pi2/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+      this.$mqtt.publish('kiosk/pi2/program-dongle', '{\"id\":\"' + this.programHashPi2 + '\"}');
     },
     sendIDPi3: function sendIDPi3() {
-      this.$mqtt.publish('kiosk/pi3/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+      this.$mqtt.publish('kiosk/pi3/program-dongle', '{\"id\":\"' + this.programHashPi3 + '\"}');
     },
     clearTimer1: function clearTimer1() {
       if (this.timer1) {
@@ -2057,6 +2069,69 @@ __webpack_require__.r(__webpack_exports__);
         clearTimeout(this.timer3);
         this.timer3 = null;
       }
+    },
+    getDongleNames: function getDongleNames() {
+      var names = ["User"];
+      axios.get('api/get_dongles').then(function (response) {
+        response.data.forEach(function (element) {
+          names.push(element.name);
+        });
+      });
+      return names;
+    },
+    setHashPi1: function setHashPi1(e) {
+      this.programNamePi1 = e.target.value;
+      self = this;
+
+      if (this.programNamePi1 == "User") {
+        this.programHashPi1 = this.uid;
+      }
+
+      console.log(this.programNamePi1);
+      axios.get('api/get_dongles').then(function (response) {
+        response.data.forEach(function (element) {
+          if (element.name == self.programNamePi1) {
+            self.programHashPi1 = element.dongle_hash;
+            console.log(self.programHashPi1);
+          }
+        });
+      });
+    },
+    setHashPi2: function setHashPi2(e) {
+      this.programNamePi2 = e.target.value;
+      self = this;
+
+      if (this.programNamePi2 == "User") {
+        this.programHashPi2 = this.uid;
+      }
+
+      console.log(this.programNamePi2);
+      axios.get('api/get_dongles').then(function (response) {
+        response.data.forEach(function (element) {
+          if (element.name == self.programNamePi2) {
+            self.programHashPi2 = element.dongle_hash;
+            console.log(self.programHashPi2);
+          }
+        });
+      });
+    },
+    setHashPi3: function setHashPi3(e) {
+      this.programNamePi3 = e.target.value;
+      self = this;
+
+      if (this.programNamePi3 == "User") {
+        this.programHashPi3 = this.uid;
+      }
+
+      console.log(this.programNamePi3);
+      axios.get('api/get_dongles').then(function (response) {
+        response.data.forEach(function (element) {
+          if (element.name == self.programNamePi3) {
+            self.programHashPi3 = element.dongle_hash;
+            console.log(self.programHashPi3);
+          }
+        });
+      });
     }
   }
 });
@@ -2111,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dongles',
-  props: ['uid', 'admin'],
+  props: ['uid', 'admin', 'dongles'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -6767,8 +6842,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38280,9 +38355,23 @@ var render = function() {
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
           _vm._v(" "),
           _vm.admin == 1
-            ? _c("select", { staticClass: "form-control" }, [
-                _c("option", [_vm._v(_vm._s() + "\n          ")])
-              ])
+            ? _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      return _vm.setHashPi1($event)
+                    }
+                  }
+                },
+                _vm._l(_vm.dongleNames, function(dongle) {
+                  return _c("option", { key: dongle }, [
+                    _vm._v(_vm._s(dongle) + "\n          ")
+                  ])
+                }),
+                0
+              )
             : _vm._e(),
           _vm._v(" "),
           _c(
@@ -38310,9 +38399,23 @@ var render = function() {
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
           _vm._v(" "),
           _vm.admin == 1
-            ? _c("select", { staticClass: "form-control" }, [
-                _c("option", [_vm._v(_vm._s() + "\n          ")])
-              ])
+            ? _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      return _vm.setHashPi2($event)
+                    }
+                  }
+                },
+                _vm._l(_vm.dongleNames, function(dongle) {
+                  return _c("option", { key: dongle }, [
+                    _vm._v(_vm._s(dongle) + "\n          ")
+                  ])
+                }),
+                0
+              )
             : _vm._e(),
           _vm._v(" "),
           _c(
@@ -38340,9 +38443,23 @@ var render = function() {
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
           _vm._v(" "),
           _vm.admin == 1
-            ? _c("select", { staticClass: "form-control" }, [
-                _c("option", [_vm._v(_vm._s() + "\n          ")])
-              ])
+            ? _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      return _vm.setHashPi3($event)
+                    }
+                  }
+                },
+                _vm._l(_vm.dongleNames, function(dongle) {
+                  return _c("option", { key: dongle }, [
+                    _vm._v(_vm._s(dongle) + "\n          ")
+                  ])
+                }),
+                0
+              )
             : _vm._e(),
           _vm._v(" "),
           _c(
@@ -38421,7 +38538,11 @@ var render = function() {
   return _c(
     "div",
     { attrs: { id: "dongles" } },
-    [_c("Dongles", { attrs: { uid: _vm.uid, admin: _vm.admin } })],
+    [
+      _c("Dongles", {
+        attrs: { uid: _vm.uid, admin: _vm.admin, dongles: _vm.dongles }
+      })
+    ],
     1
   )
 }
@@ -53616,8 +53737,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

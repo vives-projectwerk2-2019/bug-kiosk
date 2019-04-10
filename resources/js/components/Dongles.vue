@@ -8,9 +8,11 @@
         <div class="row ">
           <div class="col s1">
             <h2 class="center-align">Station 1</h2>
-            <select v-if="admin == 1" class="form-control" >
+            <select v-if="admin == 1" class="form-control" v-on:change="setHashPi1($event)" >
               <option
-                >{{  }}
+                v-bind:key="dongle" 
+                v-for="dongle in dongleNames" 
+                >{{ dongle }}
               </option>
             </select>
             <a v-bind:class="pi1Class" v-on:click="sendIDPi1" href="" onclick="return false;">
@@ -20,9 +22,11 @@
           <div class="dongle-white"></div>
           <div class="col s1">
             <h2 class="center-align">Station 2</h2>
-            <select v-if="admin == 1" class="form-control" >
+            <select v-if="admin == 1" class="form-control" v-on:change="setHashPi2($event)">
               <option
-                >{{  }}
+                v-bind:key="dongle" 
+                v-for="dongle in dongleNames" 
+                >{{ dongle }}
               </option>
             </select>
             <a v-bind:class="pi2Class" v-on:click="sendIDPi2" href="" onclick="return false;">
@@ -32,9 +36,11 @@
           <div class="dongle-white"></div>
           <div class="col s1">
             <h2 class="center-align">Station 3</h2>
-            <select v-if="admin == 1" class="form-control" >
+            <select v-if="admin == 1" class="form-control" v-on:change="setHashPi3($event)" >
               <option
-                >{{  }}
+                v-bind:key="dongle" 
+                v-for="dongle in dongleNames" 
+                >{{ dongle }}
               </option>
             </select>
             <a v-bind:class="pi3Class" v-on:click="sendIDPi3" href="" onclick="return false;">
@@ -48,17 +54,16 @@
 
 
 <script>
-// import AdminDongles from 'AdminDongles.vue'
 
 export default {
   name: 'Dongles',
   props: {
-    msg: String,
     uid: String,
-    admin: String
+    admin: String,
   },
   mounted() {
       console.log('Dongles mounted.');
+      this.dongleNames = this.getDongleNames();
   },
   data () {
     return {
@@ -73,7 +78,14 @@ export default {
       pi3Class: "station-disabled",
       timer1:null,
       timer2:null,
-      timer3:null
+      timer3:null,
+      programHashPi1:this.uid,
+      programNamePi1:null,
+      programHashPi2:this.uid,
+      programNamePi2:null,
+      programHashPi3:this.uid,
+      programNamePi3:null,
+      dongleNames:[],
     }
   },
   mqtt: {
@@ -140,13 +152,13 @@ export default {
   },
   methods: {
       sendIDPi1(){
-        this.$mqtt.publish('kiosk/pi1/program-dongle','{\"id\":\"' + this.uid + '\"}');
+        this.$mqtt.publish('kiosk/pi1/program-dongle','{\"id\":\"' + this.programHashPi1 + '\"}');
       },
       sendIDPi2(){
-        this.$mqtt.publish('kiosk/pi2/program-dongle','{\"id\":\"' + this.uid + '\"}');
+        this.$mqtt.publish('kiosk/pi2/program-dongle','{\"id\":\"' + this.programHashPi2 + '\"}');
       },
       sendIDPi3(){
-        this.$mqtt.publish('kiosk/pi3/program-dongle','{\"id\":\"' + this.uid + '\"}');
+        this.$mqtt.publish('kiosk/pi3/program-dongle','{\"id\":\"' + this.programHashPi3 + '\"}');
       },
       clearTimer1(){
         if (this.timer1) {
@@ -165,6 +177,63 @@ export default {
         clearTimeout(this.timer3);
         this.timer3 = null;
         }
+      },
+      getDongleNames(){
+        let names=["User"];
+        axios.get('api/get_dongles').then(function (response) {
+          response.data.forEach(function(element) {
+            names.push(element.name);
+          });
+        });
+        return names; 
+      },
+      setHashPi1(e){
+        this.programNamePi1 = e.target.value;
+        self = this;
+        if(this.programNamePi1 == "User"){
+          this.programHashPi1 = this.uid;
+        }
+        console.log(this.programNamePi1);
+        axios.get('api/get_dongles').then(function (response) {
+          response.data.forEach(function(element) {
+            if(element.name == self.programNamePi1){
+              self.programHashPi1 = element.dongle_hash;
+              console.log(self.programHashPi1);
+            }
+          });
+        }); 
+      },
+      setHashPi2(e){
+        this.programNamePi2 = e.target.value;
+        self = this;
+        if(this.programNamePi2 == "User"){
+          this.programHashPi2 = this.uid;
+        }
+        console.log(this.programNamePi2);
+        axios.get('api/get_dongles').then(function (response) {
+          response.data.forEach(function(element) {
+            if(element.name == self.programNamePi2){
+              self.programHashPi2 = element.dongle_hash;
+              console.log(self.programHashPi2);
+            }
+          });
+        }); 
+      },
+      setHashPi3(e){
+        this.programNamePi3 = e.target.value;
+        self = this;
+        if(this.programNamePi3 == "User"){
+          this.programHashPi3 = this.uid;
+        }
+        console.log(this.programNamePi3);
+        axios.get('api/get_dongles').then(function (response) {
+          response.data.forEach(function(element) {
+            if(element.name == self.programNamePi3){
+              self.programHashPi3 = element.dongle_hash;
+              console.log(self.programHashPi3);
+            }
+          });
+        }); 
       }
     }
   }
