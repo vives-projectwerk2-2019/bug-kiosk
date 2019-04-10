@@ -10779,6 +10779,13 @@ a:hover {
 
 #stop-float {
   clear: both;
+}
+
+.dongle-icon {
+  width: 165%;
+  length: 165%;
+}
+
 .station-icon {
   width: 100%;
   length: 100%;
