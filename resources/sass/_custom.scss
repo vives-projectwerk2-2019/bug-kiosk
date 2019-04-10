@@ -66,6 +66,7 @@ a:hover {
   color: white;
 }
 
+
 #forgotLink:hover {
   background-color: #227dc7;
   border-color: #227dc7;
@@ -121,6 +122,29 @@ a:hover {
 
 #stop-float {
   clear: both;
+.dongle-icon {
+  width: 165%;
+  length: 165%;
+}
+
+.station-icon {
+  width: 100%;
+  length: 100%;
+  padding-top: 5%; 
+}
+
+.station-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+// .station-enabled {
+//   pointer-events: auto;
+//   cursor: default;
+// }
+
+#single-icon {
+  height: 165%;
 }
 
 #profile_picture {

@@ -1897,22 +1897,166 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import AdminDongles from 'AdminDongles.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
     msg: String,
-    uid: String
+    uid: String,
+    admin: String
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
   },
   data: function data() {
-    return {};
+    return {
+      pi1: false,
+      pi2: false,
+      pi3: false,
+      pi1Image: 'devbit.png',
+      pi2Image: 'devbit.png',
+      pi3Image: 'devbit.png',
+      pi1Class: "station-disabled",
+      pi2Class: "station-disabled",
+      pi3Class: "station-disabled",
+      timer1: null,
+      timer2: null,
+      timer3: null
+    };
+  },
+  mqtt: {
+    'kiosk/pi1/ping': function kioskPi1Ping(data) {
+      var _this = this;
+
+      this.pi1Image = 'add-user.png';
+      this.pi1Class = null;
+      this.clearTimer1();
+      this.timer1 = setTimeout(function () {
+        _this.pi1Image = 'sad.png';
+        _this.pi1Class = "station-disabled";
+      }, 30 * 1000);
+    },
+    'kiosk/pi2/ping': function kioskPi2Ping(data) {
+      var _this2 = this;
+
+      this.pi2Image = 'add-user.png';
+      this.pi2Class = null;
+      this.clearTimer2();
+      this.timer2 = setTimeout(function () {
+        _this2.pi2Image = 'sad.png';
+        _this2.pi2Class = "station-disabled";
+      }, 30 * 1000);
+    },
+    'kiosk/pi3/ping': function kioskPi3Ping(data) {
+      var _this3 = this;
+
+      this.pi3Image = 'add-user.png';
+      this.pi3Class = null;
+      this.clearTimer3();
+      this.timer3 = setTimeout(function () {
+        _this3.pi3Image = 'sad.png';
+        _this3.pi3Class = "station-disabled";
+      }, 30 * 1000);
+    },
+    'kiosk/pi1/status': function kioskPi1Status(data) {
+      var parsed = JSON.parse(data);
+      this.clearTimer1();
+
+      if (parsed.status == "ack") {
+        this.pi1Image = 'add-contact.png';
+        this.pi1Class = "station-disabled";
+      } else if (parsed.status == "busy") {
+        this.pi1Image = 'waiting.png';
+        this.pi1Class = "station-disabled";
+      }
+    },
+    'kiosk/pi2/status': function kioskPi2Status(data) {
+      var parsed = JSON.parse(data);
+      this.clearTimer2();
+
+      if (parsed.status == "ack") {
+        this.pi2Image = 'add-contact.png';
+        this.pi2Class = "station-disabled";
+      } else if (parsed.status == "busy") {
+        this.pi2Image = 'waiting.png';
+        this.pi2Class = "station-disabled";
+      }
+    },
+    'kiosk/pi3/status': function kioskPi3Status(data) {
+      var parsed = JSON.parse(data);
+      this.clearTimer3();
+
+      if (parsed.status == "ack") {
+        this.pi3Image = 'add-contact.png';
+        this.pi3Class = "station-disabled";
+      } else if (parsed.status == "busy") {
+        this.pi3Image = 'waiting.png';
+        this.pi3Class = "station-disabled";
+      }
+    }
   },
   methods: {
-    sendID: function sendID() {
-      console.log(this.uid);
-      this.$mqtt.publish('program-dongle', '{\"id\":\"' + this.uid + '\"}');
+    sendIDPi1: function sendIDPi1() {
+      this.$mqtt.publish('kiosk/pi1/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+    },
+    sendIDPi2: function sendIDPi2() {
+      this.$mqtt.publish('kiosk/pi2/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+    },
+    sendIDPi3: function sendIDPi3() {
+      this.$mqtt.publish('kiosk/pi3/program-dongle', '{\"id\":\"' + this.uid + '\"}');
+    },
+    clearTimer1: function clearTimer1() {
+      if (this.timer1) {
+        clearTimeout(this.timer1);
+        this.timer1 = null;
+      }
+    },
+    clearTimer2: function clearTimer2() {
+      if (this.timer2) {
+        clearTimeout(this.timer2);
+        this.timer2 = null;
+      }
+    },
+    clearTimer3: function clearTimer3() {
+      if (this.timer3) {
+        clearTimeout(this.timer3);
+        this.timer3 = null;
+      }
     }
   }
 });
@@ -1967,9 +2111,12 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dongles',
-  props: ['uid'],
+  props: ['uid', 'admin'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    this.$mqtt.subscribe('kiosk/#');
   }
 });
 
@@ -6620,8 +6767,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38123,21 +38270,99 @@ var render = function() {
   return _c("div", { staticClass: "dongles" }, [
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "waves-effect waves-light btn-large col s2 offset-s5 center-align",
-            attrs: { id: "profile-button" },
-            on: { click: _vm.sendID }
-          },
-          [
-            _vm._v("Send ID\n          "),
-            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
-          ]
-        )
+    _vm.admin == 1
+      ? _c("div", [_c("p", [_vm._v(" Administrator account")])])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row " }, [
+        _c("div", { staticClass: "col s1" }, [
+          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
+          _vm._v(" "),
+          _vm.admin == 1
+            ? _c("select", { staticClass: "form-control" }, [
+                _c("option", [_vm._v(_vm._s() + "\n          ")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              class: _vm.pi1Class,
+              attrs: { href: "", onclick: "return false;" },
+              on: { click: _vm.sendIDPi1 }
+            },
+            [
+              _c("img", {
+                staticClass: "station-icon",
+                attrs: {
+                  "data-position": "top",
+                  src: "images/kiosk/" + _vm.pi1Image
+                }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "dongle-white" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col s1" }, [
+          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
+          _vm._v(" "),
+          _vm.admin == 1
+            ? _c("select", { staticClass: "form-control" }, [
+                _c("option", [_vm._v(_vm._s() + "\n          ")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              class: _vm.pi2Class,
+              attrs: { href: "", onclick: "return false;" },
+              on: { click: _vm.sendIDPi2 }
+            },
+            [
+              _c("img", {
+                staticClass: "station-icon",
+                attrs: {
+                  "data-position": "top",
+                  src: "images/kiosk/" + _vm.pi2Image
+                }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "dongle-white" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col s1" }, [
+          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
+          _vm._v(" "),
+          _vm.admin == 1
+            ? _c("select", { staticClass: "form-control" }, [
+                _c("option", [_vm._v(_vm._s() + "\n          ")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              class: _vm.pi3Class,
+              attrs: { href: "", onclick: "return false;" },
+              on: { click: _vm.sendIDPi3 }
+            },
+            [
+              _c("img", {
+                staticClass: "station-icon",
+                attrs: {
+                  "data-position": "top",
+                  src: "images/kiosk/" + _vm.pi3Image
+                }
+              })
+            ]
+          )
+        ])
       ])
     ])
   ])
@@ -38196,7 +38421,7 @@ var render = function() {
   return _c(
     "div",
     { attrs: { id: "dongles" } },
-    [_c("Dongles", { attrs: { uid: _vm.uid } })],
+    [_c("Dongles", { attrs: { uid: _vm.uid, admin: _vm.admin } })],
     1
   )
 }
@@ -53391,8 +53616,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

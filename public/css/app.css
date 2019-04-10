@@ -10779,6 +10779,19 @@ a:hover {
 
 #stop-float {
   clear: both;
+.station-icon {
+  width: 100%;
+  length: 100%;
+  padding-top: 5%;
+}
+
+.station-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+#single-icon {
+  height: 165%;
 }
 
 #profile_picture {
