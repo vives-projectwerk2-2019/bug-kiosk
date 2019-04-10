@@ -1,6 +1,6 @@
 <template>
   <div id="dongles">
-    <Dongles :uid = 'uid'/>
+    <Dongles :uid = 'uid' :admin = 'admin'/>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import Dongles from '../components/Dongles.vue'
 
 export default {
   name: 'dongles',
-  props: ['uid'],
+  props: ['uid','admin'],
   components: {
     Dongles
   },

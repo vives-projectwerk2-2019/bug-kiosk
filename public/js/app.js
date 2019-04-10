@@ -1914,12 +1914,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import AdminDongles from 'AdminDongles.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
     msg: String,
-    uid: String
+    uid: String,
+    admin: String
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
@@ -2092,7 +2111,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dongles',
-  props: ['uid'],
+  props: ['uid', 'admin'],
   components: {
     Dongles: _components_Dongles_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -38251,10 +38270,20 @@ var render = function() {
   return _c("div", { staticClass: "dongles" }, [
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
+    _vm.admin == 1
+      ? _c("div", [_c("p", [_vm._v(" Administrator account")])])
+      : _vm._e(),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row " }, [
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
+          _vm._v(" "),
+          _vm.admin == 1
+            ? _c("select", { staticClass: "form-control" }, [
+                _c("option", [_vm._v(_vm._s() + "\n          ")])
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "a",
@@ -38280,6 +38309,12 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
           _vm._v(" "),
+          _vm.admin == 1
+            ? _c("select", { staticClass: "form-control" }, [
+                _c("option", [_vm._v(_vm._s() + "\n          ")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "a",
             {
@@ -38303,6 +38338,12 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
+          _vm._v(" "),
+          _vm.admin == 1
+            ? _c("select", { staticClass: "form-control" }, [
+                _c("option", [_vm._v(_vm._s() + "\n          ")])
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "a",
@@ -38380,7 +38421,7 @@ var render = function() {
   return _c(
     "div",
     { attrs: { id: "dongles" } },
-    [_c("Dongles", { attrs: { uid: _vm.uid } })],
+    [_c("Dongles", { attrs: { uid: _vm.uid, admin: _vm.admin } })],
     1
   )
 }
