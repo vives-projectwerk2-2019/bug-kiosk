@@ -1914,6 +1914,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+// import AdminDongles from 'AdminDongles.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
   props: {
@@ -1973,35 +1974,41 @@ __webpack_require__.r(__webpack_exports__);
         _this3.pi3Class = "station-disabled";
       }, 30 * 1000);
     },
-    'kiosk/pi1/ack': function kioskPi1Ack(data) {
+    'kiosk/pi1/status': function kioskPi1Status(data) {
+      var parsed = JSON.parse(data);
       this.clearTimer1();
-      this.pi1Image = 'add-contact.png';
-      this.pi1Class = "station-disabled";
+
+      if (parsed.status == "ack") {
+        this.pi1Image = 'add-contact.png';
+        this.pi1Class = "station-disabled";
+      } else if (parsed.status == "busy") {
+        this.pi1Image = 'waiting.png';
+        this.pi1Class = "station-disabled";
+      }
     },
-    'kiosk/pi2/ack': function kioskPi2Ack(data) {
+    'kiosk/pi2/status': function kioskPi2Status(data) {
+      var parsed = JSON.parse(data);
       this.clearTimer2();
-      this.pi2Image = 'add-contact.png';
-      this.pi2Class = "station-disabled";
+
+      if (parsed.status == "ack") {
+        this.pi2Image = 'add-contact.png';
+        this.pi2Class = "station-disabled";
+      } else if (parsed.status == "busy") {
+        this.pi2Image = 'waiting.png';
+        this.pi2Class = "station-disabled";
+      }
     },
-    'kiosk/pi3/ack': function kioskPi3Ack(data) {
+    'kiosk/pi3/status': function kioskPi3Status(data) {
+      var parsed = JSON.parse(data);
       this.clearTimer3();
-      this.pi3Image = 'add-contact.png';
-      this.pi3Class = "station-disabled";
-    },
-    'kiosk/pi1/busy': function kioskPi1Busy(data) {
-      this.clearTimer1();
-      this.pi1Image = 'waiting.png';
-      this.pi1Class = "station-disabled";
-    },
-    'kiosk/pi2/busy': function kioskPi2Busy(data) {
-      this.clearTimer2();
-      this.pi2Image = 'waiting.png';
-      this.pi2Class = "station-disabled";
-    },
-    'kiosk/pi3/busy': function kioskPi3Busy(data) {
-      this.clearTimer3();
-      this.pi3Image = 'waiting.png';
-      this.pi3Class = "station-disabled";
+
+      if (parsed.status == "ack") {
+        this.pi3Image = 'add-contact.png';
+        this.pi3Class = "station-disabled";
+      } else if (parsed.status == "busy") {
+        this.pi3Image = 'waiting.png';
+        this.pi3Class = "station-disabled";
+      }
     }
   },
   methods: {
