@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
-class ApiController extends Controller
+class UserController extends Controller
 {
     public function getUser(Request $request)
     {

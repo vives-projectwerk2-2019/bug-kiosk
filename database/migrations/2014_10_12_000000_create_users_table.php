@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('provider_id')->nullable();
             $table->string('api_token', 60)->unique();
             $table->string('device_id')->nullable();
-            $table->string('avatar')->default('images/default.png');
+            $table->string('avatar')->default('images/avatars/default.png');
             $table->rememberToken();
             $table->timestamps();
         });

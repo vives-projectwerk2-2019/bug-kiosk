@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-Route::middleware('auth:api')->get('/user', 'ApiController@getUser');
+Route::middleware('auth:api')->get('/user', 'UserController@getUser');
 
-Route::get('/session/{device_id}/{user_dongle_id?}', 'ApiController@getUserByDeviceId');
+Route::get('/session/{device_id}/{user_dongle_id?}', 'UserController@getUserByDeviceId');
+
+Route::get('/get_dongles', 'DongleController@get_dongles');
+
+Route::post('/activate_dongle/{user_dongle_id}', 'DongleController@activate');

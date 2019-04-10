@@ -35,4 +35,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function dongles()
+    {
+        return $this->belongsToMany('App\Dongle', 'user_dongle_intersection');
+    }
 }
