@@ -125,6 +125,9 @@ export default {
       }else if(parsed.status == "busy"){
         this.pi1Image = 'waiting.png'
         this.pi1Class= "station-disabled";
+      }else if(parsed.status == "nack"){
+        this.pi1Image = 'error.png'
+        this.pi1Class= "station-disabled";
       }
     },
     'kiosk/pi2/status' (data) {
@@ -136,6 +139,9 @@ export default {
       }else if(parsed.status == "busy"){
         this.pi2Image = 'waiting.png'
         this.pi2Class= "station-disabled";
+      }else if(parsed.status == "nack"){
+        this.pi2Image = 'error.png'
+        this.pi2Class= "station-disabled";
       }
     },
     'kiosk/pi3/status' (data) {
@@ -146,6 +152,9 @@ export default {
         this.pi3Class= "station-disabled";
       }else if(parsed.status == "busy"){
         this.pi3Image = 'waiting.png'
+        this.pi3Class= "station-disabled";
+      }else if(parsed.status == "nack"){
+        this.pi3Image = 'error.png'
         this.pi3Class= "station-disabled";
       }
     }

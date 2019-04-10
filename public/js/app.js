@@ -2015,6 +2015,9 @@ __webpack_require__.r(__webpack_exports__);
       } else if (parsed.status == "busy") {
         this.pi1Image = 'waiting.png';
         this.pi1Class = "station-disabled";
+      } else if (parsed.status == "nack") {
+        this.pi1Image = 'error.png';
+        this.pi1Class = "station-disabled";
       }
     },
     'kiosk/pi2/status': function kioskPi2Status(data) {
@@ -2027,6 +2030,9 @@ __webpack_require__.r(__webpack_exports__);
       } else if (parsed.status == "busy") {
         this.pi2Image = 'waiting.png';
         this.pi2Class = "station-disabled";
+      } else if (parsed.status == "nack") {
+        this.pi2Image = 'error.png';
+        this.pi2Class = "station-disabled";
       }
     },
     'kiosk/pi3/status': function kioskPi3Status(data) {
@@ -2038,6 +2044,9 @@ __webpack_require__.r(__webpack_exports__);
         this.pi3Class = "station-disabled";
       } else if (parsed.status == "busy") {
         this.pi3Image = 'waiting.png';
+        this.pi3Class = "station-disabled";
+      } else if (parsed.status == "nack") {
+        this.pi3Image = 'error.png';
         this.pi3Class = "station-disabled";
       }
     }
