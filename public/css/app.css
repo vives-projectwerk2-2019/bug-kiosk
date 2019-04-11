@@ -10766,26 +10766,6 @@ a:hover {
   text-align: center;
 }
 
-#logo-list {
-  float: left;
-  width: 20%;
-  margin-right: 10%;
-  margin-bottom: 1%;
-}
-
-#left-logo-div {
-  margin-left: 15%;
-}
-
-#stop-float {
-  clear: both;
-}
-
-.dongle-icon {
-  width: 165%;
-  length: 165%;
-}
-
 .station-icon {
   width: 100%;
   length: 100%;
@@ -10821,5 +10801,35 @@ a:hover {
 #avatar_input_field {
   width: 50%;
   margin-left: 25%;
+}
+
+#dongle_card {
+  max-width: 230px;
+  border: 2px solid #00cc99;
+}
+
+#dongles_img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 230px;
+  height: 230px;
+}
+
+#dongle_content {
+  font-size: 18px;
+}
+
+#my_dongle_img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 30%;
+}
+
+#center_my_dongles {
+  max-width: 22.5%;
+}
+
+#my_dongle_card {
+  border: 2px solid #00cc99;
 }
 
