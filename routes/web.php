@@ -34,4 +34,4 @@ Route::get('/logger', 'SinglePageController@index');
 
 Route::get('/permission_denied', 'PagesController@permissionDenied');
 
-Route::get('/admin_index', 'AdminController@adminIndex');
+Route::get('/admin/index', 'AdminController@adminIndex');
