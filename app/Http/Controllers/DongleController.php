@@ -16,7 +16,6 @@ class DongleController extends Controller
     public function activate(Request $request, $user_dongle_id)
     {
         $user = User::where('user_dongle_id', $user_dongle_id)->first();
-        $user_id = $user->id;
 
         $body = json_decode($request->getContent(), true);
 
