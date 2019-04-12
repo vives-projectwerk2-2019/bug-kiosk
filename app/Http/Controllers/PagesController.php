@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -80,5 +81,24 @@ class PagesController extends Controller
     public function permissionDenied()
     {
         return view('pages.permission_denied');
+    }
+
+    public function becomeAdmin()
+    {
+        return view('pages.become_admin');
+    }
+
+    public function checkKey(Request $request)
+    {
+        $keyToCheck = $request->input('admin_key');
+
+        if ($keyToCheck == env('ADMIN_KEY')) {
+            $role_id = Role::where('name', 'admin')->first()->id;
+            $user = Auth::user();
+            $user->roles()->sync($role_id, false);
+
+            return redirect('/admin/index');
+        }
+        return redirect()->back()->with('error', 'Incorrect admin key!');
     }
 }
