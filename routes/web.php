@@ -35,6 +35,6 @@ Route::get('/logger', 'SinglePageController@index');
 Route::get('/permission_denied', 'PagesController@permissionDenied');
 
 Route::get('/become_admin', 'PagesController@becomeAdmin');
-Route::post('become_admin', 'PagesController@checkKey');
+Route::post('/become_admin', 'PagesController@checkKey');
 
 Route::get('/admin/index', 'AdminController@adminIndex');

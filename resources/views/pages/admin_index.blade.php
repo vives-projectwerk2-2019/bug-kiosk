@@ -14,7 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    
                     Welcome to the admin page!
                 </div>
             </div>
