@@ -21,19 +21,19 @@ class DongleController extends Controller
 
         $id_array = array();
 
-        if (isset($body['dongle_id_1'])) {
+        if (isset($body['dongle_id_1']) && $body['dongle_id_1'] != "") {
             $dongle_id_1 = $body['dongle_id_1'];
             $dongle_1 = Dongle::where('dongle_hash', $dongle_id_1)->first();
             $dongle_1_id = $dongle_1->id;
             array_push($id_array, $dongle_1_id);
         }
-        if (isset($body['dongle_id_2'])) {
+        if (isset($body['dongle_id_2']) && $body['dongle_id_2'] != "") {
             $dongle_id_2 = $body['dongle_id_2'];
             $dongle_2 = Dongle::where('dongle_hash', $dongle_id_2)->first();
             $dongle_2_id = $dongle_2->id;
             array_push($id_array, $dongle_2_id);
         }
-        if (isset($body['dongle_id_3'])) {
+        if (isset($body['dongle_id_3']) && $body['dongle_id_3'] != "") {
             $dongle_id_3 = $body['dongle_id_3'];
             $dongle_3 = Dongle::where('dongle_hash', $dongle_id_3)->first();
             $dongle_3_id = $dongle_3->id;
