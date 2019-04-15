@@ -21,26 +21,37 @@ class DongleController extends Controller
 
         $id_array = array();
 
-        if (isset($body['dongle_id_1']) && $body['dongle_id_1'] != "") {
+        $emptyCheck = false;
+
+        if (isset($body['dongle_id_1']) && !empty($body['dongle_id_1'])) {
             $dongle_id_1 = $body['dongle_id_1'];
             $dongle_1 = Dongle::where('dongle_hash', $dongle_id_1)->first();
             $dongle_1_id = $dongle_1->id;
             array_push($id_array, $dongle_1_id);
+        } else if (isset($body['dongle_id_1'])) {
+            $user->dongles()->sync($id_array);
+            $emptyCheck = true;
         }
-        if (isset($body['dongle_id_2']) && $body['dongle_id_2'] != "") {
+        if (isset($body['dongle_id_2']) && !empty($body['dongle_id_2'])) {
             $dongle_id_2 = $body['dongle_id_2'];
             $dongle_2 = Dongle::where('dongle_hash', $dongle_id_2)->first();
             $dongle_2_id = $dongle_2->id;
             array_push($id_array, $dongle_2_id);
+        } else if (isset($body['dongle_id_2'])) {
+            $user->dongles()->sync($id_array);
+            $emptyCheck = true;
         }
-        if (isset($body['dongle_id_3']) && $body['dongle_id_3'] != "") {
+        if (isset($body['dongle_id_3']) && !empty($body['dongle_id_2'])) {
             $dongle_id_3 = $body['dongle_id_3'];
             $dongle_3 = Dongle::where('dongle_hash', $dongle_id_3)->first();
             $dongle_3_id = $dongle_3->id;
             array_push($id_array, $dongle_3_id);
+        } else if (isset($body['dongle_id_3'])) {
+            $user->dongles()->sync($id_array);
+            $emptyCheck = true;
         }
 
-        if (empty($id_array)) {
+        if (empty($id_array) && $emptyCheck == false) {
             return "Not a valid request!";
         } else {
             $user->dongles()->sync($id_array);
