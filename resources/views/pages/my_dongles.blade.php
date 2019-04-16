@@ -11,7 +11,11 @@
     <br>
 
     <?php $user = App\User::find(Auth::user()->id); ?>
-    <div class="row">
+    
+        @if (isset($user->dongles))
+        <p>You have no active dongles.</p>
+        @else
+        <div class="row">
         @foreach ($user->dongles as $dongle)
         <div class="col s6 offset-s1" style="max-width: 22.5%;">
             <div class="card" style="border: 2px solid #00cc99;">
@@ -28,6 +32,7 @@
             </div>
         </div>
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
