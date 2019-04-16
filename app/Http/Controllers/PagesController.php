@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dongle;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,12 +43,14 @@ class PagesController extends Controller
 
     public function dongles()
     {
-        return view('pages.dongles');
+        $dongles = Dongle::All();
+        return view('pages.dongles')->with(['dongles' => $dongles]);
     }
 
     public function my_dongles()
     {
-        return view('pages.my_dongles');
+        $user = Auth::user();
+        return view('pages.my_dongles')->with(['user' => $user]);
     }
 
     public function registerDevice()

@@ -6,7 +6,6 @@
 
     <div class="container">
         <h1 id="under-navbar">All Dongles</h1>
-        <?php $dongles = App\Dongle::All(); ?>
         
         <div class="row">
             @foreach ($dongles as $dongle)

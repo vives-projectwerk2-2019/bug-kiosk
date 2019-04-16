@@ -9,9 +9,6 @@
     <h1 id="under-navbar">My Dongles</h1>
     <br>
     <br>
-
-    <?php $user = App\User::find(Auth::user()->id); ?>
-    
         @if (isset($user->dongles))
         <p>You have no active dongles.</p>
         @else
