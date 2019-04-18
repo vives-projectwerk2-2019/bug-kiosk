@@ -1946,6 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Dongles mounted.');
+    console.log(this.admin);
     this.dongleNames = this.getDongleNames();
   },
   data: function data() {
@@ -6851,8 +6852,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38354,7 +38355,7 @@ var render = function() {
   return _c("div", { staticClass: "dongles" }, [
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
-    _vm.admin == 1
+    _vm.admin == "admin"
       ? _c("div", [_c("p", [_vm._v(" Administrator account")])])
       : _vm._e(),
     _vm._v(" "),
@@ -38363,7 +38364,7 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
           _vm._v(" "),
-          _vm.admin == 1
+          _vm.admin == "admin"
             ? _c(
                 "select",
                 {
@@ -38407,7 +38408,7 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
           _vm._v(" "),
-          _vm.admin == 1
+          _vm.admin == "admin"
             ? _c(
                 "select",
                 {
@@ -38451,7 +38452,7 @@ var render = function() {
         _c("div", { staticClass: "col s1" }, [
           _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
           _vm._v(" "),
-          _vm.admin == 1
+          _vm.admin == "admin"
             ? _c(
                 "select",
                 {

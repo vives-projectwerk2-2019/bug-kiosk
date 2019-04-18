@@ -1,14 +1,14 @@
 <template>
     <div class="dongles">
       <h1 id="under-navbar">Program dongle</h1>
-      <div v-if="admin == 1">
+      <div v-if="admin == 'admin'">
         <p> Administrator account</p>
       </div>
       <div class="container">
         <div class="row ">
           <div class="col s1">
             <h2 class="center-align">Station 1</h2>
-            <select v-if="admin == 1" class="form-control" v-on:change="setHashPi1($event)" >
+            <select v-if="admin == 'admin'" class="form-control" v-on:change="setHashPi1($event)" >
               <option
                 v-bind:key="dongle" 
                 v-for="dongle in dongleNames" 
@@ -22,7 +22,7 @@
           <div class="dongle-white"></div>
           <div class="col s1">
             <h2 class="center-align">Station 2</h2>
-            <select v-if="admin == 1" class="form-control" v-on:change="setHashPi2($event)">
+            <select v-if="admin == 'admin'" class="form-control" v-on:change="setHashPi2($event)">
               <option
                 v-bind:key="dongle" 
                 v-for="dongle in dongleNames" 
@@ -36,7 +36,7 @@
           <div class="dongle-white"></div>
           <div class="col s1">
             <h2 class="center-align">Station 3</h2>
-            <select v-if="admin == 1" class="form-control" v-on:change="setHashPi3($event)" >
+            <select v-if="admin == 'admin'" class="form-control" v-on:change="setHashPi3($event)" >
               <option
                 v-bind:key="dongle" 
                 v-for="dongle in dongleNames" 
@@ -63,6 +63,7 @@ export default {
   },
   mounted() {
       console.log('Dongles mounted.');
+      console.log(this.admin);
       this.dongleNames = this.getDongleNames();
   },
   data () {
