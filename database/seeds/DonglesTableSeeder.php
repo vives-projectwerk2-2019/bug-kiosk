@@ -41,7 +41,7 @@ class DonglesTableSeeder extends Seeder
                 [
                     'name' => 'Gravyshield',
                     'description' => 'Tank armor: +1',
-                    'logo' => 'images/logos/gravyshield.png',
+                    'logo' => 'images/logos/gravyShield.png',
                     'dongle_hash' => '0148eef363dff533',
                 ],
                 [
