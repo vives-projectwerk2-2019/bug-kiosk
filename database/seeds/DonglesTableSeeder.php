@@ -51,7 +51,7 @@ class DonglesTableSeeder extends Seeder
                     'dongle_hash' => '0164a54798d7d27a',
                 ],
                 [
-                    'name' => 'StructualStrengthening',
+                    'name' => 'StructualBonus',
                     'description' => 'Tank healt: +5',
                     'logo' => 'images/logos/structuralStrengthening.png',
                     'dongle_hash' => '0136edcaaf285d1d',
