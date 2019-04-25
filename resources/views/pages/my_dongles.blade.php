@@ -9,7 +9,7 @@
     <h1 id="under-navbar">My Dongles</h1>
     <br>
     <br>
-        @if (isset($user->dongles))
+        @if (!isset($user->dongles))
         <p>You have no active dongles.</p>
         @else
         <div class="row">
