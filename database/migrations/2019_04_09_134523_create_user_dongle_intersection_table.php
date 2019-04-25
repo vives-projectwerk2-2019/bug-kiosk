@@ -16,9 +16,9 @@ class CreateUserDongleIntersectionTable extends Migration
         Schema::create('user_dongle_intersection', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->BigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onCascade('delete');;
+            $table->foreign('user_id')->references('id')->on('users')->onCascade('delete');
             $table->BigInteger('dongle_id')->unsigned();
-            $table->foreign('dongle_id')->references('id')->on('dongles')->onCascade('delete');;
+            $table->foreign('dongle_id')->references('id')->on('dongles')->onCascade('delete');
         });
     }
 
