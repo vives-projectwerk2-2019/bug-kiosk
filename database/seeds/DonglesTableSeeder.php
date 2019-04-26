@@ -39,7 +39,7 @@ class DonglesTableSeeder extends Seeder
                     'dongle_hash' => '016bc4464286f3fb',
                 ],
                 [
-                    'name' => 'Gravyshield',
+                    'name' => 'Gravityshield',
                     'description' => 'Tank armor: +1',
                     'logo' => 'images/logos/gravyShield.png',
                     'dongle_hash' => '0148eef363dff533',
@@ -51,7 +51,7 @@ class DonglesTableSeeder extends Seeder
                     'dongle_hash' => '0164a54798d7d27a',
                 ],
                 [
-                    'name' => 'StructualBonus',
+                    'name' => 'Structural Bonus',
                     'description' => 'Tank health: +5',
                     'logo' => 'images/logos/structuralStrengthening.png',
                     'dongle_hash' => '0136edcaaf285d1d',
@@ -81,7 +81,7 @@ class DonglesTableSeeder extends Seeder
                     'dongle_hash' => '0100548e2b3038f5',
                 ],
                 [
-                    'name' => 'EmpBomb',
+                    'name' => 'EMP Bomb',
                     'description' => 'Weapon: EMP-bomb',
                     'logo' => 'images/logos/empBomb.png',
                     'dongle_hash' => '01ff7ab8c2155e57',
@@ -93,7 +93,7 @@ class DonglesTableSeeder extends Seeder
                     'dongle_hash' => '0122e76e424f7c79',
                 ],
                 [
-                    'name' => 'GatlingGun',
+                    'name' => 'Gatlinggun',
                     'description' => 'Weapon: Gatling gun',
                     'logo' => 'images/logos/gatlingGun.png',
                     'dongle_hash' => '01f94b5e5d4277b5',
