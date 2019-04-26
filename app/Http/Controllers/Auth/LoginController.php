@@ -58,9 +58,15 @@ class LoginController extends Controller
 
         if (!$user) {
 
+            if (null !== $userSocial->getName()) {
+                $name = $userSocial->getName();
+            } else {
+                $name = $userSocial->getNickname();
+            }
+
             $user = User::create([
                 'email' => $userSocial->getEmail(),
-                'name' => $userSocial->getName(),
+                'name' => $name,
                 'provider_id' => $userSocial->getId(),
                 'avatar' => $userSocial->getAvatar(),
             ]);
