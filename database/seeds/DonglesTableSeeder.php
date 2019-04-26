@@ -98,12 +98,6 @@ class DonglesTableSeeder extends Seeder
                     'logo' => 'images/logos/gatlingGun.png',
                     'dongle_hash' => '01f94b5e5d4277b5',
                 ],
-                [
-                    'name' => 'Harrier',
-                    'description' => 'Tank movement: +6',
-                    'logo' => 'images/logos/harrier.png',
-                    'dongle_hash' => '0155cf8199f0245p',
-                ],
             ]
         );
     }
