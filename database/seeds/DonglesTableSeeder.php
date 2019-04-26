@@ -46,13 +46,13 @@ class DonglesTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Nanobots',
-                    'description' => 'Tank healt: +2',
+                    'description' => 'Tank health: +2',
                     'logo' => 'images/logos/nanobots.png',
                     'dongle_hash' => '0164a54798d7d27a',
                 ],
                 [
                     'name' => 'StructualBonus',
-                    'description' => 'Tank healt: +5',
+                    'description' => 'Tank health: +5',
                     'logo' => 'images/logos/structuralStrengthening.png',
                     'dongle_hash' => '0136edcaaf285d1d',
                 ],
