@@ -2,7 +2,7 @@
     <div class="station">
         <h2 class="center-align">Station {{name}}</h2>
         <select v-if="admin == 'admin'" class="form-control" v-on:change="setHashPi($event)" >
-            <option
+            <option class="station-dropdown"
             v-bind:key="dongle" 
             v-for="dongle in dongleNames" 
             >{{ dongle }}
@@ -53,7 +53,7 @@ export default {
         }, 30 * 1000);
       }
     },
-    'kiosk/+/status' (data) {
+    'kiosk/+/status' (data,topic) {
       if(this.name == topic.substring(topic.indexOf("/") + 1, topic.indexOf("/status"))){
         let parsed = JSON.parse(data);
         this.clearTimer();
