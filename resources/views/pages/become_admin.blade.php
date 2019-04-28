@@ -26,7 +26,7 @@
                           <div class="row">
                             <div class="input-field col s6">
                               <i class="material-icons prefix">security</i>
-                              <input id="icon_prefix" name="admin_key" type="text" class="validate">
+                              <input id="icon_prefix" name="admin_key" type="text" class="validate" required="required">
                               <label for="icon_prefix">Admin key</label>
                             </div>
                           </div>
