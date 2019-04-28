@@ -95,7 +95,7 @@ class PagesController extends Controller
     {
         $keyToCheck = $request->input('admin_key');
 
-        if ($keyToCheck == env('ADMIN_KEY')) {
+        if (env('ADMIN_KEY') !== null && $keyToCheck == env('ADMIN_KEY')) {
             $role_id = Role::where('name', 'admin')->first()->id;
             $user = Auth::user();
             $user->roles()->sync($role_id, false);
