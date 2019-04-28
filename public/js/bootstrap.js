@@ -36637,7 +36637,7 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\bootstrap.js */"./resources/js/bootstrap.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\bootstrap.js */"./resources/js/bootstrap.js");
 
 
 /***/ })

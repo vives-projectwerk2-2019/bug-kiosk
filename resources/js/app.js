@@ -10,7 +10,8 @@ import Dongles from './views/Dongles';
 import VueMqtt from 'vue-mqtt';
 require('dotenv').config();
 
-Vue.use(VueMqtt, 'mqtt://' + process.env.MIX_VUE_APP_BROKER_HOST);
+Vue.use(VueMqtt, process.env.MIX_VUE_APP_BROKER_PROTOCOL + process.env.MIX_VUE_APP_BROKER_HOST);
+console.log(process.env.MIX_VUE_APP_BROKER_PROTOCOL + process.env.MIX_VUE_APP_BROKER_HOST);
 
 const router = new VueRouter({
 	mode: 'history',
