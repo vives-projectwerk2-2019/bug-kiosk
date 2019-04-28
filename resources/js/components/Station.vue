@@ -2,7 +2,7 @@
     <div class="station">
         <h2 class="center-align">Station {{name}}</h2>
         <select v-if="admin == 'admin'" class="form-control" v-on:change="setHashPi($event)" >
-            <option class="station-dropdown"
+            <option
             v-bind:key="dongle" 
             v-for="dongle in dongleNames" 
             >{{ dongle }}
@@ -11,7 +11,6 @@
         <a v-bind:class="piClass" v-on:click="sendIDPi(name)" href="" onclick="return false;">
             <img class="station-icon" data-position="top" v-bind:src="'images/kiosk/' + piImage">
         </a>
-        <div class="dongle-white"></div>
     </div>
 </template>
 

@@ -1901,6 +1901,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dongles',
@@ -1917,7 +1920,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pi_ids: [],
-      set_pi_ids: new Set()
+      set_pi_ids: new Set(),
+      station: false
     };
   },
   mqtt: {
@@ -1925,6 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
       this.set_pi_ids.add(topic.substring(topic.indexOf("/") + 1, topic.indexOf("/ping")));
       this.pi_ids = Array.from(this.set_pi_ids);
       console.log(this.pi_ids);
+      this.station = true;
     }
   }
 });
@@ -1940,7 +1945,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -1996,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
         }, 30 * 1000);
       }
     },
-    'kiosk/+/status': function kioskStatus(data) {
+    'kiosk/+/status': function kioskStatus(data, topic) {
       if (this.name == topic.substring(topic.indexOf("/") + 1, topic.indexOf("/status"))) {
         var parsed = JSON.parse(data);
         this.clearTimer();
@@ -38264,27 +38268,29 @@ var render = function() {
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
     _vm.admin == "admin"
-      ? _c("div", [_c("p", [_vm._v(" Administrator account")])])
+      ? _c("div", [_c("p", [_vm._v("Administrator account")])])
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row " },
-        _vm._l(_vm.pi_ids, function(pi_id) {
-          return _c(
+      _vm.station
+        ? _c(
             "div",
-            { key: pi_id, staticClass: "col s1" },
-            [
-              _c("Station", {
-                attrs: { name: pi_id, uid: _vm.uid, admin: _vm.admin }
-              })
-            ],
-            1
+            { staticClass: "row" },
+            _vm._l(_vm.pi_ids, function(pi_id) {
+              return _c(
+                "div",
+                { key: pi_id, staticClass: "col s3" },
+                [
+                  _c("Station", {
+                    attrs: { name: pi_id, uid: _vm.uid, admin: _vm.admin }
+                  })
+                ],
+                1
+              )
+            }),
+            0
           )
-        }),
-        0
-      )
+        : _c("div", [_c("p", [_vm._v("There are no active stations!")])])
     ])
   ])
 }
@@ -38352,9 +38358,7 @@ var render = function() {
           attrs: { "data-position": "top", src: "images/kiosk/" + _vm.piImage }
         })
       ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "dongle-white" })
+    )
   ])
 }
 var staticRenderFns = []

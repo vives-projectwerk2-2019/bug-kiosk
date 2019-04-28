@@ -109,8 +109,8 @@ a:hover {
 }
 
 .station-icon {
-  width: 100%;
-  length: 100%;
+  width: 250px;
+  length: 250px;
   padding-top: 5%;
 }
 
@@ -118,11 +118,6 @@ a:hover {
   pointer-events: none;
   cursor: not-allowed;
 }
-
-// .station-enabled {
-//   pointer-events: auto;
-//   cursor: default;
-// }
 
 #single-icon {
   height: 165%;
