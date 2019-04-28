@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@include('inc.navbar')
+@extends('layouts.bug')
 
 @section('content')
 <div id="app">

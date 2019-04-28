@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.bug')
 
-@include('inc.admin_navbar')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
