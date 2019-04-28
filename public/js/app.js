@@ -1883,6 +1883,7 @@ function getTime() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Station_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Station.vue */ "./resources/js/components/Station.vue");
 //
 //
 //
@@ -1903,25 +1904,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Dongles',
+  props: {
+    uid: String,
+    admin: String
+  },
+  components: {
+    Station: _Station_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    console.log('Program-dongles mounted.');
+  },
+  data: function data() {
+    return {
+      pi_ids: [],
+      set_pi_ids: new Set(),
+      station: false
+    };
+  },
+  mqtt: {
+    'kiosk/+/ping': function kioskPing(data, topic) {
+      this.set_pi_ids.add(topic.substring(topic.indexOf("/") + 1, topic.indexOf("/ping")));
+      this.pi_ids = Array.from(this.set_pi_ids);
+      console.log(this.pi_ids);
+      this.station = true;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Station.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Station.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -1939,145 +1962,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Dongles',
+  name: 'Station',
   props: {
     uid: String,
-    admin: String
+    admin: String,
+    name: String
   },
   mounted: function mounted() {
-    console.log('Dongles mounted.');
+    console.log('Station mounted.');
     console.log(this.admin);
     this.dongleNames = this.getDongleNames();
   },
   data: function data() {
     return {
-      pi1: false,
-      pi2: false,
-      pi3: false,
-      pi1Image: 'devbit.png',
-      pi2Image: 'devbit.png',
-      pi3Image: 'devbit.png',
-      pi1Class: "station-disabled",
-      pi2Class: "station-disabled",
-      pi3Class: "station-disabled",
-      timer1: null,
-      timer2: null,
-      timer3: null,
-      programHashPi1: this.uid,
-      programNamePi1: null,
-      programHashPi2: this.uid,
-      programNamePi2: null,
-      programHashPi3: this.uid,
-      programNamePi3: null,
+      pi: false,
+      piImage: 'devbit.png',
+      piClass: "station-disabled",
+      timer: null,
+      programHashPi: this.uid,
+      programNamePi: null,
       dongleNames: []
     };
   },
   mqtt: {
-    'kiosk/pi1/ping': function kioskPi1Ping(data) {
+    'kiosk/+/ping': function kioskPing(data, topic) {
       var _this = this;
 
-      this.pi1Image = 'add-user.png';
-      this.pi1Class = null;
-      this.clearTimer1();
-      this.timer1 = setTimeout(function () {
-        _this.pi1Image = 'sad.png';
-        _this.pi1Class = "station-disabled";
-      }, 30 * 1000);
-    },
-    'kiosk/pi2/ping': function kioskPi2Ping(data) {
-      var _this2 = this;
+      console.log(topic.substring(topic.indexOf("/") + 1, topic.indexOf("/ping")));
 
-      this.pi2Image = 'add-user.png';
-      this.pi2Class = null;
-      this.clearTimer2();
-      this.timer2 = setTimeout(function () {
-        _this2.pi2Image = 'sad.png';
-        _this2.pi2Class = "station-disabled";
-      }, 30 * 1000);
-    },
-    'kiosk/pi3/ping': function kioskPi3Ping(data) {
-      var _this3 = this;
-
-      this.pi3Image = 'add-user.png';
-      this.pi3Class = null;
-      this.clearTimer3();
-      this.timer3 = setTimeout(function () {
-        _this3.pi3Image = 'sad.png';
-        _this3.pi3Class = "station-disabled";
-      }, 30 * 1000);
-    },
-    'kiosk/pi1/status': function kioskPi1Status(data) {
-      var parsed = JSON.parse(data);
-      this.clearTimer1();
-
-      if (parsed.status == "ack") {
-        this.pi1Image = 'add-contact.png';
-        this.pi1Class = "station-disabled";
-      } else if (parsed.status == "busy") {
-        this.pi1Image = 'waiting.png';
-        this.pi1Class = "station-disabled";
-      } else if (parsed.status == "nack") {
-        this.pi1Image = 'error.png';
-        this.pi1Class = "station-disabled";
+      if (this.name == topic.substring(topic.indexOf("/") + 1, topic.indexOf("/ping"))) {
+        this.piImage = 'add-user.png';
+        this.piClass = null;
+        this.clearTimer();
+        this.timer = setTimeout(function () {
+          _this.piImage = 'sad.png';
+          _this.piClass = "station-disabled";
+        }, 30 * 1000);
       }
     },
-    'kiosk/pi2/status': function kioskPi2Status(data) {
-      var parsed = JSON.parse(data);
-      this.clearTimer2();
+    'kiosk/+/status': function kioskStatus(data, topic) {
+      if (this.name == topic.substring(topic.indexOf("/") + 1, topic.indexOf("/status"))) {
+        var parsed = JSON.parse(data);
+        this.clearTimer();
 
-      if (parsed.status == "ack") {
-        this.pi2Image = 'add-contact.png';
-        this.pi2Class = "station-disabled";
-      } else if (parsed.status == "busy") {
-        this.pi2Image = 'waiting.png';
-        this.pi2Class = "station-disabled";
-      } else if (parsed.status == "nack") {
-        this.pi2Image = 'error.png';
-        this.pi2Class = "station-disabled";
-      }
-    },
-    'kiosk/pi3/status': function kioskPi3Status(data) {
-      var parsed = JSON.parse(data);
-      this.clearTimer3();
-
-      if (parsed.status == "ack") {
-        this.pi3Image = 'add-contact.png';
-        this.pi3Class = "station-disabled";
-      } else if (parsed.status == "busy") {
-        this.pi3Image = 'waiting.png';
-        this.pi3Class = "station-disabled";
-      } else if (parsed.status == "nack") {
-        this.pi3Image = 'error.png';
-        this.pi3Class = "station-disabled";
+        if (parsed.status == "ack") {
+          this.piImage = 'add-contact.png';
+          this.piClass = "station-disabled";
+        } else if (parsed.status == "busy") {
+          this.piImage = 'waiting.png';
+          this.piClass = "station-disabled";
+        } else if (parsed.status == "nack") {
+          this.piImage = 'error.png';
+          this.piClass = "station-disabled";
+        }
       }
     }
   },
   methods: {
-    sendIDPi1: function sendIDPi1() {
-      this.$mqtt.publish('kiosk/pi1/program-dongle', '{\"id\":\"' + this.programHashPi1 + '\"}');
+    sendIDPi: function sendIDPi(pi_id) {
+      this.$mqtt.publish('kiosk/' + pi_id + '/program-dongle', '{\"id\":\"' + this.programHashPi + '\"}');
     },
-    sendIDPi2: function sendIDPi2() {
-      this.$mqtt.publish('kiosk/pi2/program-dongle', '{\"id\":\"' + this.programHashPi2 + '\"}');
-    },
-    sendIDPi3: function sendIDPi3() {
-      this.$mqtt.publish('kiosk/pi3/program-dongle', '{\"id\":\"' + this.programHashPi3 + '\"}');
-    },
-    clearTimer1: function clearTimer1() {
-      if (this.timer1) {
-        clearTimeout(this.timer1);
-        this.timer1 = null;
-      }
-    },
-    clearTimer2: function clearTimer2() {
-      if (this.timer2) {
-        clearTimeout(this.timer2);
-        this.timer2 = null;
-      }
-    },
-    clearTimer3: function clearTimer3() {
-      if (this.timer3) {
-        clearTimeout(this.timer3);
-        this.timer3 = null;
+    clearTimer: function clearTimer() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
       }
     },
     getDongleNames: function getDongleNames() {
@@ -2089,56 +2037,20 @@ __webpack_require__.r(__webpack_exports__);
       });
       return names;
     },
-    setHashPi1: function setHashPi1(e) {
-      this.programNamePi1 = e.target.value;
+    setHashPi: function setHashPi(e) {
+      this.programNamePi = e.target.value;
       self = this;
 
-      if (this.programNamePi1 == "User") {
-        this.programHashPi1 = this.uid;
+      if (this.programNamePi == "User") {
+        this.programHashPi = this.uid;
       }
 
-      console.log(this.programNamePi1);
+      console.log(this.programNamePi);
       axios.get('api/get_dongles').then(function (response) {
         response.data.forEach(function (element) {
-          if (element.name == self.programNamePi1) {
-            self.programHashPi1 = element.dongle_hash;
-            console.log(self.programHashPi1);
-          }
-        });
-      });
-    },
-    setHashPi2: function setHashPi2(e) {
-      this.programNamePi2 = e.target.value;
-      self = this;
-
-      if (this.programNamePi2 == "User") {
-        this.programHashPi2 = this.uid;
-      }
-
-      console.log(this.programNamePi2);
-      axios.get('api/get_dongles').then(function (response) {
-        response.data.forEach(function (element) {
-          if (element.name == self.programNamePi2) {
-            self.programHashPi2 = element.dongle_hash;
-            console.log(self.programHashPi2);
-          }
-        });
-      });
-    },
-    setHashPi3: function setHashPi3(e) {
-      this.programNamePi3 = e.target.value;
-      self = this;
-
-      if (this.programNamePi3 == "User") {
-        this.programHashPi3 = this.uid;
-      }
-
-      console.log(this.programNamePi3);
-      axios.get('api/get_dongles').then(function (response) {
-        response.data.forEach(function (element) {
-          if (element.name == self.programNamePi3) {
-            self.programHashPi3 = element.dongle_hash;
-            console.log(self.programHashPi3);
+          if (element.name == self.programNamePi) {
+            self.programHashPi = element.dongle_hash;
+            console.log(self.programHashPi);
           }
         });
       });
@@ -38356,142 +38268,97 @@ var render = function() {
     _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
     _vm._v(" "),
     _vm.admin == "admin"
-      ? _c("div", [_c("p", [_vm._v(" Administrator account")])])
+      ? _c("div", [_c("p", [_vm._v("Administrator account")])])
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col s1" }, [
-          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 1")]),
-          _vm._v(" "),
-          _vm.admin == "admin"
-            ? _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  on: {
-                    change: function($event) {
-                      return _vm.setHashPi1($event)
-                    }
-                  }
-                },
-                _vm._l(_vm.dongleNames, function(dongle) {
-                  return _c("option", { key: dongle }, [
-                    _vm._v(_vm._s(dongle) + "\n          ")
-                  ])
-                }),
-                0
+      _vm.station
+        ? _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.pi_ids, function(pi_id) {
+              return _c(
+                "div",
+                { key: pi_id, staticClass: "col s3" },
+                [
+                  _c("Station", {
+                    attrs: { name: pi_id, uid: _vm.uid, admin: _vm.admin }
+                  })
+                ],
+                1
               )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              class: _vm.pi1Class,
-              attrs: { href: "", onclick: "return false;" },
-              on: { click: _vm.sendIDPi1 }
-            },
-            [
-              _c("img", {
-                staticClass: "station-icon",
-                attrs: {
-                  "data-position": "top",
-                  src: "images/kiosk/" + _vm.pi1Image
-                }
-              })
-            ]
+            }),
+            0
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "dongle-white" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col s1" }, [
-          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 2")]),
-          _vm._v(" "),
-          _vm.admin == "admin"
-            ? _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  on: {
-                    change: function($event) {
-                      return _vm.setHashPi2($event)
-                    }
-                  }
-                },
-                _vm._l(_vm.dongleNames, function(dongle) {
-                  return _c("option", { key: dongle }, [
-                    _vm._v(_vm._s(dongle) + "\n          ")
-                  ])
-                }),
-                0
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              class: _vm.pi2Class,
-              attrs: { href: "", onclick: "return false;" },
-              on: { click: _vm.sendIDPi2 }
-            },
-            [
-              _c("img", {
-                staticClass: "station-icon",
-                attrs: {
-                  "data-position": "top",
-                  src: "images/kiosk/" + _vm.pi2Image
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "dongle-white" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col s1" }, [
-          _c("h2", { staticClass: "center-align" }, [_vm._v("Station 3")]),
-          _vm._v(" "),
-          _vm.admin == "admin"
-            ? _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  on: {
-                    change: function($event) {
-                      return _vm.setHashPi3($event)
-                    }
-                  }
-                },
-                _vm._l(_vm.dongleNames, function(dongle) {
-                  return _c("option", { key: dongle }, [
-                    _vm._v(_vm._s(dongle) + "\n          ")
-                  ])
-                }),
-                0
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              class: _vm.pi3Class,
-              attrs: { href: "", onclick: "return false;" },
-              on: { click: _vm.sendIDPi3 }
-            },
-            [
-              _c("img", {
-                staticClass: "station-icon",
-                attrs: {
-                  "data-position": "top",
-                  src: "images/kiosk/" + _vm.pi3Image
-                }
-              })
-            ]
-          )
-        ])
-      ])
+        : _c("div", [_c("p", [_vm._v("There are no active stations!")])])
     ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Station.vue?vue&type=template&id=21857099&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Station.vue?vue&type=template&id=21857099& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "station" }, [
+    _c("h2", { staticClass: "center-align" }, [
+      _vm._v("Station " + _vm._s(_vm.name))
+    ]),
+    _vm._v(" "),
+    _vm.admin == "admin"
+      ? _c(
+          "select",
+          {
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                return _vm.setHashPi($event)
+              }
+            }
+          },
+          _vm._l(_vm.dongleNames, function(dongle) {
+            return _c("option", { key: dongle }, [
+              _vm._v(_vm._s(dongle) + "\n        ")
+            ])
+          }),
+          0
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "a",
+      {
+        class: _vm.piClass,
+        attrs: { href: "", onclick: "return false;" },
+        on: {
+          click: function($event) {
+            return _vm.sendIDPi(_vm.name)
+          }
+        }
+      },
+      [
+        _c("img", {
+          staticClass: "station-icon",
+          attrs: { "data-position": "top", src: "images/kiosk/" + _vm.piImage }
+        })
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -53591,6 +53458,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Station.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Station.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Station_vue_vue_type_template_id_21857099___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Station.vue?vue&type=template&id=21857099& */ "./resources/js/components/Station.vue?vue&type=template&id=21857099&");
+/* harmony import */ var _Station_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Station.vue?vue&type=script&lang=js& */ "./resources/js/components/Station.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Station_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Station_vue_vue_type_template_id_21857099___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Station_vue_vue_type_template_id_21857099___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Station.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Station.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Station.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Station_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Station.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Station.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Station_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Station.vue?vue&type=template&id=21857099&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Station.vue?vue&type=template&id=21857099& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Station_vue_vue_type_template_id_21857099___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Station.vue?vue&type=template&id=21857099& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Station.vue?vue&type=template&id=21857099&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Station_vue_vue_type_template_id_21857099___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Station_vue_vue_type_template_id_21857099___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/views/App.vue":
 /*!************************************!*\
   !*** ./resources/js/views/App.vue ***!
@@ -53747,8 +53683,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
