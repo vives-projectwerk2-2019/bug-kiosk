@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -73,6 +74,7 @@ class LoginController extends Controller
                 'name' => $name,
                 'provider_id' => $userSocial->getId(),
                 'avatar' => $userSocial->getAvatar(),
+                'password' => Hash::make(bin2hex(openssl_random_pseudo_bytes(30))),
             ]);
         }
 
