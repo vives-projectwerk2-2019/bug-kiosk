@@ -30,9 +30,9 @@ class AdminController extends Controller
         return view('admin_pages.admin_dongleInfo')->with(['dongles' => $dongles]);
     }
 
-    public function userRoles()
+    public function getAdmins()
     {
-        return view('admin_pages.admin_userRoles');
+        return view('admin_pages.admin_admins');
     }
 
     public function deleteUser($id)
