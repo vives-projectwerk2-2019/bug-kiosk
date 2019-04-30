@@ -14,17 +14,20 @@ class UserController extends Controller
 
     public function getUserByDeviceId(Request $request, $device_id, $user_dongle_id = null)
     {
-
-        if ($user_dongle_id == null) {
-            $user = User::where('device_id', $device_id)->first();
-            return $user;
+        if (User::where('user_dongle_id', $user_dongle_id)->first() == null) {
+            return response('Invalid user_dongle_id', 404);
         } else {
-            $user = User::where('user_dongle_id', $user_dongle_id)->first();
+            if ($user_dongle_id == null) {
+                $user = User::where('device_id', $device_id)->first();
+                return $user;
+            } else {
+                $user = User::where('user_dongle_id', $user_dongle_id)->first();
 
-            $user->device_id = $device_id;
-            $user->save();
+                $user->device_id = $device_id;
+                $user->save();
 
-            return $user;
+                return $user;
+            }
         }
     }
 }
