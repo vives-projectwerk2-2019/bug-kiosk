@@ -108,3 +108,9 @@ export default {
   }
 
 </script>
+
+<style>
+  a:hover {
+    background-color: transparent;
+  }
+</style>
