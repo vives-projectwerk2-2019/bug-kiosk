@@ -11,6 +11,9 @@
         <p id="profile-name">Name: {{ Auth::user()->name }}</p>
         <p id="profile-email">E-mail: {{ Auth::user()->email }}</p>
         <p id="user_dongle_id">User dongle id: {{ Auth::user()->user_dongle_id }}</p>
+        <div id="generator">
+            <generator uid={{Auth::user()->user_dongle_id}} name={{Auth::user()->name}}></generator>
+        </div>
         <a  href="edit_profile" class="waves-effect waves-light btn-large" id="profile-button">Edit</a>
     </div>
 </div>

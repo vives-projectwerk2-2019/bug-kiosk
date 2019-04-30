@@ -7,7 +7,12 @@ Vue.use(VueRouter);
 
 import App from './views/App';
 import Dongles from './views/Dongles';
+import Generator from './views/Generator';
 import VueMqtt from 'vue-mqtt';
+import VueQRCodeComponent from 'vue-qrcode-component';
+
+Vue.component('qr-code', VueQRCodeComponent);
+
 require('dotenv').config();
 
 console.log("mqtt broker: ", process.env.MIX_VUE_APP_BROKER);
@@ -40,6 +45,14 @@ const app = new Vue({
 	components: { App },
 	router
 });
+
+
+const generator = new Vue({
+	el: '#generator',
+	components: { Generator },
+	router
+});
+
 
 
 
