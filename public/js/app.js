@@ -53309,47 +53309,47 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vue-qr', vue_qr__WEBPACK_IMPORTED_MODULE_6___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("vue-qr", vue_qr__WEBPACK_IMPORTED_MODULE_6___default.a);
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
 console.log("mqtt broker: ", "wss://api.bug.labict.be/broker");
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_5___default.a, "wss://api.bug.labict.be/broker");
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
+  mode: "history",
   routes: [{
-    path: '/logger',
-    name: 'logger',
+    path: "/logger",
+    name: "logger",
     component: _views_App__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/my_dongles',
-    name: 'my_dongles',
+    path: "/my_dongles",
+    name: "my_dongles",
     component: _views_Dongles__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 });
 var dongles = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#dongles',
+  el: "#dongles",
   components: {
     Dongles: _views_Dongles__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   router: router
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app',
+  el: "#app",
   components: {
     App: _views_App__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   router: router
 });
 var generator = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#generator',
+  el: "#generator",
   components: {
     Generator: _views_Generator__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   router: router
 });
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.tooltipped');
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".tooltipped");
   var instances = M.Tooltip.init(elems);
 });
 
@@ -53863,8 +53863,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
