@@ -2,6 +2,8 @@ FROM composer
 
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
+RUN docker-php-ext-install gd
+RUN docker-php-ext-enable gd
 
 RUN apk add --update nodejs npm
 
