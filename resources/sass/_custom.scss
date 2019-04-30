@@ -144,3 +144,11 @@ a:hover {
   width: 50%;
   margin-left: 25%;
 }
+
+a.station-hover:hover {
+  background-color: transparent;
+}
+
+a.navbar-brand:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
