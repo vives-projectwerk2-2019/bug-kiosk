@@ -18,7 +18,7 @@
                     <br>
                     <br>
                     <a href ="/admin/userInfo" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">account_circle</i>Users</a>
-                    <a href ="/admin/donglesInfo" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">event_available</i>Dongles</a>
+                    <a href ="/admin/dongleInfo" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">event_available</i>Dongles</a>
                     <a href ="/admin/userRoles" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">stars</i>Roles</a>
                 </div>
             </div>

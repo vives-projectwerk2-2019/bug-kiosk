@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dongle;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,8 @@ class AdminController extends Controller
 
     public function dongleInfo()
     {
-        return view('admin_pages.admin_dongleInfo');
+        $dongles = Dongle::All();
+        return view('admin_pages.admin_dongleInfo')->with(['dongles' => $dongles]);
     }
 
     public function userRoles()
@@ -45,6 +47,15 @@ class AdminController extends Controller
 
             return redirect('/admin/userInfo');
         }
-
     }
+
+    public function deleteDongle($id)
+    {
+        $dongle = Dongle::find($id);
+        $dongle->users()->detach();
+        $dongle->delete();
+
+        return redirect('/admin/dongleInfo');
+    }
+
 }

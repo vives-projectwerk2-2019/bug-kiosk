@@ -37,3 +37,4 @@ Route::get('/admin/dongleInfo', 'AdminController@dongleInfo');
 Route::get('/admin/userRoles', 'AdminController@userRoles');
 
 Route::get('/admin/userInfo/{id}', 'AdminController@deleteUser');
+Route::get('/admin/userDongle/{id}', 'AdminController@deleteDongle');
