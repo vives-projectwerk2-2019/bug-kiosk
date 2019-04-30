@@ -2,7 +2,7 @@
   <div id="generator">
     <div class="container">
         <div class="row justify-content-center">
-            <vue-qr  :bgSrc="img" :text="data" :size="200" logoScale="0.25" colorDark="#00cc99"></vue-qr>
+            <vue-qr  :bgSrc="img" :text="data" :size="200" colorDark="#00cc99" :margin="0" :autoColor="state"></vue-qr>
         </div>
        
     </div>
@@ -20,12 +20,17 @@ export default {
   },
   data(){
       return {
-        data:null
+        data:"",
+        state:null
       }
   },
   mounted () {
+    if(this.img == "images/avatars/default.png"){
+      this.state = false;
+    }else{
+      this.state = true;
+    }
     this.data = "{\"user_dongle_id\":" + "\"" + this.uid + "\"" + ",\"name\":" + "\"" + this.name + "\"" + "}";
-    console.log(this.data);
     console.log("Generator mounted");
   }
 }

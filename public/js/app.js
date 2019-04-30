@@ -2150,12 +2150,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      data: null
+      data: "",
+      state: null
     };
   },
   mounted: function mounted() {
+    if (this.img == "images/avatars/default.png") {
+      this.state = false;
+    } else {
+      this.state = true;
+    }
+
     this.data = "{\"user_dongle_id\":" + "\"" + this.uid + "\"" + ",\"name\":" + "\"" + this.name + "\"" + "}";
-    console.log(this.data);
     console.log("Generator mounted");
   }
 });
@@ -6807,8 +6813,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER":"wss://api.bug.devbit.be/broker","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER":"wss://api.bug.devbit.be/broker","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38498,8 +38504,9 @@ var render = function() {
               bgSrc: _vm.img,
               text: _vm.data,
               size: 200,
-              logoScale: "0.25",
-              colorDark: "#00cc99"
+              colorDark: "#00cc99",
+              margin: 0,
+              autoColor: _vm.state
             }
           })
         ],
@@ -53313,8 +53320,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("vue-qr", vue_qr__WEBPACK_I
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
-console.log("mqtt broker: ", Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).MIX_VUE_APP_BROKER);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_5___default.a, Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER_HOST":"127.0.0.1:9001","NODE_ENV":"development"}).MIX_VUE_APP_BROKER);
+console.log("mqtt broker: ", "wss://api.bug.devbit.be/broker");
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_5___default.a, "wss://api.bug.devbit.be/broker");
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
   routes: [{
@@ -53863,8 +53870,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
