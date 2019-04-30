@@ -5,7 +5,7 @@
 <div>
     <h1 id="under-navbar">Profile</h1>
     <div id="generator">
-        <generator uid={{Auth::user()->user_dongle_id}} name={{Auth::user()->name}} img="{{ Auth::user()->avatar }}"></generator>
+        <generator uid={{Auth::user()->user_dongle_id}} name={{str_replace(' ','',Auth::user()->name)}} img="{{ Auth::user()->avatar }}"></generator>
     </div>
     <div>
         <p id="profile-name">Name: {{ Auth::user()->name }}</p>
