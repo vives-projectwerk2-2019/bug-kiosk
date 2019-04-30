@@ -2150,12 +2150,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      data: null
+      data: "",
+      state: null
     };
   },
   mounted: function mounted() {
+    if (this.img == "images/avatars/default.png") {
+      this.state = false;
+    } else {
+      this.state = true;
+    }
+
     this.data = "{\"user_dongle_id\":" + "\"" + this.uid + "\"" + ",\"name\":" + "\"" + this.name + "\"" + "}";
-    console.log(this.data);
     console.log("Generator mounted");
   }
 });
@@ -38498,8 +38504,9 @@ var render = function() {
               bgSrc: _vm.img,
               text: _vm.data,
               size: 200,
-              logoScale: 0.25,
-              colorDark: "#00cc99"
+              colorDark: "#00cc99",
+              margin: 0,
+              autoColor: _vm.state
             }
           })
         ],
