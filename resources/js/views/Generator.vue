@@ -2,7 +2,7 @@
   <div id="generator">
     <div class="container">
         <div class="row justify-content-center">
-            <qr-code :text="data" size="100" color="#00cc99"></qr-code>
+            <vue-qr  :bgSrc="img" :text="data" :size="200" logoScale="0.25" colorDark="#00cc99"></vue-qr>
         </div>
        
     </div>
@@ -15,7 +15,8 @@ export default {
   name: 'Generator',
   props:{
       uid:String,
-      name:String
+      name:String,
+      img:String
   },
   data(){
       return {

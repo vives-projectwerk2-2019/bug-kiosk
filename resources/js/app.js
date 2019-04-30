@@ -9,9 +9,8 @@ import App from './views/App';
 import Dongles from './views/Dongles';
 import Generator from './views/Generator';
 import VueMqtt from 'vue-mqtt';
-import VueQRCodeComponent from 'vue-qrcode-component';
-
-Vue.component('qr-code', VueQRCodeComponent);
+import VueQr from 'vue-qr'
+Vue.component('vue-qr', VueQr);
 
 require('dotenv').config();
 
