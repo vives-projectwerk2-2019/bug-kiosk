@@ -2154,7 +2154,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.data = "{\"user_dongle_id\":" + this.uid + ",\"name\":" + this.name + "}";
+    this.data = "{\"user_dongle_id\":" + "\"" + this.uid + "\"" + ",\"name\":" + "\"" + this.name + "\"" + "}";
     console.log(this.data);
     console.log("Generator mounted");
   }
