@@ -12,7 +12,7 @@
         <p id="home-text">
             BUG is the worlds most low power game console. 
             By using the LoRaWAN Internet of Things wireless technology, 
-            BUG is able to communicate over long distances without using mucht power. 
+            BUG is able to communicate over long distances without using much power. 
             Therefore you won't need to think about batteries in the controller.
         </p>
         <div class="icons">
@@ -20,13 +20,13 @@
                 <li class="icon_left">
                     <img class="icons_indiv" src="/images/home/kiosk.png" alt="kiosk icon" width="30%" height="30%">
                     <p class="icon_text">Kiosk</p>
-                    <p>In the kiosk,you can find a logger and information about the dongles. 
-                        You can also program and view your dongle and edit your profile. </p>
+                    <p>In the kiosk, you can find a logger and information about the dongles. 
+                        You can also program and view your dongles or edit your profile. </p>
                 </li>
                 <li class="icon_middle">
                     <img class="icons_indiv" src="/images/home/database.png" alt="database icon" width="30%" height="30%">
                     <p class="icon_text">Database</p>
-                    <p>When a user is made, the information is stored into a database. 
+                    <p>When a user is created, the information is stored into a database. 
                         All LoraWAN packets are also processed and saved. </p>
                 </li>
                 <li class="icon_right">
@@ -44,7 +44,7 @@
                 <li class="icon_middle">
                     <img class="icons_indiv" src="/images/home/dongle.png" alt="dongle icon" width="30%" height="30%">
                     <p class="icon_text">Dongles</p>
-                    <p>One of the dongles is used to identify the player of the controller. 
+                    <p>One of the dongles is used to identify the player using the controller. 
                         This way, anyone could get a personal dongle. The other 3 dongles are used to modify your game.</p>
                 </li>
                 <li class="icon_right">
