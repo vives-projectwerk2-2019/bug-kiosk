@@ -55,7 +55,7 @@ class DongleController extends Controller
             }
 
             if (empty($id_array) && $emptyCheck == false) {
-                return "Not a valid request!";
+                return response('Not a valid request!', 404);
             } else {
                 $user->dongles()->sync($id_array);
                 return "Active dongles updated succesfully!";
