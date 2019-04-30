@@ -31,11 +31,6 @@ class PagesController extends Controller
         return view('pages.profile');
     }
 
-    public function stats()
-    {
-        return view('pages.stats');
-    }
-
     public function logger()
     {
         return view('pages.logger');

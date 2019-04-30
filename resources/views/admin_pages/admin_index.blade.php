@@ -15,6 +15,11 @@
                     @endif
                     
                     Welcome to the admin page!
+                    <br>
+                    <br>
+                    <a href ="/admin/userInfo" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">account_circle</i>Users</a>
+                    <a href ="/admin/dongleInfo" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">event_available</i>Dongles</a>
+                    <a href ="/admin/admins" class="waves-effect waves-light btn-large" style="color: white"><i class="material-icons right">stars</i>Admins</a>
                 </div>
             </div>
         </div>

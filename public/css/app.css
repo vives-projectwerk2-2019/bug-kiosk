@@ -10811,3 +10811,44 @@ a.navbar-brand:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+#bug-logo {
+  margin-bottom: 2%;
+}
+
+#home-title {
+  font-size: 150%;
+}
+
+#home-text {
+  margin-left: 22%;
+  margin-right: 22%;
+  margin-bottom: 5%;
+}
+
+.icons ul li {
+  box-sizing: border-box;
+  width: 33.33333333%;
+  position: relative;
+  float: left;
+  padding-bottom: 3%;
+}
+
+.icon_text {
+  margin-top: 10%;
+  font-size: 130%;
+  margin-bottom: 10%;
+}
+
+.icon_left {
+  padding-right: 5%;
+}
+
+.icon_middle {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+.icon_right {
+  padding-left: 5%;
+}
+

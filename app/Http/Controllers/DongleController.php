@@ -16,7 +16,7 @@ class DongleController extends Controller
     public function activate(Request $request, $user_dongle_id)
     {
         if (User::where('user_dongle_id', $user_dongle_id)->first() == null) {
-            return "Not a valid user_dongle_id!";
+            return response('Invalid user_dongle_id', 404);
         } else {
             $user = User::where('user_dongle_id', $user_dongle_id)->first();
 
@@ -55,7 +55,7 @@ class DongleController extends Controller
             }
 
             if (empty($id_array) && $emptyCheck == false) {
-                return "Not a valid request!";
+                return response('Not a valid request!', 404);
             } else {
                 $user->dongles()->sync($id_array);
                 return "Active dongles updated succesfully!";
