@@ -1,16 +1,12 @@
 FROM composer
 
-RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
-  docker-php-ext-configure gd \
+RUN apk add --no-cache libpng libjpeg-turbo freetype libpng-dev libjpeg-turbo-dev freetype-dev
+RUN   docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/include/ \
-    --with-gd \
     --with-freetype-dir=/usr/include/ \
     --with-png-dir=/usr/include/
-
-RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-enable pdo_mysql
-RUN docker-php-ext-install gd
-RUN docker-php-ext-enable gd
+RUN docker-php-ext-install gd pdo_mysql
+RUN apk del libpng-dev libjpeg-turbo-dev 
 
 RUN apk add --update nodejs npm
 
