@@ -92,6 +92,12 @@ class DonglesTableSeeder extends Seeder
                     'logo' => 'images/logos/ram.png',
                     'dongle_hash' => '0122e76e424f7c79',
                 ],
+                [
+                    'name' => 'Gatlinggun',
+                    'description' => 'Weapon: Gatling gun',
+                    'logo' => 'images/logos/gatlingGun.png',
+                    'dongle_hash' => '01f94b5e5d4277b5',
+                ],
             ]
         );
     }
