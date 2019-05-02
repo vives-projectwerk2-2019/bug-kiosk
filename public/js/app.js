@@ -238,7 +238,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Dongles',
+  name: "Dongles",
   props: {
     uid: String,
     admin: String
@@ -247,7 +247,7 @@ __webpack_require__.r(__webpack_exports__);
     Station: _Station_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    console.log('Program-dongles mounted.');
+    console.log("Program-dongles mounted.");
   },
   data: function data() {
     return {
@@ -257,7 +257,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mqtt: {
-    'kiosk/+/ping': function kioskPing(data, topic) {
+    "kiosk/+/ping": function kioskPing(data, topic) {
       this.set_pi_ids.add(topic.substring(topic.indexOf("/") + 1, topic.indexOf("/ping")));
       this.pi_ids = Array.from(this.set_pi_ids);
       console.log(this.pi_ids);
@@ -412,12 +412,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'app',
+  name: "app",
   components: {
     BugConsole: _components_BugConsole_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    this.$mqtt.subscribe('logger');
+    this.$mqtt.subscribe("logger");
   }
 });
 
@@ -512,7 +512,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.console {\r\n  margin-top: 100px;\n}\n#vue_button {\r\n  float: left;\n}\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n#vue_button {\r\n  float: left;\n}\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -2087,7 +2087,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "dongles" }, [
-    _c("h1", { attrs: { id: "under-navbar" } }, [_vm._v("Program dongle")]),
+    _c("h1", [_vm._v("Program dongle")]),
     _vm._v(" "),
     _vm.admin == "admin"
       ? _c("div", [_c("p", [_vm._v("Administrator account")])])

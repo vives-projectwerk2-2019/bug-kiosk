@@ -109,10 +109,6 @@ function getTime() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.console {
-  margin-top: 100px;
-}
-
 #vue_button {
   float: left;
 }
