@@ -7,7 +7,7 @@
         
         <div class="row">
             @foreach ($dongles as $dongle)
-            <div class="col s6 m4 l3">
+            <div class="col s12 m4 l3 offset-s2">
                 <div class="card" style="max-width: 230px;border: 2px solid #00cc99;">
                     <div class="card-image waves-effect waves-block waves-light">
                     <img src="{{ $dongle->logo }}" style="object-fit: cover;width: 230px;height: 230px;">
