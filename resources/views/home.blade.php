@@ -3,8 +3,9 @@
 @section('content')
 
 <div class="container">
-
-    <img id="bug-logo" src="/images/home/bug-logo.png" alt="Bug Logo" width="40%" height="40%">
+    <div class="row" style="margin-bottom: -3%">
+        <img class="col s4 l4 offset-s4 offset-l4" style="margin-top: 2%;" id="bug-logo" src="/images/home/bug-logo.png" alt="Bug Logo" width="40%" height="40%">
+    </div>
     <br>
         <p id="home-title">
             Welcome to the kiosk for BUG: Bug Universal Gamecontroller!

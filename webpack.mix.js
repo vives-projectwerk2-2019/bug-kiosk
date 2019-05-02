@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -12,17 +12,18 @@ const mix = require('laravel-mix');
  */
 
 mix
-	.js('resources/js/app.js', 'public/js')
-	.js('resources/js/bootstrap.js', 'public/js')
-	.sass('resources/sass/app.scss', 'public/css');
+  .js("resources/js/app.js", "public/js")
+  .js("resources/js/bootstrap.js", "public/js")
+  .sass("resources/sass/app.scss", "public/css")
+  .sass("resources/sass/boot_app.scss", "public/css");
 
 mix.webpackConfig({
-		node: {
-		  fs: "empty"
-		},
-		resolve: {
-			alias: {
-				"handlebars" : "handlebars/dist/handlebars.js"
-			}
-		},
-	});
+  node: {
+    fs: "empty"
+  },
+  resolve: {
+    alias: {
+      handlebars: "handlebars/dist/handlebars.js"
+    }
+  }
+});

@@ -23,11 +23,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    @include('inc.navbar')
+        @include('inc.navbar')
     <div>
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    {{-- <script src="{{ asset('js/test.js') }}"></script> --}}
 </body>
 </html>

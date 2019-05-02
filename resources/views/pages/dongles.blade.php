@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h1 id="under-navbar">All Dongles</h1>
-        
+        <h1>All Dongles</h1>
         <div class="row">
             @foreach ($dongles as $dongle)
             <div class="col s12 m4 l3 offset-s2">

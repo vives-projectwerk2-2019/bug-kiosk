@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <br>
-        <h1 id="under-navbar">All admins</h1>
+        <h1>All admins</h1>
     </div>
 
     <a href ="/admin/index" class="waves-effect waves-light btn-large"><i class="material-icons left">arrow_back</i>Return to admin index</a>

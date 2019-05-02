@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div>
-    <h1 id="under-navbar">Profile</h1>
+<div class="row">
+    <h1>Profile</h1>
     <div id="generator">
         <generator uid={{Auth::user()->user_dongle_id}} name={{str_replace(' ','',Auth::user()->name)}} img="{{ Auth::user()->avatar }}"></generator>
     </div>

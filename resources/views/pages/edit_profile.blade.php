@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 id="under-navbar">Profile</h1>
+<h1>Profile</h1>
     <div class="avatar">
         <img src="{{ Auth::user()->avatar }}" alt="User icon" id="profile_picture">
         <br>

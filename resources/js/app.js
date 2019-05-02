@@ -1,5 +1,3 @@
-require("./bootstrap");
-
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -52,6 +50,9 @@ const generator = new Vue({
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  var elems = document.querySelectorAll(".tooltipped");
-  var instances = M.Tooltip.init(elems);
+  var elems = document.querySelectorAll(".dropdown-trigger");
+  var instances = M.Dropdown.init(elems, {
+    coverTrigger: false,
+    hover: false
+  });
 });
