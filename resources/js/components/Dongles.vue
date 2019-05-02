@@ -6,7 +6,7 @@
       </div>
       <div class="container">
         <div class="row" v-if="station">
-          <div class="col s3" v-bind:key="pi_id" v-for="pi_id in pi_ids">
+          <div class="col s12 m2 l3" v-bind:key="pi_id" v-for="pi_id in pi_ids">
             <Station :name="pi_id" :uid ="uid" :admin="admin"/>
           </div>
         </div>
