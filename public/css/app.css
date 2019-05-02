@@ -15,7 +15,11 @@ h1 {
 }
 
 .index {
-  margin-top: 15%;
+  margin-top: 10%;
+}
+
+.index h1 {
+  margin-bottom: 5%;
 }
 
 .login {
