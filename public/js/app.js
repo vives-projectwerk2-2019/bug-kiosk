@@ -6813,8 +6813,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER":"wss://api.bug.devbit.be/broker","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER":"wss://api.bug.devbit.be/broker","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER":"mqtt://localhost:9001","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_CLUSTER":"","MIX_PUSHER_APP_KEY":"","MIX_VUE_APP_BROKER":"mqtt://localhost:9001","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -38328,7 +38328,7 @@ var render = function() {
             _vm._l(_vm.pi_ids, function(pi_id) {
               return _c(
                 "div",
-                { key: pi_id, staticClass: "col s3" },
+                { key: pi_id, staticClass: "col s12 m2 l3" },
                 [
                   _c("Station", {
                     attrs: { name: pi_id, uid: _vm.uid, admin: _vm.admin }
@@ -53320,8 +53320,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("vue-qr", vue_qr__WEBPACK_I
 
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
 
-console.log("mqtt broker: ", "wss://api.bug.devbit.be/broker");
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_5___default.a, "wss://api.bug.devbit.be/broker");
+console.log("mqtt broker: ", "mqtt://localhost:9001");
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_mqtt__WEBPACK_IMPORTED_MODULE_5___default.a, "mqtt://localhost:9001");
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
   routes: [{
