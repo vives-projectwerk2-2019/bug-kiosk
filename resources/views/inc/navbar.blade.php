@@ -4,6 +4,10 @@
         <li class="divider"></li>
         <li style="text-align: center"><a style="color:#00cc99;" href="/my_dongles">My Dongles</a></li>
         <li class="divider"></li>
+        @if (Auth::User()->roles->pluck('name')->contains('admin'))
+        <li class="divider"></li>
+        <li style="text-align: center"><a style="color:#00cc99;" href="/admin/index">Admin index</a></li>
+        @endif
         <li style="text-align: center"><a style="color:#00cc99;" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
@@ -43,6 +47,9 @@
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/dongles">All dongles</a></li>
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/logger">Logger</a></li>
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/program_dongle">Program dongle</a></li>
+            @if (Auth::User()->roles->pluck('name')->contains('admin'))
+            <li><a style="color:rgba(0, 0, 0, 0.5);" href="/admin/index">Admin index</a></li>
+            @endif
             <li><a href="{{ route('logout') }}"
               onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
