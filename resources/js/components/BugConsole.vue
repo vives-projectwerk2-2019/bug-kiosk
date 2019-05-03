@@ -66,7 +66,6 @@ export default {
   mqtt: {
     logger(data) {
       var parsed = JSON.parse(data);
-      console.log(this.device_options);
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
         this.device_options.push(parsed.dev_id);
       }
