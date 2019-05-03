@@ -23,7 +23,7 @@
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/logger">Logger</a></li>
             <li class="dropdown-trigger" data-target="dropdown1">
                 <a style="color:rgba(0, 0, 0, 0.5); float:right" >
-              <img style="6px; float:left;" src="{{ asset(Auth::user()->avatar) }}" id="small_avatar">
+              <img style="margin-top:6px; float:left;" src="{{ asset(Auth::user()->avatar) }}" id="small_avatar">
                         @if (Auth::User()->roles->pluck('name')->contains('admin'))
                         &nbsp; Admin: {{ Auth::user()->name }} <span class="caret"></span>
                         @else 
