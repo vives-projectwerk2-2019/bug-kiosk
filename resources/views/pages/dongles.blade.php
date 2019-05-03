@@ -4,7 +4,7 @@
 
     <div class="container">
         <h1>All Dongles</h1>
-        <div class="row">
+        <div class="row" style="overflow-x: hidden">
             @foreach ($dongles as $dongle)
             <div class="col s12 m4 l3 offset-s2">
                 <div class="card" style="max-width: 230px;border: 2px solid #00cc99;">
