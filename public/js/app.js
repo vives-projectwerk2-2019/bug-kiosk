@@ -130,6 +130,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BugConsole",
   props: {
@@ -150,6 +162,7 @@ __webpack_require__.r(__webpack_exports__);
   mqtt: {
     logger: function logger(data) {
       var parsed = JSON.parse(data);
+      console.log(this.device_options);
 
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
         this.device_options.push(parsed.dev_id);
@@ -512,7 +525,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#vue_button {\r\n  float: left;\n}\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -1994,34 +2007,51 @@ var render = function() {
     _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
-      _c(
-        "button",
-        {
-          staticClass: "waves-effect waves-light btn-large",
-          attrs: { id: "vue_button" },
-          on: { click: _vm.clear }
-        },
-        [_vm._v("Clear")]
-      ),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "form-control",
-          attrs: { name: "status", id: "tags" },
-          on: {
-            change: function($event) {
-              return _vm.setID($event)
-            }
-          }
-        },
-        _vm._l(_vm.device_options, function(device_option) {
-          return _c("option", { key: device_option.option }, [
-            _vm._v(_vm._s(device_option))
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "input-field" }, [
+          _c("div", { staticClass: "col s10" }, [
+            _c(
+              "select",
+              {
+                staticClass: "browser-default",
+                attrs: { name: "status", id: "tags" },
+                on: {
+                  change: function($event) {
+                    return _vm.setID($event)
+                  }
+                }
+              },
+              _vm._l(_vm.device_options, function(device_option) {
+                return _c(
+                  "option",
+                  {
+                    key: device_option.option,
+                    domProps: { value: device_option }
+                  },
+                  [_vm._v(_vm._s(device_option))]
+                )
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col s2" }, [
+            _c(
+              "a",
+              {
+                staticClass: "waves-effect waves-light btn-large",
+                on: { click: _vm.clear }
+              },
+              [
+                _c("i", { staticClass: "material-icons left" }, [
+                  _vm._v("clear")
+                ]),
+                _vm._v("\n            Clear\n          ")
+              ]
+            )
           ])
-        }),
-        0
-      ),
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "card" }, [
         _c("table", [
@@ -17093,6 +17123,11 @@ var generator = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   router: router
 });
+M.AutoInit(); // document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('select');
+//   var instances = M.FormSelect.init(elems, []);
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".dropdown-trigger");
   var instances = M.Dropdown.init(elems, {
@@ -17568,9 +17603,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\jensv\OneDrive\Documenten\School\Tweede jaar\Projectwerk\bug-kiosk\resources\sass\boot_app.scss */"./resources/sass/boot_app.scss");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\jopbo\OneDrive - Hogeschool VIVES\Vives\Projectwerk_2\bug-kiosk\resources\sass\boot_app.scss */"./resources/sass/boot_app.scss");
 
 
 /***/ })

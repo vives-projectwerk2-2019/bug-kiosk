@@ -2,13 +2,25 @@
   <div class="console">
     <h1>{{ msg }}</h1>
     <div class="container">
-      <button class="waves-effect waves-light btn-large" id="vue_button" v-on:click="clear">Clear</button>
-      <select name="status" id="tags" class="form-control" v-on:change="setID($event)">
-        <option
-          v-bind:key="device_option.option"
-          v-for="device_option in device_options"
-        >{{ device_option }}</option>
-      </select>
+      <div class="row">
+        <div class="input-field">
+          <div class="col s10">
+            <select name="status" id="tags" class="browser-default" v-on:change="setID($event)">
+              <option
+                v-bind:key="device_option.option"
+                v-for="device_option in device_options"
+                :value="device_option"
+              >{{ device_option }}</option>
+            </select>
+          </div>
+          <div class="col s2">
+            <a class="waves-effect waves-light btn-large" v-on:click="clear">
+              <i class="material-icons left">clear</i>
+              Clear
+            </a>            
+          </div>
+        </div>
+      </div>
       <div class="card">
         <table>
           <thead>
@@ -54,7 +66,7 @@ export default {
   mqtt: {
     logger(data) {
       var parsed = JSON.parse(data);
-
+      console.log(this.device_options);
       if (this.device_options.indexOf(parsed.dev_id) === -1) {
         this.device_options.push(parsed.dev_id);
       }
@@ -109,10 +121,6 @@ function getTime() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-#vue_button {
-  float: left;
-}
-
 tbody {
   display: block;
   height: 640px;
