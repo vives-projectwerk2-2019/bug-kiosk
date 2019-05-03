@@ -54,10 +54,10 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-3">
                                     <p>Or continue with:</p>
-                                    <a class="btn btn-link" href="/login/facebook">Facebook</a>
-                                    <a class="btn btn-link" href="/login/github">Github</a>
-                                    <a class="btn btn-link" href="/login/google">Google</a>
-                                    <a class="btn btn-link" href="/login/twitter">Twitter</a>
+                                    <a style="margin-bottom: 3%" class="btn btn-link" href="/login/facebook">Facebook</a>
+                                    <a style="margin-bottom: 3%" class="btn btn-link" href="/login/github">Github</a>
+                                    <a style="margin-bottom: 3%" class="btn btn-link" href="/login/google">Google</a>
+                                    <a style="margin-bottom: 3%" class="btn btn-link" href="/login/twitter">Twitter</a>
                                     <br>
                                     <br>
                                     @if (Route::has('password.request'))

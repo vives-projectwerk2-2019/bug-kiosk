@@ -13,7 +13,6 @@ a {
 
     <br>
     <br>
-    <br>
     <h4>Or continue with:</h4>
     <br>
     <a href="/login/facebook" class="waves-effect waves-light btn-large">Facebook</a>
