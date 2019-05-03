@@ -67,7 +67,17 @@ class PagesController extends Controller
     {
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $filename = time() . "." . $avatar->getClientOriginalExtension();
+            $extenstion = $avatar->getClientOriginalExtension();
+
+            if ($extenstion == "PNG") {
+                $extenstion = "png";
+            } else if ($extenstion == "JPG") {
+                $extenstion = "png";
+            } else if ($extenstion == "JPEG") {
+                $extenstion = "jpeg";
+            }
+
+            $filename = time() . "." . $extenstion;
             Image::make($avatar)->resize(150, 150)->save(\public_path('/images/avatars/' . $filename));
             $user = Auth::user();
             $user->avatar = "images/avatars/" . $filename;

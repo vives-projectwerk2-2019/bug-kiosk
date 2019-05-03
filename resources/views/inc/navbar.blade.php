@@ -1,10 +1,10 @@
 <ul id="dropdown1" class="dropdown-content">
         <li class="divider"></li>
-        <li style="text-align: center"><a style="color:#00cc99; href="/profile">My profile</a></li>
+        <li style="text-align: center"><a style="color:#00cc99;" href="/profile">My profile</a></li>
         <li class="divider"></li>
-        <li style="text-align: center"><a style="color:#00cc99; href="/my_dongles">My Dongles</a></li>
+        <li style="text-align: center"><a style="color:#00cc99;" href="/my_dongles">My Dongles</a></li>
         <li class="divider"></li>
-        <li style="text-align: center"><a style="color:#00cc99; href="{{ route('logout') }}"
+        <li style="text-align: center"><a style="color:#00cc99;" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
              {{ __('Logout') }}
@@ -21,13 +21,13 @@
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/program_dongle">Program dongle</a></li>
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/dongles">Dongles</a></li>
             <li><a style="color:rgba(0, 0, 0, 0.5);" href="/logger">Logger</a></li>
-            <li><img style="margin-top: 6px;" src="{{ asset(Auth::user()->avatar) }}" id="small_avatar" width="0" height="0"></li>
-            <li>
-                <a style="color:rgba(0, 0, 0, 0.5);" class="dropdown-trigger" href="" data-target="dropdown1">
+            <li class="dropdown-trigger" data-target="dropdown1">
+                <a style="color:rgba(0, 0, 0, 0.5); float:right" >
+              <img style="margin-top:6px; float:left;" src="{{ asset(Auth::user()->avatar) }}" id="small_avatar">
                         @if (Auth::User()->roles->pluck('name')->contains('admin'))
-                            Admin: {{ Auth::user()->name }} <span class="caret"></span>
+                        &nbsp; Admin: {{ Auth::user()->name }} <span class="caret"></span>
                         @else 
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                        &nbsp; {{ Auth::user()->name }} <span class="caret"></span>
                         @endif
                     <i class="material-icons right">arrow_drop_down</i>
                 </a>
