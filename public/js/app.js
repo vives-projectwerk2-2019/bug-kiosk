@@ -2207,7 +2207,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.clear_button{\r\n  background-color: #00cc99;\r\n  margin: 0%;\n}\ntbody {\r\n  display: block;\r\n  height: 640px;\r\n  overflow: auto;\n}\nthead,\r\ntbody tr {\r\n  display: table;\r\n  width: 100%;\r\n  table-layout: fixed;\n}\nthead {\r\n  width: calc(100% - 1em);\n}\ntable {\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -4511,7 +4511,7 @@ var render = function() {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "input-field" }, [
-          _c("div", { staticClass: "col s10" }, [
+          _c("div", { staticClass: "col s6 m6 l10" }, [
             _c(
               "select",
               {
@@ -4537,11 +4537,11 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col s2" }, [
+          _c("div", { staticClass: "col s6 m6 l2" }, [
             _c(
               "a",
               {
-                staticClass: "waves-effect waves-light btn-large",
+                staticClass: "waves-effect waves-light btn clear_button",
                 on: { click: _vm.clear }
               },
               [
@@ -4555,7 +4555,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card responsive-table" }, [
         _c("table", [
           _vm._m(0),
           _vm._v(" "),
@@ -4563,7 +4563,9 @@ var render = function() {
             "tbody",
             _vm._l(_vm.filtered, function(log) {
               return _c("tr", { key: log.time }, [
-                _c("td", [_vm._v(_vm._s(log.time))]),
+                _c("td", { staticClass: "hide-on-small-only" }, [
+                  _vm._v(_vm._s(log.time))
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(log.dev_id))]),
                 _vm._v(" "),
@@ -4586,7 +4588,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Time")]),
+        _c("th", { staticClass: "hide-on-small-only" }, [_vm._v("Time")]),
         _vm._v(" "),
         _c("th", [_vm._v("Device ID")]),
         _vm._v(" "),
