@@ -3,11 +3,11 @@
         <li style="text-align: center"><a style="color:#00cc99;" href="/profile">My profile</a></li>
         <li class="divider"></li>
         <li style="text-align: center"><a style="color:#00cc99;" href="/my_dongles">My Dongles</a></li>
-        <li class="divider"></li>
         @if (Auth::User()->roles->pluck('name')->contains('admin'))
         <li class="divider"></li>
         <li style="text-align: center"><a style="color:#00cc99;" href="/admin/index">Admin index</a></li>
         @endif
+        <li class="divider"></li>
         <li style="text-align: center"><a style="color:#00cc99;" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
