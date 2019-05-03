@@ -15,6 +15,6 @@
     <br>
     <br>
     <br>
-    <a  href="home" class="waves-effect waves-light btn-large">Return to home</a>
+    <a href="home" class="waves-effect waves-light btn-large">Return to home</a>
 </div>
 @endsection

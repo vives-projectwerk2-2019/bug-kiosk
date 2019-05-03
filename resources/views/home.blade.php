@@ -16,6 +16,7 @@
             BUG is able to communicate over long distances without using much power. 
             Therefore you won't need to think about batteries in the controller.
         </p>
+        <a style="margin-bottom: 3%" href="https://play.google.com/store/apps/details?id=com.projectwerk2019.fakecontroller" class="waves-effect waves-light btn-large">Get the controller app</a>
         <div class="icons">
             <ul>
                 <li class="icon_left">
