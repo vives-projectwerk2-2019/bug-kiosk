@@ -41,7 +41,7 @@
                 </p>
         <div class="row justify-content-center">
 
-        <a style="margin-right: 1%;" href ="/admin/userInfo/edit/{{ $user->id }}" class="waves-effect waves-light btn-large"><i class="material-icons right">build</i>Edit</a>
+        <a href ="/admin/userInfo/edit/{{ $user->id }}" class="waves-effect waves-light btn-large"><i class="material-icons right">build</i>Edit</a>
         <a href ="/admin/userInfo/{{ $user->id }}" class="waves-effect waves-light btn-large"><i class="material-icons right">delete</i>Delete</a>
 
         </div>

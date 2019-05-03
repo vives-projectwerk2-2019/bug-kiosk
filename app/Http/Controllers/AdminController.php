@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Dongle;
 use App\Role;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -25,14 +26,16 @@ class AdminController extends Controller
         return view('admin_pages.admin_userInfo')->with(['users' => $users]);
     }
 
-    public function editUser()
+    public function editUser($id)
     {
-        return view('admin_pages.admin_editUser');
+        $user = User::Find($id);
+        return view('admin_pages.admin_editUser')->with(['user' => $user]);
     }
 
-    public function editDongle()
+    public function editDongle($id)
     {
-        return view('admin_pages.admin_editDongle');
+        $dongle = Dongle::Find($id);
+        return view('admin_pages.admin_editDongle')->with(['dongle' => $dongle]);
     }
 
     public function dongleInfo()
@@ -88,4 +91,43 @@ class AdminController extends Controller
         return redirect('/admin/dongleInfo');
     }
 
+    public function resetAvatar($id)
+    {
+        $user = User::Find($id);
+        $user->avatar = "images/avatars/default.png";
+        $user->save();
+
+        return redirect('/admin/userInfo/edit/' . $id);
+    }
+
+    public function editUserProfile(Request $request, $id)
+    {
+        $user = User::Find($id);
+        $new_name = $request->input('name');
+        $new_email = $request->input('email');
+
+        $user->name = $new_name;
+        $user->email = $new_email;
+
+        $user->save();
+
+        return redirect('/admin/userInfo');
+    }
+
+    public function resetUserDongleId($id)
+    {
+        $user = User::Find($id);
+
+        $new_user_dongle_id = "00" . strval(bin2hex(openssl_random_pseudo_bytes(7)));
+        $user->user_dongle_id = $new_user_dongle_id;
+
+        $user->save();
+
+        return redirect('/admin/userInfo/edit/' . $id);
+    }
+
+    public function newDongle()
+    {
+        return view('admin_pages.admin_newDongle');
+    }
 }

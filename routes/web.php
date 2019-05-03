@@ -42,4 +42,10 @@ Route::get('/admin/dongleInfo/edit/{id}', 'AdminController@editDongle');
 Route::get('/admin/admins/{id}', 'AdminController@removeAdminRights');
 
 Route::get('/admin/userInfo/{id}', 'AdminController@deleteUser');
-Route::get('/admin/userDongle/{id}', 'AdminController@deleteDongle');
+Route::get('/admin/dongleInfo/delete/{id}', 'AdminController@deleteDongle');
+
+Route::get('/admin/userInfo/reset/avatar/{id}', 'AdminController@resetAvatar');
+Route::post('/admin/userInfo/edit/{id}', 'AdminController@editUserProfile');
+
+Route::get('/admin/userInfo/reset/user_dongle_id/{id}', 'AdminController@resetUserDongleId');
+Route::get('/admin/dongleInfo/new', 'AdminController@newDongle');
