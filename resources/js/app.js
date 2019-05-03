@@ -1,3 +1,4 @@
+window.axios = require('axios');
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -8,10 +9,11 @@ import Dongles from "./views/Dongles";
 import Generator from "./views/Generator";
 import VueMqtt from "vue-mqtt";
 import VueQr from "vue-qr";
-Vue.component("vue-qr", VueQr);
-
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 import VueQRCodeComponent from 'vue-qrcode-component';
-
+Vue.use(VueAxios, axios)
+Vue.component("vue-qr", VueQr);
 Vue.component('qr-code', VueQRCodeComponent);
 
 require("dotenv").config();

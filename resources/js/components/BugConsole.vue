@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="input-field">
-          <div class="col s10">
+          <div class="col s6 m6 l10">
             <select name="status" id="tags" class="browser-default" v-on:change="setID($event)">
               <option
                 v-bind:key="device_option.option"
@@ -13,19 +13,19 @@
               >{{ device_option }}</option>
             </select>
           </div>
-          <div class="col s2">
-            <a class="waves-effect waves-light btn-large" v-on:click="clear">
+          <div class="col s6 m6 l2">
+            <a class="waves-effect waves-light btn clear_button" v-on:click="clear">
               <i class="material-icons left">clear</i>
               Clear
             </a>            
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card responsive-table">
         <table>
           <thead>
             <tr>
-              <th>Time</th>
+              <th class="hide-on-small-only">Time</th>
               <th>Device ID</th>
               <th>Movement</th>
               <th>Action</th>
@@ -33,7 +33,7 @@
           </thead>
           <tbody>
             <tr v-for="log in filtered" v-bind:key="log.time">
-              <td>{{ log.time }}</td>
+              <td class="hide-on-small-only">{{ log.time }}</td>
               <td>{{ log.dev_id }}</td>
               <td>{{ log.movement }}</td>
               <td>{{ log.action }}</td>
@@ -120,6 +120,11 @@ function getTime() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.clear_button{
+  background-color: #00cc99;
+  margin: 0%;
+}
+
 tbody {
   display: block;
   height: 640px;
