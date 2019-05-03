@@ -5,7 +5,7 @@
       <div class="row">
         <div class="input-field">
           <div class="col s10">
-            <select name="status" id="tags" class="input-field" v-on:change="setID($event)">
+            <select name="status" id="tags" class="browser-default" v-on:change="setID($event)">
               <option
                 v-bind:key="device_option.option"
                 v-for="device_option in device_options"

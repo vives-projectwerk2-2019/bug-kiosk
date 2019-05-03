@@ -2802,7 +2802,7 @@ var render = function() {
             _c(
               "select",
               {
-                staticClass: "input-field",
+                staticClass: "browser-default",
                 attrs: { name: "status", id: "tags" },
                 on: {
                   change: function($event) {
