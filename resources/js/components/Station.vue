@@ -1,7 +1,7 @@
 <template>
   <div class="station">
-    <h2 class="center-align">Station {{name}}</h2>
-    <select v-if="admin == 'admin'" class="form-control" v-on:change="setHashPi($event)">
+    <h4 class="center-align">Station {{name}}</h4>
+    <select v-if="admin == 'admin'" class="browser-default" v-on:change="setHashPi($event)">
       <option v-bind:key="dongle" v-for="dongle in dongleNames">{{ dongle }}</option>
     </select>
     <a
@@ -107,7 +107,7 @@ export default {
         this.programHashPi = this.uid;
       }
       console.log(this.programNamePi);
-      axios.get("api/get_dongles").then(function(response) {
+      Vue.axios.get("api/get_dongles").then(function(response) {
         response.data.forEach(function(element) {
           if (element.name == self.programNamePi) {
             self.programHashPi = element.dongle_hash;
