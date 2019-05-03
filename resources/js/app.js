@@ -10,6 +10,10 @@ import VueMqtt from "vue-mqtt";
 import VueQr from "vue-qr";
 Vue.component("vue-qr", VueQr);
 
+import VueQRCodeComponent from 'vue-qrcode-component';
+
+Vue.component('qr-code', VueQRCodeComponent);
+
 require("dotenv").config();
 
 console.log("mqtt broker: ", process.env.MIX_VUE_APP_BROKER);
